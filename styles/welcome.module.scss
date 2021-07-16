@@ -1,12 +1,27 @@
 .welcome {
     
+    background-image: linear-gradient(to bottom, #E0E0E0 , #CB8EE9, #6441a0, #CB8EE9 );
 
-    h1 {
-        font-size: 32px;
+    &__logo {
+        width: 6rem;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+    }
+
+    span {
+        font-size: 40px;
         color: #673AB7;
     }
 
+    h1 {
+        font-size: 35px;
+    }
+
     h2 {
+        color: #E0E0E0;
         font-size: 35px;
     }
 
@@ -16,25 +31,29 @@
         .button__register {
             background-color: #673AB7;
             border-color: #673AB7;
-            border-radius: 10px;
+            border-radius: 0.5rem;
             width: 12rem;
-            margin: 5px auto;
+            margin: 0.5rem auto;
             
 
         }
         
         .button__login {
-            background-color: #F7F4F9;
+            background-color: #E0E0E0;
             color: #673AB7;
             border-color: #673AB7;
-            border-radius: 10px;
+            border-radius: 0.5rem;
             width: 12rem;
-            margin: 5px auto;
+            margin: 0.5rem auto;
         }
     }
 
     &__intro {
-        padding: 2rem 0;
+        padding: 0 0 2rem 0;
+
+        .intro__text {
+            color: #E0E0E0;
+        }
     }
 
     &__footer {

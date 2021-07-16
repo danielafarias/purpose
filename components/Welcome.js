@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Footer from '../components/Footer';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import styles from '../styles/welcome.module.scss';
 
@@ -12,12 +13,15 @@ export default function Welcome() {
                 <Container>
                     <Row>
                         <Col>
-                            <Col>
-                                <h1>Purple</h1>
-                            </Col>
+                            <Row>
+                                <Col className={styles.welcome__header}>
+                                    <img src='new_images/persoicones-19.svg' className={styles.welcome__logo}/>
+                                    <span>Purple</span>
+                                </Col>
+                            </Row>
 
                             <Col>
-                                <h2>Início da Aventura</h2>
+                                <h1>Início da Aventura</h1>
                                 <p><strong>Suba de nível em seu conhecimento de programação</strong></p>
                             </Col>
 
@@ -28,6 +32,10 @@ export default function Welcome() {
                             <Col className={styles.welcome__buttons}>
                                 <Button className={styles.button__login} variant="primary">Entrar</Button>
                             </Col>
+
+                            <Col>
+                                <img src='new_images/persoicones-24.svg' />
+                            </Col>
                         </Col>
                     </Row>
 
@@ -35,7 +43,7 @@ export default function Welcome() {
                         <Col>
                             <Col>
                                 <h2>Quem somos?</h2>
-                                <p>
+                                <p className={styles.intro__text}>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec dolor 
                                     ac nisi vehicula porttitor. Duis pharetra quam quis sapien fermentum 
                                     sodales. In commodo ex vel egestas euismod. Morbi scelerisque fringilla 
@@ -55,15 +63,7 @@ export default function Welcome() {
                 </Container>
             </main>
 
-            <footer className={styles.welcome__footer}>
-                <Container>
-                    <Row>
-                        <Col>
-                            <p>Logo Facebook | Logo LinkedIn | Logo GitHub</p>
-                        </Col>
-                    </Row>
-                </Container>
-            </footer>
+            <Footer />
         </div>
     );
 
