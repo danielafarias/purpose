@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import WelcomeHome from '../components/WelcomeHome';
 
 export default function Home() {
   return (
@@ -9,13 +10,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        
-      </main>
+      <WelcomeHome />
 
-      <footer>
-       
-      </footer>
     </div>
   )
 }
