@@ -1,0 +1,43 @@
+.welcome {
+    
+
+    h1 {
+        font-size: 32px;
+        color: #673AB7;
+    }
+
+    h2 {
+        font-size: 35px;
+    }
+
+    &__buttons {
+        text-align: center;
+
+        .button__register {
+            background-color: #673AB7;
+            border-color: #673AB7;
+            border-radius: 10px;
+            width: 12rem;
+            margin: 5px auto;
+            
+
+        }
+        
+        .button__login {
+            background-color: #F7F4F9;
+            color: #673AB7;
+            border-color: #673AB7;
+            border-radius: 10px;
+            width: 12rem;
+            margin: 5px auto;
+        }
+    }
+
+    &__intro {
+        padding: 2rem 0;
+    }
+
+    &__footer {
+        text-align: center;
+    }
+}
