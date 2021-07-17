@@ -1,6 +1,6 @@
 .welcome {
     
-    background-image: linear-gradient(to bottom, #E0E0E0 , #CB8EE9, #6441a0, #CB8EE9 );
+    background-image: linear-gradient(to bottom, #E0E0E0 , #CB8EE9, #673AB7, #673AB7, #CB8EE9 );
 
     &__header {
         display: flex;
@@ -35,6 +35,10 @@
             border-radius: 0.5rem;
             width: 12rem;
             margin: 0.5rem auto;
+
+            &:focus{
+                box-shadow: none;
+            }
         }
         
         .button__login {
@@ -44,6 +48,10 @@
             border-radius: 0.5rem;
             width: 12rem;
             margin: 0.5rem auto;
+
+            &:focus{
+                box-shadow: none;
+            }
         }
     }
 

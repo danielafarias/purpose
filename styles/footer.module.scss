@@ -5,6 +5,15 @@
 
     img {
         width: 3.5rem;
+        margin-right: 1rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+        
+        &:last-child {
+            margin-right: 0;
+        }
     }
 
     small {
