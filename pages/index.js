@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import WelcomeHome from '../components/WelcomeHome';
+import Login from './login'
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <WelcomeHome />
+     
 
     </div>
   )
