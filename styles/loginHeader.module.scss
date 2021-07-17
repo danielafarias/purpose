@@ -1,0 +1,11 @@
+.header {
+    background-image: linear-gradient(to bottom, #673AB7 , #9473CB);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    
+    .headerLogo {
+        width: 5rem;
+        margin: 0.3rem;
+    } 
+}
