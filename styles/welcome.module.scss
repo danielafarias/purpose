@@ -36,6 +36,10 @@
             width: 12rem;
             margin: 0.5rem auto;
 
+            &:hover {
+                background-color: #5013bb;
+            }
+
             &:focus{
                 box-shadow: none;
             }
@@ -48,6 +52,11 @@
             border-radius: 0.5rem;
             width: 12rem;
             margin: 0.5rem auto;
+
+            &:hover {
+                background-color: #aea5be;
+                color: #5013bb;
+            }
 
             &:focus{
                 box-shadow: none;
