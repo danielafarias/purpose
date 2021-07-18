@@ -1,15 +1,15 @@
-.header {
+.Header {
     background-image: linear-gradient(to bottom, #673AB7 , #9473CB);
     display: flex;
     text-align: center;
     align-items: center;
     
-    .headerLogo {
+    &__logo {
         width: 5rem;
         margin: 0.3rem;
     } 
 
-    .pageName {
+    &__pageName {
         color: #E0E0E0;
         font-size: 2rem;
         font-weight: lighter;
