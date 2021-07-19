@@ -5,7 +5,7 @@ export default function Footer() {
     return(
         <footer className={styles.footer}>
                 <Container fixed>
-                    <Grid container justify="center" alignItems="center" spacing={2}>
+                    <Grid container justifyContent="center" alignItems="center" spacing={2}>
                         <Grid item>
                             <Grid item>
                                 <img src='new_images/redes_Prancheta 1.svg' />
