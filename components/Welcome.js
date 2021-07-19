@@ -12,7 +12,7 @@ export default function Welcome() {
             </Head>
             <main>
                 <Container fixed> 
-                    <Grid container justify="center" alignItems="center" spacing={4}>
+                    <Grid container justifyContent="center" alignItems="center" spacing={4}>
                         <Grid item xs={12} sm={6}>
 
                             <Grid item className={styles.welcome__header}>

@@ -60,21 +60,21 @@ export default function Login() {
 
             
 
-            <Grid container direction='column' className={styles.login__form} spacing={4}>
+            <Grid container direction='column' justifyContent='center' alignItems='center' spacing={4}>
 
-              <Grid item xs={8} sm={4}>
+              <Grid className={styles.login__name} item xs={8} sm={4}>
                 <img src='/images/moon.svg'/>
-                <Typography span color='secondary' variant="h3">Purple</Typography>
+                <Typography span="true" color='secondary' variant="h3">Purple</Typography>
               </Grid>
 
-              <Grid item xs={8} sm={4}>
-                <img className={styles.login__img} src='/images/castle3.svg' />
+              <Grid className={styles.login__img} item xs={8} sm={4}>
+                <img src='/images/castle3.svg' />
               </Grid>
 
-              <Grid item xs={8} sm={4} >
+              <Grid item xs={8} sm={4} id={styles.login__textField}>
                 <TextField
                   error={false}
-                  className={styles.login__email}
+                  id={styles.login__textField__content}
                   label="E-mail"
                   InputProps={{ 
                     disableUnderline: (true), 
@@ -84,10 +84,10 @@ export default function Login() {
                   type="text"/>
               </Grid>
               
-              <Grid item xs={8} sm={4}>
+              <Grid item xs={8} sm={4} id={styles.login__textField}>
                 <TextField
                     error={false}
-                    className={styles.login__password}
+                    id={styles.login__textField__content}
                     label="Senha"
                     variant="standard"
                     fullWidth
@@ -107,7 +107,8 @@ export default function Login() {
               </Grid>
 
               <Grid item xs={8} sm={4}>
-                  <Button>Entrar</Button>
+                  <Button id={styles.login__button}>Entrar</Button>
+                  <Typography id={styles.login__links} variant="body2">Esqueci a senha | Cadastra-se</Typography>
               </Grid>
 
             </Grid>
@@ -115,7 +116,7 @@ export default function Login() {
 
           </main>
 
-          <footer>
+          <footer className={styles.login__footer}>
             <Footer />
           </footer>
         </ThemeProvider>
