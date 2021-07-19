@@ -7,6 +7,8 @@ import { Grid, TextField, Typography, FormControl, InputLabel, Input, IconButton
 import { AccountCircle, Visibility, VisibilityOff } from '@material-ui/icons';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import deepPurple from '@material-ui/core/colors/deepPurple'
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 
 
@@ -33,22 +35,24 @@ export default function SignUp() {
     return (
         <div className={styles.SignUp__Page}>
             <Head>
-                <Col className={styles.SignUp__TopCol}>
-                    <Row>
-                        <img src="/new_images/persoicones-10.svg" alt="A letter image." />
-                    </Row>
-                    <Row className={styles.SignUp__TextBar}>
-                        <Typography variant="h2" className={styles.SignUp__TextBarText}>Saudações, viajante! Este é o universo Purple.</Typography>
-                        <Typography variant="h3" className={styles.SignUp__TextBarText}>  E você, quem é?</Typography>
-
-                    </Row>
-                </Col>
-                <title>Purple</title>
+                <title>Cadastrar-se | Purple</title>
+                <meta name="description" content="Página de Cadastro da Purple" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
+            <header>
+                <Header pageName='Saudações, viajante! '/>
+            </header>
             <main>
                 <Container className={styles.SignUp__MainContainer}>
                     <Row className={styles.SignUp__MainContainer}>
                         <Col>
+                            <Row className={styles.SignUp__Introduction}>
+                                <Typography span='true' className={styles.SignUp__Introduction} variant="h5">
+                                    Este é o universo Purple. 
+                                    <br/> 
+                                    E quem é você?
+                                </Typography>
+                            </Row>
                             <Row className={styles.SignUp__Image}>
                                 <img src="/new_images/persoicones-10.svg" alt="A letter image." />
                             </Row>
@@ -206,14 +210,8 @@ export default function SignUp() {
                 </Container>
             </main>
 
-            <footer >
-                <Container>
-                    <Row>
-                        <Col>
-                            <p>Logo Facebook | Logo LinkedIn | Logo GitHub</p>
-                        </Col>
-                    </Row>
-                </Container>
+            <footer id={styles.SignUp__footer}>
+                <Footer />
             </footer>
         </div>
     );

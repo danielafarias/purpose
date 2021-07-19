@@ -1,7 +1,5 @@
 .Login {
     background-image: linear-gradient(to bottom, #7389bd, #c4c4c4);
-
-   
 }
 
 #login__button {
@@ -24,6 +22,12 @@
     text-decoration: none;
     font-size: 0.75rem;
     margin: 0.24rem;
+
+    
+}
+#login__links__link {
+    text-decoration: none;
+    color: #673AB7;
 }
 
 .login__footer {

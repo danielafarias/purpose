@@ -28,12 +28,12 @@ export default function Welcome() {
 
                             <Grid item className={styles.welcome__buttons}>
                                 <Grid item xs={12} sm={6}>
-                                    <Button className={styles.button__register} varian="primary">Inscrever-se</Button>
+                                    <Button href='/signup' className={styles.button__register} varian="primary">Inscrever-se</Button>
 
                                 </Grid>
 
                                 <Grid item xs={12} sm={6}>
-                                    <Button className={styles.button__login} variant="primary">Entrar</Button>
+                                    <Button href='/login' className={styles.button__login} variant="primary">Entrar</Button>
                                 </Grid>
                             </Grid>
                         </Grid>
