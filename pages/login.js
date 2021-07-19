@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import LoginHeader from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/login.module.scss';
@@ -57,9 +58,6 @@ export default function Login() {
           </header>
 
           <main>
-
-            
-
             <Grid container direction='column' justifyContent='center' alignItems='center' spacing={4}>
 
               <Grid className={styles.login__name} item xs={8} sm={4}>
@@ -107,13 +105,11 @@ export default function Login() {
               </Grid>
 
               <Grid item xs={8} sm={4}>
-                  <Button id={styles.login__button}>Entrar</Button>
-                  <Typography id={styles.login__links} variant="body2">Esqueci a senha | Cadastra-se</Typography>
+                  <Button href='/' id={styles.login__button}>Entrar</Button>
+                  <Typography id={styles.login__links} variant="body2"><a id={styles.login__links__link} href='/'>Esqueci a senha</a> | <a id={styles.login__links__link} href='/signup'>Cadastra-se</a></Typography>
               </Grid>
 
             </Grid>
-            
-
           </main>
 
           <footer className={styles.login__footer}>
