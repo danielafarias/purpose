@@ -29,7 +29,9 @@ export default function Login() {
 
   const [values, setValues] = React.useState({
     password: '',
-    showPassword: false
+    showPassword: false,
+    email: '',
+    error: false,
   });
 
   const handleChange = (props) => (event) => {
@@ -43,6 +45,15 @@ export default function Login() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  const accessVerification = (props) => (event) => {
+    const [insertEmail, insertPassword] = React.useState(event.target.value);
+    const [email, password] = React.useState(...values);
+    
+    insertEmail !== email && insertPassword !== password ? setValues({[values.error]: true}) : setValues({[values.error]: false});
+    
+    const errorMessage = error == true ? "E-mail ou senha incorreta, por favor, tente novamente." : " "; 
+  }
 
   return (
     <div className={styles.Login}>
@@ -58,7 +69,7 @@ export default function Login() {
           </header>
 
           <main>
-            <Grid container direction='column' justifyContent='center' alignItems='center' spacing={4}>
+            <Grid container direction='column' justifyContent='center' alignItems='center'>
 
               <Grid className={styles.login__name} item xs={8} sm={4}>
                 <img src='/images/moon.svg'/>
@@ -71,20 +82,21 @@ export default function Login() {
 
               <Grid item xs={8} sm={4} id={styles.login__textField}>
                 <TextField
-                  error={false}
+                  error={values.error}
                   id={styles.login__textField__content}
                   label="E-mail"
                   InputProps={{ 
                     disableUnderline: (true), 
                     endAdornment: <EmailIcon /> }}
                   variant="standard"
+                  value={values.email}
                   fullWidth
                   type="text"/>
               </Grid>
               
               <Grid item xs={8} sm={4} id={styles.login__textField}>
                 <TextField
-                    error={false}
+                    error={values.error}
                     id={styles.login__textField__content}
                     label="Senha"
                     variant="standard"
@@ -105,8 +117,14 @@ export default function Login() {
               </Grid>
 
               <Grid item xs={8} sm={4}>
-                  <Button href='/' id={styles.login__button}>Entrar</Button>
-                  <Typography id={styles.login__links} variant="body2"><a id={styles.login__links__link} href='/'>Esqueci a senha</a> | <a id={styles.login__links__link} href='/signup'>Cadastra-se</a></Typography>
+                  <Button 
+                    onClick={() => accessVerification()}
+                    {...values.error == true ? "href='/login'" : "href='/dashboard'"} 
+                    id={styles.login__button}>
+                    Entrar
+                  </Button>
+                  <Typography id={styles.login__links} variant="body2">
+                    <a id={styles.login__links__link} href='/'>Esqueci a senha</a> | <a id={styles.login__links__link} href='/signup'>Cadastra-se</a></Typography>
               </Grid>
 
             </Grid>
