@@ -1,86 +1,80 @@
 .SignUp__Page {
     background-image: linear-gradient(to bottom, #7389bd, #c4c4c4);
-}
+    font-family: "Berkshire Swash", cursive;
 
-.SignUp__TextBar {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    .SignUp__TextBarText {
-        color: #ffffff;
-    }
-}
-
-.SignUp__MainContainer {
-    color: #ffffff;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-
-    .SignUp__TextField {
-        width: 40vmax;
+    .SignUp__TextBar {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
         padding: 0.5rem;
-        margin: 0.5rem auto;
-        background-color: #ffffff;
-        border-radius: 0.5rem;
-        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-        .SignUp__TextFieldContent {
-            border-radius: 0.4rem;
-            background-color: #ffffff;
-
-            #SignUp__TextFieldContent {
-                color: #673ab7;
-                margin: 0.5rem auto;
-            }
+        .SignUp__TextBarText {
+            color: #ffffff;
         }
     }
-    .button__register {
+
+    .SignUp__TextField {
+        width: 60vmax;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        background-color: #ffffff;
+        border-radius: 0.5rem;
+        color: #673ab7;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        #SignUp__TextFieldContent {
+            width: 60vmax;
+            color: #673ab7;
+            border-radius: 0.4rem;
+            margin-right: 0.7rem;
+            font-family: "Yatra One", cursive;
+        }
+    }
+
+    .SignUp__Button {
         background-color: #673ab7;
         border-color: #673ab7;
         border-radius: 0.5rem;
         width: 12rem;
         margin: 0.5rem auto;
     }
-}
 
-.SignUp__Image {
-    align-items: center;
-    justify-content: center;
-    margin-bottom: -3rem;
+    .SignUp__Image {
+        align-items: center;
+        justify-content: center;
+        margin-bottom: -3rem;
+        margin-top: -3rem;
 
-    img {
-        height: 14rem;
-        width: auto;
+        img {
+            height: 14rem;
+            width: auto;
+        }
     }
-}
 
-.SignUp__TopCol {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    background-image: linear-gradient(to bottom, #9473cb, #673ab7);
-}
+  
+    #SignUp__TextFieldContent2 {
+        color: #673ab7;
+        font-family: "Yatra One", cursive;
 
-#SignUp__TextFieldContent2 {
-    color: purple;
-
-    label {
-        color: purple;
+        label {
+            color: #673ab7;
+        }
     }
-}
 
-.SignUp__Introduction {
-    margin-top: 2rem;
-    text-align: center;
-    color: #E0E0E0;
-}
+    .SignUp__Introduction {
+        margin: 0.5rem auto;
+        text-align: center;
+        color: #e0e0e0;
+        font-family: "Yatra One", cursive;
+    }
 
-#SignUp__footer {
-    background-image: linear-gradient(to bottom, #673AB7 , #9473CB);
+    #SignUp__footer {
+        
+        background-image: linear-gradient(to bottom, #673ab7, #9473cb);
+    }
+
+   .teste{
+       margin-bottom: -5rem;
+       width:100%;
+   }
 }
