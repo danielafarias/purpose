@@ -9,15 +9,16 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import deepPurple from '@material-ui/core/colors/deepPurple'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
+import Api from '../api/Api';
 
 
 export default function SignUp() {
 
+    const [isLoading, setIsLoading] = React.useState(false);
+
     const [values, setValues] = React.useState({
         showPassword: false,
     });
-
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -31,7 +32,38 @@ export default function SignUp() {
         event.preventDefault();
     };
 
-    const corzinha = deepPurple[500];
+    submitHandler = async event => {
+
+        event.preventDefault();
+
+        const { userName, email, passwordHash } = event.target;
+
+        const item = {
+            userName: userName.value,
+            email: email.value,
+            passwordHash: passwordHash.value
+        }
+
+        setIsLoading(true);
+
+        const request = () => await Api.buildApiPostRequest(
+            Api.registerUrl(),
+            item).catch(e => {
+                console.error('Erro ao tentar adicionar um item ao banco: ', e)
+            })
+
+            setIsLoading(false);
+
+           
+
+            const result = await request.json();
+
+            const id = result.id;
+
+            this.props.history.push(`/view/${id}`);
+        
+    }
+
     return (
         <div className={styles.SignUp__Page}>
             <Head>
@@ -68,12 +100,28 @@ export default function SignUp() {
                                     type="text"
                                 />
                             </Row>
+
+                            <Row className={styles.SignUp__TextField}>
+                                <TextField
+                                    required
+                                    className={styles.SignUp__TextFieldContent}
+                                    id={styles.SignUp__TextFieldContent}
+                                    label="Nome de usuário"
+                                    controlId='userName'
+                                    InputProps={{ disableUnderline: (true) }}
+                                    variant="standard"
+                                    fullWidth
+                                    type="text"
+                                />
+                            </Row>
+
                             <Row className={styles.SignUp__TextField}>
                                 <TextField
                                     required
                                     className={styles.SignUp__TextFieldContent}
                                     id={styles.SignUp__TextFieldContent}
                                     label="Email"
+                                    controlId='email'
                                     InputProps={{ disableUnderline: (true) }}
                                     variant="standard"
                                     fullWidth
@@ -119,6 +167,7 @@ export default function SignUp() {
                                     type={values.showPassword ? 'text' : 'password'}
                                     value={values.password}
                                     onChange={handleChange('password')}
+                                    controlId='passwordHash'
                                     disableUnderline="true"
                                     endAdornment={
                                         <InputAdornment position="end">
@@ -201,8 +250,9 @@ export default function SignUp() {
                                 <Button
                                     className={styles.button__register}
                                     variant="primary"
-                                    href="/">
-                                    Aventurar-se
+                                    href="/"
+                                    type="submit">
+                                        Aventurar-se
                                 </Button>
                             </Row>
                         </Col>
