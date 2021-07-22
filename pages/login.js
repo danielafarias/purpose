@@ -106,7 +106,7 @@ export default function Login() {
 
               <Grid item xs={8} sm={4}>
                   <Button href='/' id={styles.login__button}>Entrar</Button>
-                  <Typography id={styles.login__links} variant="body2"><a id={styles.login__links__link} href='/'>Esqueci a senha</a> | <a id={styles.login__links__link} href='/signup'>Cadastra-se</a></Typography>
+                  <Typography id={styles.login__links} variant="body2"><a id={styles.login__links__link} href='/forgotpassword'>Esqueci a senha</a> | <a id={styles.login__links__link} href='/signup'>Cadastra-se</a></Typography>
               </Grid>
 
             </Grid>

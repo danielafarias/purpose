@@ -1,15 +1,24 @@
 import { FormControl } from 'react-bootstrap'
-import { Box, TextField } from '@material-ui/core'
+import { Grid, Box, TextField } from '@material-ui/core'
 import styles from '../styles/forgotpassword.module.scss'
+import LoginHeader from '../components/Header';
+import EmailIcon from '@material-ui/icons/Email';
 
 export default function forgotpassword() {
     return (
       <div className={styles.background}>
-      <div className={styles.organizer}>
-        <div className={styles.header}></div>    
-        <form className={styles.emailConfirmation} noValidate autoComplete="off" disableUnderline='true'>
-                <TextField id="standard-basic" label="Confirme seu Email" InputProps={{ disableUnderline: true }} InputLabelProps={{style: {fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)"}, input: {fontSize: 50}}} />
-        </form>  
+        <div className={styles.organizer}>
+        <header className={styles.header}>
+            <LoginHeader pageName='Entrar'/>
+        </header>
+        <Grid className={styles.image} item xl={3} xs={8} sm={4}>
+          <img src='/new_images/persoicones-09.svg'/>
+        </Grid>
+        <Grid className={styles.emailConfirmation} item xs={8} sm={4}>
+          <form className={styles.password} noValidate autoComplete="off" disableUnderline='true'>
+                  <TextField className={styles.textContent} id="standard-basic" fullWidth label="Confirme seu Email" InputProps={{ disableUnderline: true }} InputLabelProps={{style: {fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)"}, input: {fontSize: 50}}} />
+          </form>  
+        </Grid>
         <button className={styles.buttonClickable}>Enviar Código</button>
         <div className={styles.codeOrganizer}>
             <div className={styles.codeBox}></div>
@@ -22,17 +31,20 @@ export default function forgotpassword() {
             </form>
           </div>
           <button className={styles.buttonUnclickable}>Confirmar</button>
-          <form className={styles.password} noValidate autoComplete="off" disableUnderline='true'>
-            <TextField id="standard-basic" label="Insira a nova senha" InputProps={{ disableUnderline: true }} InputLabelProps={{style: {fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)"}, input: {fontSize: 50}}} />
-          </form>
-          <form className={styles.password} noValidate autoComplete="off" disableUnderline='true'>
-            <TextField id="standard-basic" label="Confirme sua senha" InputProps={{ disableUnderline: true }} InputLabelProps={{style: {fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)"}, input: {fontSize: 50}}} />
-          </form>
+            <Grid className={styles.emailConfirmation} item xs={8} sm={4}> 
+              <form className={styles.password} noValidate autoComplete="off" disableUnderline='true'>
+                <TextField className={styles.textContent} id="standard-basic" fullWidth label="Insira a nova senha" InputProps={{ disableUnderline: true }} InputLabelProps={{style: {fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)"}, input: {fontSize: 50}}} />
+              </form>
+            </Grid>
+            <div className={styles.invisible}></div>
+            <Grid className={styles.emailConfirmation} item xs={8} sm={4}> 
+              <form className={styles.password} noValidate autoComplete="off" disableUnderline='true'>
+                <TextField className={styles.textContent} id="standard-basic" fullWidth label="Confirme sua senha" InputProps={{ disableUnderline: true }} InputLabelProps={{style: {fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)"}, input: {fontSize: 50}}} />
+              </form>
+            </Grid>     
           <button className={styles.buttonUnclickable}>Alterar Senha</button>
           <footer className={styles.footer}></footer>
-    </div>
       </div>
-      
-      
-    )
+    </div>  
+  )
 }
