@@ -59,7 +59,6 @@ export default function Login() {
   return (
     <div className={styles.Login}>
       <ThemeProvider theme={theme}>
-
         <Head>
           <title>Entrar | Purple</title>
           <meta name="description" content="Página de Login da Purple" />
