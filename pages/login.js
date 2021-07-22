@@ -30,7 +30,9 @@ export default function Login() {
 
   const [values, setValues] = React.useState({
     password: '',
-    showPassword: false
+    showPassword: false,
+    email: '',
+    error: false,
   });
 
   const handleChange = (props) => (event) => {
@@ -45,9 +47,19 @@ export default function Login() {
     event.preventDefault();
   };
 
+  const accessVerification = (props) => (event) => {
+    const [insertEmail, insertPassword] = React.useState(event.target.value);
+    const [email, password] = React.useState(...values);
+    
+    insertEmail !== email && insertPassword !== password ? setValues({[values.error]: true}) : setValues({[values.error]: false});
+    
+    const errorMessage = error == true ? "E-mail ou senha incorreta, por favor, tente novamente." : " "; 
+  }
+
   return (
     <div className={styles.Login}>
       <ThemeProvider theme={theme}>
+
         <Head>
           <title>Entrar | Purple</title>
           <meta name="description" content="Página de Login da Purple" />

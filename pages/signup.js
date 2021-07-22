@@ -8,14 +8,18 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
+import Api from '../api/Api';
 
 export default function SignUp() {
+
+    const [isLoading, setIsLoading] = React.useState(false);
 
     const [values, setValues] = React.useState({
         showPassword: false,
 
+
     });
+
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -29,7 +33,41 @@ export default function SignUp() {
         event.preventDefault();
     };
 
+
+    submitHandler = async event => {
+
+        event.preventDefault();
+
+        const { userName, email, passwordHash } = event.target;
+
+        const item = {
+            userName: userName.value,
+            email: email.value,
+            passwordHash: passwordHash.value
+        }
+
+        setIsLoading(true);
+
+        const request = () => await Api.buildApiPostRequest(
+            Api.registerUrl(),
+            item).catch(e => {
+                console.error('Erro ao tentar adicionar um item ao banco: ', e)
+            })
+
+            setIsLoading(false);
+
+           
+
+            const result = await request.json();
+
+            const id = result.id;
+
+            this.props.history.push(`/view/${id}`);
+        
+    }
+
     const corzinha = deepPurple[500];
+
 
     return (
         <div className={styles.SignUp__Page}>
@@ -124,12 +162,14 @@ export default function SignUp() {
 
                         <Grid xs={8} sm={4} item className={styles.SignUp__TextField}>
                             <FormControl id={styles.SignUp__TextField2} fullWidth>
+
                                 <InputLabel id={styles.SignUp__TextField2} >Senha</InputLabel>
                                 <Input
                                     id={styles.SignUp__TextFieldContent2}
                                     type={values.showPassword ? 'text' : 'password'}
                                     value={values.password}
                                     onChange={handleChange('password')}
+                                    controlId='passwordHash'
                                     disableUnderline="true"
                                     endAdornment={
                                         <InputAdornment position="end">
@@ -145,7 +185,7 @@ export default function SignUp() {
                                         </InputAdornment>
                                     }
                                 />
-                            </FormControl>
+
                         </Grid>
 
                         <Grid xs={8} sm={4} item>
@@ -157,6 +197,7 @@ export default function SignUp() {
                             </Button>
                         </Grid>
                     </Grid>
+
                 </Container>
 
                 <footer id={styles.SignUp__footer}>
