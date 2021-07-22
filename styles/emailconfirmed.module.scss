@@ -1,0 +1,36 @@
+.organizer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    background: linear-gradient(180deg, #7471B6 10%, rgba(7, 150, 206, 0.5) 45.33%, rgba(144, 0, 121, 0.1) 60%, rgba(224, 224, 224, 0.64) 100%);
+}
+
+.header {
+    width: 100%;
+}
+
+.content {
+
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teste {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scrollImg {
+    width: 40vmax;
+}
+
+.imgCastle {
+    width: 40vmax;
+    height: 40vmax;
+}
