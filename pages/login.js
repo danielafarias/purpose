@@ -8,9 +8,10 @@ import React from 'react';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import EmailIcon from '@material-ui/icons/Email';
-import { createTheme } from '@material-ui/core/styles'; 
-import { ThemeProvider } from '@material-ui/core/styles'; 
+import { createTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { Button } from 'react-bootstrap';
+import deepPurple from '@material-ui/core/colors/deepPurple';
 
 
 export default function Login() {
@@ -58,82 +59,80 @@ export default function Login() {
   return (
     <div className={styles.Login}>
       <ThemeProvider theme={theme}>
-          <Head>
-              <title>Entrar | Purple</title>
-              <meta name="description" content="Página de Login da Purple" />
-              <link rel="icon" href="/favicon.ico" />
-          </Head>
-          
-          <header>
-            <LoginHeader pageName='Entrar'/>
-          </header>
 
-          <main>
-            <Grid container direction='column' justifyContent='center' alignItems='center'>
+        <Head>
+          <title>Entrar | Purple</title>
+          <meta name="description" content="Página de Login da Purple" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-              <Grid className={styles.login__name} item xs={8} sm={4}>
-                <img src='/images/moon.svg'/>
-                <Typography span="true" color='secondary' variant="h3">Purple</Typography>
-              </Grid>
+        <header>
+          <LoginHeader pageName='Entrar' />
+        </header>
 
-              <Grid className={styles.login__img} item xs={8} sm={4}>
-                <img src='/images/castle3.svg' />
-              </Grid>
+        <main>
+          <Grid container direction='column' justifyContent='center' alignItems='center' spacing={4}>
 
-              <Grid item xs={8} sm={4} id={styles.login__textField}>
-                <TextField
-                  error={values.error}
-                  id={styles.login__textField__content}
-                  label="E-mail"
-                  InputProps={{ 
-                    disableUnderline: (true), 
-                    endAdornment: <EmailIcon /> }}
-                  variant="standard"
-                  value={values.email}
-                  fullWidth
-                  type="text"/>
-              </Grid>
-              
-              <Grid item xs={8} sm={4} id={styles.login__textField}>
-                <TextField
-                    error={values.error}
-                    id={styles.login__textField__content}
-                    label="Senha"
-                    variant="standard"
-                    fullWidth
-                    type="text"
-                    value={values.password}
-                    type={values.showPassword ? 'text' : 'password'}
-                    onChange={handleChange('password')}
-                    InputProps={{ 
-                      disableUnderline: (true),
-                      endAdornment: 
-                        <IconButton
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}>
-                          {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                        </IconButton>
-                  }}/>
-              </Grid>
-
-              <Grid item xs={8} sm={4}>
-                  <Button 
-                    onClick={() => accessVerification()}
-                    {...values.error == true ? "href='/login'" : "href='/dashboard'"} 
-                    id={styles.login__button}>
-                    Entrar
-                  </Button>
-                  <Typography id={styles.login__links} variant="body2">
-                    <a id={styles.login__links__link} href='/'>Esqueci a senha</a> | <a id={styles.login__links__link} href='/signup'>Cadastra-se</a></Typography>
-              </Grid>
-
+            <Grid className={styles.login__name} item xs={8} sm={4}>
+              <img src='/images/moon.svg' />
+              <Typography span="true" color='secondary' variant="h3">Purple</Typography>
             </Grid>
-          </main>
 
-          <footer className={styles.login__footer}>
-            <Footer />
-          </footer>
-        </ThemeProvider>
+            <Grid className={styles.login__img} item xs={8} sm={4}>
+              <img src='/images/castle3.svg' />
+            </Grid>
+
+            <Grid item xs={8} sm={4} id={styles.login__textField}>
+              <TextField
+                error={false}
+                id={styles.login__textField__content}
+                label="E-mail"
+                InputProps={{
+                  disableUnderline: (true),
+                  endAdornment: <EmailIcon style={{ color: deepPurple[500], margin:12}} />,
+                }}
+                variant="standard"
+                fullWidth
+                type="text" />
+            </Grid>
+
+            <Grid item xs={8} sm={4} id={styles.login__textField}>
+              <TextField
+                error={false}
+                id={styles.login__textField__content}
+                label="Senha"
+                variant="standard"
+                fullWidth
+                type="text"
+                value={values.password}
+                type={values.showPassword ? 'text' : 'password'}
+                onChange={handleChange('password')}
+                InputProps={{
+                  disableUnderline: (true),
+                  endAdornment:
+                    <IconButton
+                      style={{ color: deepPurple[500] }}
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}>
+                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                }} />
+            </Grid>
+
+
+
+            <Grid item xs={8} sm={4}>
+              <Button href='/' id={styles.login__button}>Entrar</Button>
+              <Typography id={styles.login__links} variant="body2"><a id={styles.login__links__link} href='/'>Esqueci a senha</a> | <a id={styles.login__links__link} href='/signup'>Cadastra-se</a></Typography>
+            </Grid>
+
+          </Grid>
+        </main>
+
+        <footer className={styles.login__footer}>
+          <Footer />
+        </footer>
+      </ThemeProvider>
     </div>
   )
 }
