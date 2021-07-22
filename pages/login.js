@@ -13,7 +13,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { Button } from 'react-bootstrap';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
-
 export default function Login() {
 
   const theme = createTheme({
@@ -25,8 +24,10 @@ export default function Login() {
         main: '#E0E0E0',
       },
     },
+    typography: {
+      fontFamily: 'Yatra One',
+    },
   });
-
 
   const [values, setValues] = React.useState({
     password: '',
@@ -50,14 +51,14 @@ export default function Login() {
   const accessVerification = (props) => (event) => {
     const [insertEmail, insertPassword] = React.useState(event.target.value);
     const [email, password] = React.useState(...values);
-    
-    insertEmail !== email && insertPassword !== password ? setValues({[values.error]: true}) : setValues({[values.error]: false});
-    
-    const errorMessage = error == true ? "E-mail ou senha incorreta, por favor, tente novamente." : " "; 
+
+    insertEmail !== email && insertPassword !== password ? setValues({ [values.error]: true }) : setValues({ [values.error]: false });
+
+    const errorMessage = error == true ? "E-mail ou senha incorreta, por favor, tente novamente." : " ";
   }
 
   return (
-    <div className={styles.Login}>
+    <div className={styles.login}>
       <ThemeProvider theme={theme}>
         <Head>
           <title>Entrar | Purple</title>
@@ -88,11 +89,12 @@ export default function Login() {
                 label="E-mail"
                 InputProps={{
                   disableUnderline: (true),
-                  endAdornment: <EmailIcon style={{ color: deepPurple[500], margin:12}} />,
+                  endAdornment: <EmailIcon style={{ color: deepPurple[500], margin: 12 }} />,
                 }}
                 variant="standard"
                 fullWidth
-                type="text" />
+                type="text"
+              />
             </Grid>
 
             <Grid item xs={8} sm={4} id={styles.login__textField}>
@@ -115,14 +117,22 @@ export default function Login() {
                       onMouseDown={handleMouseDownPassword}>
                       {values.showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
-                }} />
+                }}
+              />
             </Grid>
 
-
-
             <Grid item xs={8} sm={4}>
-              <Button href='/' id={styles.login__button}>Entrar</Button>
-              <Typography id={styles.login__links} variant="body2"><a id={styles.login__links__link} href='/'>Esqueci a senha</a> | <a id={styles.login__links__link} href='/signup'>Cadastra-se</a></Typography>
+              <Button
+                href='/'
+                id={styles.login__button}>
+                Entrar
+              </Button>
+
+              <Typography
+                id={styles.login__link}
+                variant="body2">
+                <a id={styles.login__link__decoration} href='/'>Esqueci a senha</a> | <a id={styles.login__link__decoration} href='/signup'>Cadastre-se</a>
+              </Typography>
             </Grid>
 
           </Grid>
