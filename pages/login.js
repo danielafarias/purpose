@@ -60,7 +60,6 @@ export default function Login() {
   return (
     <div className={styles.login}>
       <ThemeProvider theme={theme}>
-
         <Head>
           <title>Entrar | Purple</title>
           <meta name="description" content="Página de Login da Purple" />
