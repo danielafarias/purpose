@@ -1,19 +1,33 @@
-.SignUp__Page {
+.signUp {
     background-image: linear-gradient(to bottom, #7389bd, #c4c4c4);
     font-family: "Berkshire Swash", cursive;
 
-    .SignUp__TextBar {
-        display: flex;
+    .container {
+        margin-bottom: -5rem;
+        width: 100%;
+    }
+
+    #signUp__introduction {
+        margin: 0.5rem auto;
         text-align: center;
-        justify-content: center;
+        color: #e0e0e0;
+        font-family: "Yatra One", cursive;
+        margin-top: 2rem;
+    }
+
+    &__image {
         align-items: center;
-        padding: 0.5rem;
-        .SignUp__TextBarText {
-            color: #ffffff;
+        justify-content: center;
+
+        img {
+            height: 14rem;
+            width: auto;
+            margin-bottom: -2rem;
+            margin-top: -2rem;
         }
     }
 
-    .SignUp__TextField {
+    #signUp__textField {
         width: 60vmax;
         padding: 0.5rem;
         margin-bottom: 0.5rem;
@@ -22,59 +36,46 @@
         color: #673ab7;
         box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-        #SignUp__TextFieldContent {
+        &__content {
             width: 60vmax;
             color: #673ab7;
             border-radius: 0.4rem;
             margin-right: 0.7rem;
             font-family: "Yatra One", cursive;
         }
+
+        #signUp__TextFieldContent2 {
+            color: #673ab7;
+            font-family: "Yatra One", cursive;
+
+            label {
+                color: #673ab7;
+            }
+        }
     }
 
-    .SignUp__Button {
+    .signUp__button {
         background-color: #673ab7;
         border-color: #673ab7;
         border-radius: 0.5rem;
         width: 12rem;
-        margin: 0.5rem auto;
+        margin-top: 1.5rem;
     }
 
-    .SignUp__Image {
-        align-items: center;
-        justify-content: center;
-        margin-bottom: -3rem;
-        margin-top: -3rem;
-
-        img {
-            height: 14rem;
-            width: auto;
-        }
-    }
-
-  
-    #SignUp__TextFieldContent2 {
+    #login__link {
         color: #673ab7;
-        font-family: "Yatra One", cursive;
+        text-align: center;
+        text-decoration: none;
+        font-size: 0.75rem;
+        margin-top: 0.7rem;
 
-        label {
+        &__decoration {
+            text-decoration: none;
             color: #673ab7;
         }
     }
 
-    .SignUp__Introduction {
-        margin: 0.5rem auto;
-        text-align: center;
-        color: #e0e0e0;
-        font-family: "Yatra One", cursive;
-    }
-
-    #SignUp__footer {
-        
+    #signUp__footer {
         background-image: linear-gradient(to bottom, #673ab7, #9473cb);
     }
-
-   .teste{
-       margin-bottom: -5rem;
-       width:100%;
-   }
 }
