@@ -1,0 +1,28 @@
+.floatMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-right: 1rem;
+
+    &__list {
+
+        
+        div {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        svg {
+            border-radius: 1rem;
+            background-color: #673AB7;
+            color: #FEFEFE;
+        }
+
+    }
+}
