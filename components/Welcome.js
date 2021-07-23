@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import Footer from '../components/Footer';
+
 import styles from '../styles/welcome.module.scss';
 
 import { Button } from 'react-bootstrap';
@@ -17,8 +18,8 @@ export default function Welcome() {
                 <Container fixed> 
                     <Grid container justifyContent="center" alignItems="center" spacing={4}>
                         <Grid item xs={12} sm={6}>
-
                             <Grid item className={styles.welcome__header}>
+                              
                                 <img src='new_images/persoicones-19.svg' className={styles.welcome__header__logo}/>
                                 <Typography variant="span" className={styles.welcome__header__title}>Purple</Typography>
 
@@ -31,6 +32,7 @@ export default function Welcome() {
 
                             <Grid item className={styles.welcome__buttons}>
                                 <Grid item xs={12} sm={6}>
+
                                     <Button href='/signup' className={styles.welcome__buttons__register} varian="primary">Inscrever-se</Button>
 
                                 </Grid>
@@ -63,7 +65,7 @@ export default function Welcome() {
                     </Grid>
                 </Container>
             </main>
-
+            <FloatMenu />
             <Footer />
         </div>
     );

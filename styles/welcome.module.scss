@@ -58,9 +58,10 @@
                 background-color: #aea5be;
                 color: #5013bb;
             }
-            
-            &:focus {
-                box-shadow: none;
+
+            &:focus{
+                box-shadow: 0px 0px 0px 4px #9473CB;
+
             }
         }
     }
