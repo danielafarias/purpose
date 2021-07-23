@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import styles from '../styles/emailconfirmation.module.scss';
 
-import { Grid, Box, TextField } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 
 export default function EmailConfirmation() {
