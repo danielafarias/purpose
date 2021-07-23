@@ -1,54 +1,55 @@
 .welcome {
-    
-    background-image: linear-gradient(to bottom, #E0E0E0 , #CB8EE9, #673AB7, #673AB7, #CB8EE9 );
+    background-image: linear-gradient(to bottom, #e0e0e0, #cb8ee9, #673ab7, #673ab7, #cb8ee9);
+    font-family: "Yatra One", cursive;
 
     &__header {
         display: flex;
         align-items: center;
-    }
+        font-family: "Berkshire Swash", cursive;
 
-    &__logo {
-        width: 6rem;
-    }
+        &__logo {
+            width: 6rem;
+            
+        }
 
-    &__title {
-        font-size: 40px;
-        color: #673AB7;
+        &__title {
+            font-size: 70px;
+            color: #673ab7;
+           
+        }
     }
 
     h1 {
         font-size: 35px;
+        font-family: "Yatra One", cursive;
+        
     }
 
-    h2 {
-        color: #E0E0E0;
-        font-size: 35px;
-    }
-
+    
     &__buttons {
         text-align: center;
         padding-top: 1rem;
-
-        .button__register {
-            background-color: #673AB7;
-            border-color: #673AB7;
+        
+        &__register {
+            background-color: #673ab7;
+            border-color: #673ab7;
             border-radius: 0.5rem;
             width: 12rem;
             margin: 0.5rem auto;
-
+            
             &:hover {
                 background-color: #5013bb;
             }
 
-            &:focus{
-                box-shadow: 0px 0px 0px 4px #9473CB;
+            &:focus {
+                box-shadow: 0px 0px 0px 4px #9473cb;
             }
         }
         
-        .button__login {
-            background-color: #E0E0E0;
-            color: #673AB7;
-            border-color: #673AB7;
+        &__login {
+            background-color: #e0e0e0;
+            color: #673ab7;
+            border-color: #673ab7;
             border-radius: 0.5rem;
             width: 12rem;
             margin: 0.5rem auto;
@@ -59,21 +60,30 @@
             }
 
             &:focus{
-                box-shadow: none;
+                box-shadow: 0px 0px 0px 4px #9473CB;
+
             }
         }
     }
-
+    
     &__intro {
         padding: 0 0 2rem 0;
-
-        .intro__text {
-            color: #E0E0E0;
-        }
-
+        
         img {
             width: 100%;
             height: auto;
         }
+        
+        h2 {
+            color: #e0e0e0;
+            font-size: 35px;
+            font-family: "Yatra One", cursive;
+    
+        }
+
+        &__text {
+            color: #e0e0e0;
+        }
+        
     }
 }
