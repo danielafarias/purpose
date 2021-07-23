@@ -1,16 +1,18 @@
-import LoginHeader from '../components/Header';
-import styles from '../styles/emailconfirmation.module.scss'
-import { Grid, Box, TextField } from '@material-ui/core'
+import Header from '../components/Header';
+import styles from '../styles/emailconfirmation.module.scss';
 
-export default function emailconfirmation() {
+import { Grid, Box, TextField } from '@material-ui/core';
+
+
+export default function EmailConfirmation() {
     return (
-            <div className={styles.organizer}>
-                <header className={styles.header}>
-                    <LoginHeader pageName='Confirme o Email!'/>
+            <div className={styles.confirmation}>
+                <header className={styles.confirmation__header}>
+                    <Header pageName='Carta de aceitação'/>
                 </header>
-                <div className={styles.organizeDiv}>
-                    <Grid className={styles.teste} item xl={3} xs={8} sm={4}>
-                        <img className={styles.scrollImg} src='/new_images/scroll3.svg'/>
+                <div className={styles.confirmation__body}>
+                    <Grid item xl={3} xs={8} sm={4}>
+                        <img src='/new_images/scroll3.svg'/>
                     </Grid>
                 </div>
             </div>
