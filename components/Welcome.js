@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Footer from '../components/Footer';
-import FloatMenu from '../components/FloatMenu';
 import { Button } from 'react-bootstrap';
 import { Container, Grid, Typography } from '@material-ui/core';
 import styles from '../styles/welcome.module.scss';
@@ -58,7 +57,6 @@ export default function Welcome() {
                     </Grid>
                 </Container>
             </main>
-            <FloatMenu />
             <Footer />
         </div>
     );
