@@ -1,16 +1,17 @@
+import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import LoginHeader from '../components/Header';
+
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/login.module.scss';
-import { Grid, TextField, IconButton, Typography } from '@material-ui/core';
-import React from 'react';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import EmailIcon from '@material-ui/icons/Email';
-import { createTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/core/styles';
+
 import { Button } from 'react-bootstrap';
+
+import { Grid, TextField, IconButton, Typography } from '@material-ui/core';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+import EmailIcon from '@material-ui/icons/Email';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
 
@@ -25,8 +26,10 @@ export default function Login() {
         main: '#E0E0E0',
       },
     },
+    typography: {
+      fontFamily: 'Yatra One',
+    },
   });
-
 
   const [values, setValues] = React.useState({
     password: '',
@@ -50,16 +53,15 @@ export default function Login() {
   const accessVerification = (props) => (event) => {
     const [insertEmail, insertPassword] = React.useState(event.target.value);
     const [email, password] = React.useState(...values);
-    
-    insertEmail !== email && insertPassword !== password ? setValues({[values.error]: true}) : setValues({[values.error]: false});
-    
-    const errorMessage = error == true ? "E-mail ou senha incorreta, por favor, tente novamente." : " "; 
+
+    insertEmail !== email && insertPassword !== password ? setValues({ [values.error]: true }) : setValues({ [values.error]: false });
+
+    const errorMessage = error == true ? "E-mail ou senha incorreta, por favor, tente novamente." : " ";
   }
 
   return (
-    <div className={styles.Login}>
+    <div className={styles.login}>
       <ThemeProvider theme={theme}>
-
         <Head>
           <title>Entrar | Purple</title>
           <meta name="description" content="Página de Login da Purple" />
@@ -67,7 +69,7 @@ export default function Login() {
         </Head>
 
         <header>
-          <LoginHeader pageName='Entrar' />
+          <Header pageName='Entrar' />
         </header>
 
         <main>
@@ -89,11 +91,12 @@ export default function Login() {
                 label="E-mail"
                 InputProps={{
                   disableUnderline: (true),
-                  endAdornment: <EmailIcon style={{ color: deepPurple[500], margin:12}} />,
+                  endAdornment: <EmailIcon style={{ color: deepPurple[500], margin: 12 }} />,
                 }}
                 variant="standard"
                 fullWidth
-                type="text" />
+                type="text"
+              />
             </Grid>
 
             <Grid item xs={8} sm={4} id={styles.login__textField}>
@@ -116,14 +119,24 @@ export default function Login() {
                       onMouseDown={handleMouseDownPassword}>
                       {values.showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
-                }} />
+                }}
+              />
             </Grid>
 
-
-
             <Grid item xs={8} sm={4}>
-              <Button href='/' id={styles.login__button}>Entrar</Button>
-              <Typography id={styles.login__links} variant="body2"><a id={styles.login__links__link} href='/'>Esqueci a senha</a> | <a id={styles.login__links__link} href='/signup'>Cadastra-se</a></Typography>
+              <Button
+                href='/'
+                id={styles.login__button}>
+                Aventurar-se
+
+
+              </Button>
+
+              <Typography
+                id={styles.login__link}
+                variant="body2">
+                <a id={styles.login__link__decoration} href='/'>Esqueci a senha</a> | <a id={styles.login__link__decoration} href='/signup'>Cadastre-se</a>
+              </Typography>
             </Grid>
 
           </Grid>
