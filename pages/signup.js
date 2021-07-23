@@ -1,16 +1,18 @@
 import React from 'react';
 import Head from 'next/head';
-import { Container, Button, } from 'react-bootstrap';
-import styles from '../styles/signup.module.scss';
-import { Grid, TextField, Typography, FormControl, InputLabel, Input, IconButton, OutlinedInput } from '@material-ui/core';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import deepPurple from '@material-ui/core/colors/deepPurple';
+
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import styles from '../styles/signup.module.scss';
 import Api from '../api/Api';
-import { createTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/core/styles';
+
+import { Container, Button, } from 'react-bootstrap';
+
+import { Grid, TextField, Typography, FormControl, InputLabel, Input, IconButton, OutlinedInput, InputAdornment } from '@material-ui/core';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+import deepPurple from '@material-ui/core/colors/deepPurple';
+
 
 export default function signUp() {
 
