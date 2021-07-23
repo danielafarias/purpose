@@ -1,9 +1,4 @@
 .floatMenu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    margin-right: 1rem;
 
     &__list {
 
@@ -22,6 +17,7 @@
             border-radius: 1rem;
             background-color: #673AB7;
             color: #FEFEFE;
+            font-size: 30px;
         }
 
     }
