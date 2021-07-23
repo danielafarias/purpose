@@ -1,17 +1,19 @@
+import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import LoginHeader from '../components/Header';
+
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/login.module.scss';
-import { Grid, TextField, IconButton, Typography } from '@material-ui/core';
-import React from 'react';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import EmailIcon from '@material-ui/icons/Email';
-import { createTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/core/styles';
+
 import { Button } from 'react-bootstrap';
+
+import { Grid, TextField, IconButton, Typography } from '@material-ui/core';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+import EmailIcon from '@material-ui/icons/Email';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
+
 
 export default function Login() {
 
@@ -67,7 +69,7 @@ export default function Login() {
         </Head>
 
         <header>
-          <LoginHeader pageName='Entrar' />
+          <Header pageName='Entrar' />
         </header>
 
         <main>
@@ -125,7 +127,9 @@ export default function Login() {
               <Button
                 href='/'
                 id={styles.login__button}>
-                Entrar
+                Aventurar-se
+
+
               </Button>
 
               <Typography
