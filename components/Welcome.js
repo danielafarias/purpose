@@ -65,7 +65,6 @@ export default function Welcome() {
                     </Grid>
                 </Container>
             </main>
-            <FloatMenu />
             <Footer />
         </div>
     );
