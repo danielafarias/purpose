@@ -20,10 +20,8 @@ export default function Welcome() {
                     <Grid container justifyContent="center" alignItems="center" spacing={4}>
                         <Grid item xs={12} sm={6}>
                             <Grid item className={styles.welcome__header}>
-                              
                                 <img src='new_images/persoicones-19.svg' className={styles.welcome__header__logo}/>
                                 <Typography variant="span" className={styles.welcome__header__title}>Purple</Typography>
-
                             </Grid>
 
                             <Grid item xs={12}>
@@ -33,9 +31,7 @@ export default function Welcome() {
 
                             <Grid item className={styles.welcome__buttons}>
                                 <Grid item xs={12} sm={6}>
-
                                     <Button href='/signup' className={styles.welcome__buttons__register} varian="primary">Inscrever-se</Button>
-
                                 </Grid>
 
                                 <Grid item xs={12} sm={6}>
