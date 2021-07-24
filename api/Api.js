@@ -1,5 +1,5 @@
 export const Api = {
-    baseUrl: 'https://purposeapi.azurewebsites.net/',
+    baseUrl: 'https://purposeapi.azurewebsites.net',
 
     registerUrl: () => Api.baseUrl + '/api/v1/Auth/Register',
 
