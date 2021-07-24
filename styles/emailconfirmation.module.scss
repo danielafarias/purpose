@@ -14,13 +14,14 @@
     }
     
     &__body {
-        margin-top: 4rem;
-        
+
         img {
             width: 40vmax;
             position: absolute;
             left: 50%;
+            top: 55%;
             margin-left: -20vmax;
+            margin-top: -20vmax;
         }
     }
 }
