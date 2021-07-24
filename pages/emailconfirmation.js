@@ -12,7 +12,7 @@ export default function EmailConfirmation() {
                 </header>
                 <div className={styles.confirmation__body}>
                     <Grid item xl={3} xs={8} sm={4}>
-                        <img src='/new_images/scroll3.svg'/>
+                        <img src='/new_images/scroll1.svg'/>
                     </Grid>
                 </div>
             </div>
