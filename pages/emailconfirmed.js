@@ -10,12 +10,14 @@ export default function EmailConfirmed() {
             <header className={styles.confirmation__header}>
                 <Header pageName='Carta recebida!' />
             </header>
-            <Grid item xs={8} sm={4}>
-                <div className={styles.confirmation__body}>
-                    <img src='/new_images/scroll2.svg'/>
-                    <a href='/'></a>             
-                </div> 
+
+
+            <div className={styles.confirmation__body}>
+            <Grid item xl={3} xs={8} sm={4}>
+                <img src='/new_images/scroll.svg' />
+                <a href='/'><img id={styles.imgCastle} src='/images/castle3.svg' /></a>
             </Grid>
+            </div>
         </div>
     )
 }

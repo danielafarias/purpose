@@ -1,0 +1,55 @@
+.profile {
+    background: linear-gradient(
+        180deg,
+        #7471b6 10%,
+        rgba(7, 150, 206, 0.5) 45.33%,
+        rgba(144, 0, 121, 0.1) 60%,
+        rgba(224, 224, 224, 0.64) 100%
+    );
+
+    &__infos {
+        background-color: #B73A8C;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__image {
+        border-radius: 500rem;
+        width: 8rem;
+        margin: 2rem 0 0.5rem 0;
+    }
+
+    &__nameTitle {
+        color: #FEFEFE;
+        text-shadow: 0px 0px 2px #000000;
+        text-align: center;
+    }
+
+    &__charInfo {
+        background-color: #C4C4C4;
+        border-radius: 1rem;
+    }
+
+    &__charTitle {
+        color: #FEFEFE;
+        text-shadow: 0px 0px 2px #000000;
+        text-align: center;
+    }
+
+    &__charImage {
+        width: 10rem;
+    }
+
+    &__bagdesInfo {
+        background-color: #C4C4C4;
+        border-radius: 1rem;
+    }
+
+    &__bagdesTitle {
+        color: #FEFEFE;
+        text-shadow: 0px 0px 2px #000000;
+        text-align: center;
+    }
+}
