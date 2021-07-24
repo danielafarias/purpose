@@ -11,6 +11,7 @@ export default function EmailConfirmed() {
                 <Header pageName='Carta recebida!' />
             </header>
 
+
             <div className={styles.confirmation__body}>
             <Grid item xl={3} xs={8} sm={4}>
                 <img src='/new_images/scroll.svg' />
