@@ -1,0 +1,36 @@
+.editChar {
+    background: linear-gradient(
+        180deg,
+        #7471b6 10%,
+        rgba(7, 150, 206, 0.5) 45.33%,
+        rgba(144, 0, 121, 0.1) 60%,
+        rgba(224, 224, 224, 0.64) 100%
+    );
+
+    &__texts {
+        color: #FEFEFE;
+        text-shadow: 0px 0px 2px #000000;
+        text-align: center;
+    }
+
+    &__charImage {
+        width: 10rem;
+    }
+
+    &__buttons {
+        text-align: center;
+        background-color: #673ab7;
+        border-color: #673ab7;
+        border-radius: 0.5rem;
+        width: 12rem;
+        margin: 0.5rem auto;
+            
+        &:hover {
+            background-color: #5013bb;
+        }
+
+        &:focus {
+            box-shadow: 0px 0px 0px 4px #9473cb;
+        }
+    }
+}
