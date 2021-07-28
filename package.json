@@ -13,6 +13,7 @@
     "@material-ui/icons": "^4.11.2",
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.0-beta3",
+    "fetch": "^1.1.0",
     "material-ui": "^1.0.0-beta.47",
     "next": "^11.0.1",
     "react": "17.0.2",

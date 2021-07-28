@@ -16,7 +16,7 @@
         width: 100%;
     }
 
-    #signUp__introduction {
+    .signUp__introduction {
         margin: 0.5rem auto;
         text-align: center;
         color: #e0e0e0;
@@ -79,7 +79,7 @@
         }
     }
 
-    #login__link {
+    .login__link {
         color: #673ab7;
         text-align: center;
         text-decoration: none;
@@ -92,7 +92,7 @@
         }
     }
 
-    #signUp__footer {
+    .signUp__footer {
         background-image: linear-gradient(to bottom, #673ab7, #9473cb);
     }
 }

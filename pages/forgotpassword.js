@@ -37,7 +37,7 @@ export default function forgotPassword() {
           </Grid>
           <Grid className={styles.forgot__div__email} item xs={8} sm={4}>
             <form className={styles.password} noValidate autoComplete="off" disableUnderline='true'>
-              <TextField className={styles.textContent} id="standard-basic" fullWidth label="Confirme seu Email" InputProps={{ disableUnderline: true }} InputLabelProps={{ style: { fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)" }, input: { fontSize: 50 } }} />
+              <TextField className={styles.textContent} id="standard-basic" fullwidth='true' label="Confirme seu Email" InputProps={{ disableUnderline: true }} InputLabelProps={{ style: { fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)" }, input: { fontSize: 50 } }} />
             </form>
           </Grid>
           <button className={styles.forgot__buttonSend}>Enviar Código</button>
@@ -54,13 +54,13 @@ export default function forgotPassword() {
           <button className={styles.forgot__buttonUnclickable}>Confirmar</button>
           <Grid className={styles.forgot__div__email} item xs={8} sm={4}>
             <form className={styles.password} noValidate autoComplete="off" disableUnderline='true'>
-              <TextField className={styles.textContent} id="standard-basic" fullWidth label="Insira a nova senha" InputProps={{ disableUnderline: true }} InputLabelProps={{ style: { fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)" }, input: { fontSize: 50 } }} />
+              <TextField className={styles.textContent} id="standard-basic" fullwidth='true' label="Insira a nova senha" InputProps={{ disableUnderline: true }} InputLabelProps={{ style: { fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)" }, input: { fontSize: 50 } }} />
             </form>
           </Grid>
           <div className={styles.forgot__invisible}></div>
           <Grid className={styles.forgot__div__email} item xs={8} sm={4}>
             <form className={styles.password} noValidate autoComplete="off" disableUnderline='true'>
-              <TextField className={styles.textContent} id="standard-basic" fullWidth label="Confirme sua senha" InputProps={{ disableUnderline: true }} InputLabelProps={{ style: { fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)" }, input: { fontSize: 50 } }} />
+              <TextField className={styles.textContent} id="standard-basic" fullwidth='true' label="Confirme sua senha" InputProps={{ disableUnderline: true }} InputLabelProps={{ style: { fontSize: 15, fontWeight: 700, font: "Roboto", style: "normal", color: "rgb(0, 0, 0)" }, input: { fontSize: 50 } }} />
             </form>
           </Grid>
           <button className={styles.forgot__buttonUnclickable}>Alterar Senha</button>

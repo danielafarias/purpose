@@ -94,7 +94,7 @@ export default function Login() {
                   endAdornment: <EmailIcon style={{ color: deepPurple[500], margin: 12 }} />,
                 }}
                 variant="standard"
-                fullWidth
+                fullwidth='true'
                 type="text"
               />
             </Grid>
@@ -105,7 +105,7 @@ export default function Login() {
                 id={styles.login__textField__content}
                 label="Senha"
                 variant="standard"
-                fullWidth
+                fullwidth='true'
                 type="text"
                 value={values.password}
                 type={values.showPassword ? 'text' : 'password'}
