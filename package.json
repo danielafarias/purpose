@@ -13,8 +13,8 @@
     "@material-ui/icons": "^4.11.2",
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.0-beta3",
-    "file-system": "^2.2.2",
-    "fs": "^0.0.1-security",
+    "fetch": "^1.1.0",
+
     "material-ui": "^1.0.0-beta.47",
     "next": "^11.0.1",
     "node-fs": "^0.1.7",
