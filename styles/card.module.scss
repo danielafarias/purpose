@@ -1,0 +1,78 @@
+card.module.scss
+
+.organizer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    width: 100%;
+    background: linear-gradient(
+        180deg,
+        #7471b6 10%,
+        rgba(7, 150, 206, 0.5) 45.33%,
+        rgba(144, 0, 121, 0.1) 60%,
+        rgba(224, 224, 224, 0.64) 100%
+    );
+}
+
+.header {
+    width: 100%;
+}
+
+.title {
+    padding-top: 10px;
+    font-size: 40px;
+}
+
+.emailConfirmation {
+    padding-top: 5vmax;
+    padding-bottom: 15vmax;
+}
+
+.challengeBox {
+    position: absolute;
+    background: red;
+    left: 50%;
+    margin-left: -20vmax;
+    width: 40vmax;
+    height: 15vmax;
+    border-radius: 2vmax;
+}
+
+.challengeTitle {
+    text-align: center;
+    font-size: 4vmax;
+}
+
+.challengeDescription {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    text-align: center;
+    font-size: 2vmax;
+}
+
+.progIcon {
+    position: absolute;
+    width: 5vmax;
+}
+
+.container {
+    position: absolute;
+    top: 33%;
+    height: 1px;
+    width: 100%;
+    background: blue;
+}
+
+.button {
+    position: fixed;
+    top: 100%;
+    left: 100%;
+    margin-top: -4rem;
+    margin-left: -4rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
