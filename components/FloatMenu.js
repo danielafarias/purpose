@@ -61,7 +61,7 @@ export default function FloatMenu() {
                 onClose={handleClose}
             >
 
-                <IconButton onClick={handleClose}> <AccountCircleIcon /> </IconButton>
+                <IconButton onClick={handleClose} href='/profile'> <AccountCircleIcon /> </IconButton>
                 <IconButton onClick={handleClose}> <SettingsIcon /> </IconButton>
                 <IconButton onClick={handleClose}> <ExitToAppIcon /> </IconButton>
             </Menu>

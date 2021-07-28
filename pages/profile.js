@@ -1,13 +1,13 @@
 import Head from 'next/head';
-import { Container, Grid, Typography, LinearProgress, Box } from '@material-ui/core';
+import { Container, Grid, Typography} from '@material-ui/core';
 import { Button } from 'react-bootstrap';
 import FloatMenu from '../components/FloatMenu';
 import styles from '../styles/profile.module.scss';
 
-export default function Profile(props) {
+export default function Profile() {
+    
 
     return (
-
         <div className={styles.profile}>
             <Head>
                 <title>Perfil</title>
@@ -42,16 +42,19 @@ export default function Profile(props) {
                                 <Typography className={styles.profile__charTexts}>Vigor:</Typography>
                             </Grid>
 
-                            <Typography className={styles.profile__charTexts}>Ouro: 1000</Typography>
-                            <Button className={styles.profile__buttons} variant="primary">Editar Personagem</Button>
+                            <Typography className={styles.profile__charTexts}>Ouro:</Typography>
+
+                            <Button className={styles.profile__buttons} variant="primary" href='/edit-char'>Editar Personagem</Button>
                         </Grid>
                     </Grid>
 
                     <Grid className={styles.profile__bagdes}>
                         <Typography className={styles.profile__bagdesTitle}>Conquistas</Typography>
-                        <div>
-                            <Button className={styles.profile__buttons} variant="primary">Ver mais</Button>
-                        </div>
+                        <Grid>
+
+                        </Grid>
+
+                        <Button className={styles.profile__buttons} variant="primary">Ver mais</Button>
                     </Grid>
                 </Grid>
             </Container>
