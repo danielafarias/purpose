@@ -1,0 +1,42 @@
+.dash {
+    margin-right: 0rem;
+    margin-bottom: 4rem;
+    font-family: "Berkshire Swash", cursive;
+    width: 100%;
+    min-height: 30rem;
+    display: flex;
+    flex-direction: column;
+
+    background: linear-gradient(
+        180deg,
+        #7471b6 10%,
+        rgba(7, 150, 206, 0.5) 45.33%,
+        rgba(144, 0, 121, 0.1) 60%,
+        rgba(224, 224, 224, 0.64) 100%
+    );
+
+    #dash__link {
+        color: #673ab7;
+        text-align: center;
+        align-items: center;
+        text-decoration: none;
+        font-size: 0.75rem;
+        margin-top: 0.7rem;
+        font-family: "Yatra One", cursive;
+
+    }
+    #dash__decoration {
+        text-decoration: none;
+        text-align: center;
+        align-items: center;
+        color: #673ab7;
+        font-family: "Yatra One", cursive;
+    }
+}
+
+.footer {
+    margin-top: -10rem;
+    margin-bottom: 0;
+    background-image: linear-gradient(to bottom, #673ab7, #9473cb);
+    font-family: "Berkshire Swash", cursive;
+}
