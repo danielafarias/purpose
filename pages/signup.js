@@ -4,8 +4,8 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/signup.module.scss';
-import Api from '../api/Api';
 import { Form } from 'react-bootstrap';
+import { Api } from '../api/Api';
 
 import { Container, Button, } from 'react-bootstrap';
 
@@ -31,12 +31,9 @@ export default function signUp() {
           },
     });
 
-    const [isLoading, setIsLoading] = React.useState(false);
 
     const [values, setValues] = React.useState({
         showPassword: false,
-
-
     });
 
 
@@ -52,37 +49,38 @@ export default function signUp() {
         event.preventDefault();
     };
 
+    const  [userName, setUserName]  = React.useState(''); 
+    const  [email, setEmail]  = React.useState(''); 
+    const  [passwordHash, setPasswordHash]  = React.useState(''); 
 
-    const submitHandler = (event) => {
+    const item = {
+        userName: userName.value,
+        email: email.value,
+        passwordHash: passwordHash.value
+    }
 
 
-        const { userName, email, passwordHash } = event.target.value;
+    const submitHandler =  async event => { 
+        
+        event.preventDefault(); 
 
-        const item = {
-            userName: userName.value,
-            email: email.value,
-            passwordHash: passwordHash.value
-        }
+        
 
-        setIsLoading(true);
-
-        const request = () => Api.buildApiPostRequest(
-            Api.registerUrl(),
-            item).catch(e => {
-            console.error('Erro ao tentar adicionar um item ao banco: ', e)
+        const request = await Api.buildApiPostRequest( 
+            Api.registerUrl(), 
+            item).catch(e => { 
+                console.error('Erro ao se cadastrar: ', e) 
             })
 
-        setIsLoading(false);
+            const result = await request.json();
 
+            const user = result.userName;
+        
+            this.props.history.push(`/`)
 
+            console.log(userName)
 
-        const result = request.json();
-
-        const id = result.id;
-
-        this.props.history.push(`/view/${id}`);
-
-    }
+        }
 
     return (
         <div className={styles.signUp}>
@@ -97,11 +95,11 @@ export default function signUp() {
                 </header>
 
                 <main>
-                    <Form onSubmit={submitHandler()}>
-                        <Container className={styles.container} maxWidth={"xs"} spacing={5}>
-                            <Grid container direction="column" justifyContent='center' alignItems='center' fullWidth>
+                    <form onSubmit={submitHandler}>
+                        <Container className={styles.container} maxwidth={"xs"} spacing={5}>
+                            <Grid container direction="column" justifyContent='center' alignItems='center' fullwidth='true'>
                                 <Grid xs={8} sm={4} item className={styles.signUp__introduction}>
-                                    <Typography span='true' id={styles.signUp__introduction} variant="h5">
+                                    <Typography span='true' className={styles.signUp__introduction} variant="h5">
                                         Este é o universo Purple.
                                         <br />
                                         E quem é você?
@@ -121,40 +119,42 @@ export default function signUp() {
                                             disableUnderline: (true)
                                         }}
                                         variant="standard"
-                                        fullWidth
+                                        fullwidth='true'
                                         type="text"
                                     />
                                 </Grid>
 
                                 
                                 <Grid xs={8} sm={4} item id={styles.signUp__textField} >
-                                    <Form.Group>
+                                   
                                         <TextField
                                             required
+                                            onChange={ (target) => setUserName(target.value) }
                                             id={styles.signUp__textField__content}
                                             label="Nome de Usuário"
                                             InputProps={{ disableUnderline: (true) }}
                                             variant="standard"
-                                            fullWidth
+                                            fullwidth='true'
                                             type="text"
                                         />
-                                    </Form.Group>
+                                   
                                 </Grid>
                                 
 
                                
                                 <Grid xs={8} sm={4} item id={styles.signUp__textField}>
-                                    <Form.Group>
+                                    
                                         <TextField
                                             required
                                             id={styles.signUp__textField__content}
+                                            onChange={ (target) => setEmail(target.value) }
                                             label="E-mail"
                                             InputProps={{ disableUnderline: (true) }}
                                             variant="standard"
-                                            fullWidth
+                                            fullwidth='true'
                                             type="email"
                                         />
-                                    </Form.Group>
+                                    
                                 </Grid>
                                 
 
@@ -165,7 +165,7 @@ export default function signUp() {
                                         label="Confirme seu E-mail"
                                         InputProps={{ disableUnderline: (true) }}
                                         variant="standard"
-                                        fullWidth
+                                        fullwidth='true'
                                         type="email"
                                     />
                                 </Grid>
@@ -173,13 +173,12 @@ export default function signUp() {
                                 <Grid xs={8} sm={4} item id={styles.signUp__textField}>
                                     <TextField
                                         required
-                                        className={styles.signUp__textField__content}
                                         id={styles.signUp__textField__content}
-                                        label="Data de Nascimento" InputProps={{ disableUnderline: true }}
+                                        label="Data de Nascimento"
                                         InputProps={{
                                             disableUnderline: true,
                                         }}
-                                        fullWidth
+                                        fullwidth='true'
                                         type="date"
                                         defaultValue="2021-08-13"
                                         className={styles.signUp__textField__content}
@@ -190,34 +189,30 @@ export default function signUp() {
                                 </Grid>
 
                                 
-                                <Grid xs={8} sm={4} item id={styles.signUp__textField}>
-                                    <Form.Group>
-                                        <FormControl fullWidth>
-
-                                            <InputLabel>Senha</InputLabel>
-                                            <Input
-                                                id={styles.signUp__textField__content}
-                                                type={values.showPassword ? 'text' : 'password'}
-                                                value={values.password}
-                                                onChange={handleChange('password')}
-                                                controlId='passwordHash'
-                                                disableUnderline="true"
-                                                endAdornment={
-                                                    <InputAdornment position="end">
-                                                        <IconButton
-                                                            color='success'
-                                                            style={{ color: deepPurple[500] }}
-                                                            aria-label="toggle password visibility"
-                                                            onClick={handleClickShowPassword}
-                                                            onMouseDown={handleMouseDownPassword}
-                                                        >
-                                                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                                        </IconButton>
-                                                    </InputAdornment>
-                                                }
-                                            />
-                                        </FormControl>
-                                    </Form.Group>
+                                <Grid xs={8} sm={4} item id={styles.signUp__textField}> 
+                                    <TextField
+                                        id={styles.signUp__textField__content}
+                                        type={values.showPassword ? 'text' : 'password'}
+                                        value={values.password}
+                                        label='Senha'
+                                        onChange={ (target) => setPasswordHash(target.value) }
+                                        fullwidth='true'
+                                        onChange={handleChange('password')}
+                                        InputProps={{
+                                            disableUnderline: (true),
+                                            endAdornment:
+                                                <IconButton
+                                                    color='primary'
+                                                    style={{ color: deepPurple[500] }}
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                >
+                                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            }}
+                                                
+                                        />
                                 </Grid>
                                 
 
@@ -225,25 +220,26 @@ export default function signUp() {
                                     <Button
                                         className={styles.signUp__button}
                                         variant="primary"
+                                        onClick={submitHandler}
                                         href="/"
                                         type='submit'>
                                         Aventurar-se
                                     </Button>
 
                                     <Typography
-                                        id={styles.login__link}
+                                        className={styles.login__link}
                                         variant="body2">
-                                        <a id={styles.login__link__decoration} href='/'>Voltar</a>
+                                        <a className={styles.login__link__decoration} href='/'>Voltar</a>
                                     </Typography>
                                 </Grid>
                             </Grid>
 
                         </Container>
 
-                        <footer id={styles.signUp__footer}>
+                        <footer className={styles.signUp__footer}>
                             <Footer />
                         </footer>
-                    </Form>
+                    </form>
                 </main>
             </ThemeProvider>
         </div >
