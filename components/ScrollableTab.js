@@ -5,7 +5,8 @@ import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import styles from '../styles/scrolltab.module.scss';
-import Card from './Card';
+import ExerciseCard from './ExerciseCard';
+import ExerciseCardTest from '../components/ExerciseCardTest';
 import { Grid } from '@material-ui/core';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -107,44 +108,29 @@ export default function ScrollableTab() {
             <Grid>
                 <TabPanel value={value} index={0}>
                     <Grid>
-                        <Card />
+                        <ExerciseCardTest />
                     </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <Grid className={styles.emailConfirmation} item xs={8} sm={4}>
-                        <Card />
-                    </Grid>
-                    <Grid className={styles.emailConfirmation} item xs={8} sm={4}>
-                        <Card />
-                    </Grid>
-                    <Grid className={styles.emailConfirmation} item xs={8} sm={4}>
-                        <Card />
-                    </Grid>
-                    <Grid className={styles.emailConfirmation} item xs={8} sm={4}>
-                        <Card />
-                    </Grid>
-                    <Grid className={styles.emailConfirmation} item xs={8} sm={4}>
-                        <Card />
-                    </Grid>
+                    <ExerciseCardTest />
                 </TabPanel>
 
                 <TabPanel value={value} index={2}>
                     <Grid>
-                        <Card />
-                    </Grid>
-                    <br />
-                    <Grid>
-                        <Card />
+                        <ExerciseCardTest />
                     </Grid>
                     <Grid>
-                        <Card />
+                        <ExerciseCardTest />
+                    </Grid>
+                    <Grid>
+                        <ExerciseCardTest />
                     </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    <ExerciseCardTest />
+                    <ExerciseCardTest />
+                    <ExerciseCardTest />
+                    <ExerciseCardTest />
                 </TabPanel>
                 <TabPanel value={value} index={4}>
                     Item Five
