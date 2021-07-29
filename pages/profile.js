@@ -44,17 +44,23 @@ export default function Profile() {
 
                             <Typography className={styles.profile__charTexts}>Ouro:</Typography>
 
-                            <Button className={styles.profile__buttons} variant="primary" href='/edit-char'>Editar Personagem</Button>
+                            <Button className={styles.profile__buttons} variant="primary" href='profile/edit-char'>Editar Personagem</Button>
                         </Grid>
                     </Grid>
 
                     <Grid className={styles.profile__bagdes}>
                         <Typography className={styles.profile__bagdesTitle}>Conquistas</Typography>
                         <Grid>
-
+                            <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
+                            <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
+                            <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
+                            <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
+                            <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
+                            <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
+                            <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
+                            <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
                         </Grid>
-
-                        <Button className={styles.profile__buttons} variant="primary">Ver mais</Button>
+                        <Button className={styles.profile__buttons} variant="primary" href='profile/badges'>Ver mais</Button>
                     </Grid>
                 </Grid>
             </Container>
