@@ -11,6 +11,7 @@ import { Button } from 'react-bootstrap';
 import { Grid, TextField, IconButton, Typography } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import EmailIcon from '@material-ui/icons/Email';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
@@ -28,7 +29,7 @@ export default function Login() {
     },
     typography: {
       fontFamily: 'Yatra One',
-    },
+    }
   });
 
   const [values, setValues] = React.useState({
@@ -60,7 +61,7 @@ export default function Login() {
   }
 
   return (
-    <div className={styles.login}>
+    <div className={styles.login__darkMode}>
       <ThemeProvider theme={theme}>
         <Head>
           <title>Entrar | Purple</title>
@@ -69,11 +70,19 @@ export default function Login() {
         </Head>
 
         <header>
-          <Header pageName='Entrar' />
+          <Header pageName='Entrar' brightnessIcon={
+            <Grid container justifyContent='flex-end'>
+              <Grid item>
+                <IconButton id={styles.login__brightness}>
+                  <Brightness4Icon color='secondary'/>
+                </IconButton>
+              </Grid>
+           </Grid>
+          }/>
         </header>
 
         <main>
-          <Grid container direction='column' justifyContent='center' alignItems='center' spacing={4}>
+          <Grid container direction='column' justifyContent='center' alignItems='center'>
 
             <Grid className={styles.login__name} item xs={8} sm={4}>
               <img src='/images/moon.svg' />
@@ -94,7 +103,7 @@ export default function Login() {
                   endAdornment: <EmailIcon style={{ color: deepPurple[500], margin: 12 }} />,
                 }}
                 variant="standard"
-                fullwidth='true'
+                fullWidth
                 type="text"
               />
             </Grid>
@@ -105,7 +114,7 @@ export default function Login() {
                 id={styles.login__textField__content}
                 label="Senha"
                 variant="standard"
-                fullwidth='true'
+                fullWidth
                 type="text"
                 value={values.password}
                 type={values.showPassword ? 'text' : 'password'}
