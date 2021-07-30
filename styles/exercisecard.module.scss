@@ -33,12 +33,13 @@ card.module.scss
 #oi{
     align-items: center;
     text-align: center;
+    margin-top: 0.5rem;
 }
 .challengeBox {
     position: absolute;
     background: oldlace;
     border-color: #5013bb;
-    border-style: dotted double;
+    border-style: double;
     left: 50%;
     margin-left: -20vmax;
     width: 40vmax;
@@ -84,7 +85,7 @@ card.module.scss
 }
 
 #typo {
-    font-size: 50%;
+    font-size: 100%;
 }
 
 
