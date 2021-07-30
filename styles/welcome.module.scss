@@ -38,11 +38,18 @@
             margin: 0.5rem auto;
             
             &:hover {
+                border-color: #673ab7;
                 background-color: #5013bb;
             }
-
+    
             &:focus {
                 box-shadow: 0px 0px 0px 4px #9473cb;
+                border-color: #673ab7;
+                background-color: #673ab7;
+            }
+    
+            &:active {
+                border-color: #673ab7;
             }
         }
         
@@ -55,13 +62,18 @@
             margin: 0.5rem auto;
 
             &:hover {
-                background-color: #aea5be;
-                color: #5013bb;
+                border-color: #673ab7;
+                background-color: #5013bb;
             }
-
-            &:focus{
-                box-shadow: 0px 0px 0px 4px #9473CB;
-
+    
+            &:focus {
+                box-shadow: 0px 0px 0px 4px #9473cb;
+                border-color: #673ab7;
+                background-color: #673ab7;
+            }
+    
+            &:active {
+                border-color: #673ab7;
             }
         }
     }

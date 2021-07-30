@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/signup.module.scss';
@@ -9,7 +8,6 @@ import { Api } from '../api/Api';
 import axios from 'axios';
 
 import { Container, Button, } from 'react-bootstrap';
-
 import { Grid, TextField, Typography, FormControl, InputLabel, Input, IconButton, OutlinedInput, InputAdornment } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';

@@ -1,11 +1,7 @@
 import Head from 'next/head';
-
 import Footer from '../components/Footer';
-
 import styles from '../styles/welcome.module.scss';
-
 import { Button } from 'react-bootstrap';
-
 import { Container, Grid, Typography } from '@material-ui/core';
 
 export default function Welcome() {

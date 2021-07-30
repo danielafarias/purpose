@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState } from 'react'
 import Header from '../components/Header';
 import styles from '../styles/configs.module.scss';
 import FloatMenu from '../components/FloatMenu';
-import { Grid, TextField, Typography, FormControl, InputLabel, Input, IconButton, OutlinedInput, InputAdornment } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 export default function Configs() {
 
