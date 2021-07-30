@@ -1948,9 +1948,9 @@ is-extglob@^2.1.1:
   resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
   integrity sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=
 
-is-fullwidth='true'-code-point@^3.0.0:
+is-fullWidth-code-point@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/is-fullwidth='true'-code-point/-/is-fullwidth='true'-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
+  resolved "https://registry.yarnpkg.com/is-fullWidth-code-point/-/is-fullWidth-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
   integrity sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==
 
 is-function@^1.0.1:
@@ -3460,7 +3460,7 @@ slice-ansi@^4.0.0:
   dependencies:
     ansi-styles "^4.0.0"
     astral-regex "^2.0.0"
-    is-fullwidth='true'-code-point "^3.0.0"
+    is-fullWidth-code-point "^3.0.0"
 
 source-map@0.7.3:
   version "0.7.3"
@@ -3582,7 +3582,7 @@ string-width@^4.2.0:
   integrity sha512-XBJbT3N4JhVumXE0eoLU9DCjcaF92KLNqTmFCnG1pf8duUxFGwtP6AD6nkjw9a3IdiRtL3E2w3JDiE/xi3vOeA==
   dependencies:
     emoji-regex "^8.0.0"
-    is-fullwidth='true'-code-point "^3.0.0"
+    is-fullWidth-code-point "^3.0.0"
     strip-ansi "^6.0.0"
 
 string.prototype.matchall@^4.0.5:
