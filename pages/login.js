@@ -1,13 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/login.module.scss';
-
 import { Button } from 'react-bootstrap';
-
 import { Grid, TextField, IconButton, Typography } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import EmailIcon from '@material-ui/icons/Email';
