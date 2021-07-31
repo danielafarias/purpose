@@ -3,16 +3,14 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/signup.module.scss';
-import { Form } from 'react-bootstrap';
-import { Api } from '../api/Api';
 import { Container, Button, } from 'react-bootstrap';
-import { Grid, TextField, Typography, FormControl, InputLabel, Input, IconButton, OutlinedInput, InputAdornment } from '@material-ui/core';
+import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
 
-export default function signUp() {
+export default function signUp({ allCategories, errorCategories }) {
 
     const theme = createTheme({
         palette: {
@@ -46,38 +44,24 @@ export default function signUp() {
         event.preventDefault();
     };
 
-    const  [userName, setUserName]  = React.useState(''); 
-    const  [email, setEmail]  = React.useState(''); 
-    const  [passwordHash, setPasswordHash]  = React.useState(''); 
-
-    const item = {
-        userName: userName.value,
-        email: email.value,
-        passwordHash: passwordHash.value
-    }
+    const [modifiedData, setModifiedData] = React.useState({
+        userName: '',
+        email: '',
+        passwordHash: ''
+      });
+    const [errorUsers, setErrorUsers] = React.useState(null);
 
 
-    const submitHandler =  async event => { 
-        
-        event.preventDefault(); 
-
-        
-
-        const request = await Api.buildApiPostRequest( 
-            Api.registerUrl(), 
-            item).catch(e => { 
-                console.error('Erro ao se cadastrar: ', e) 
-            })
-
-            const result = await request.json();
-
-            const user = result.userName;
-        
-            this.props.history.push(`/`)
-
-            console.log(userName)
-
+    const handleSubmit = async e => {
+        e.preventDefault();
+    
+        try {
+          const response = await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', modifiedData);
+          console.log(response);
+        } catch (error) {
+          setErrorUsers(error);
         }
+    };
 
     return (
         <div className={styles.signUp}>
@@ -92,9 +76,9 @@ export default function signUp() {
                 </header>
 
                 <main>
-                    <form onSubmit={submitHandler}>
+                    <form onSubmit={handleSubmit}>
                         <Container className={styles.container} maxwidth={"xs"} spacing={5}>
-                            <Grid container direction="column" justifyContent='center' alignItems='center' fullwidth='true'>
+                            <Grid container direction="column" justifyContent='center' alignItems='center' fullWidth>
                                 <Grid xs={8} sm={4} item className={styles.signUp__introduction}>
                                     <Typography span='true' className={styles.signUp__introduction} variant="h5">
                                         Este é o universo Purple.
@@ -116,7 +100,7 @@ export default function signUp() {
                                             disableUnderline: (true)
                                         }}
                                         variant="standard"
-                                        fullwidth='true'
+                                        fullWidth
                                         type="text"
                                     />
                                 </Grid>
@@ -124,16 +108,17 @@ export default function signUp() {
                                 
                                 <Grid xs={8} sm={4} item id={styles.signUp__textField} >
                                    
-                                        <TextField
-                                            required
-                                            onChange={ (target) => setUserName(target.value) }
-                                            id={styles.signUp__textField__content}
-                                            label="Nome de Usuário"
-                                            InputProps={{ disableUnderline: (true) }}
-                                            variant="standard"
-                                            fullwidth='true'
-                                            type="text"
-                                        />
+                                    <TextField
+                                        required
+                                        value={modifiedData.userName}
+                                        id={styles.signUp__textField__content}
+                                        label="Nome de Usuário"
+                                        InputProps={{ disableUnderline: (true) }}
+                                        variant="standard"
+                                        fullWidth
+                                        type="text"
+                                        onChange={changeHandler()}
+                                    />
                                    
                                 </Grid>
                                 
@@ -144,12 +129,13 @@ export default function signUp() {
                                         <TextField
                                             required
                                             id={styles.signUp__textField__content}
-                                            onChange={ (target) => setEmail(target.value) }
+                                            value={modifiedData.email}
                                             label="E-mail"
                                             InputProps={{ disableUnderline: (true) }}
                                             variant="standard"
-                                            fullwidth='true'
+                                            fullWidth
                                             type="email"
+                                            onChange={changeHandler}
                                         />
                                     
                                 </Grid>
@@ -162,7 +148,7 @@ export default function signUp() {
                                         label="Confirme seu E-mail"
                                         InputProps={{ disableUnderline: (true) }}
                                         variant="standard"
-                                        fullwidth='true'
+                                        fullWidth
                                         type="email"
                                     />
                                 </Grid>
@@ -175,7 +161,7 @@ export default function signUp() {
                                         InputProps={{
                                             disableUnderline: true,
                                         }}
-                                        fullwidth='true'
+                                        fullWidth
                                         type="date"
                                         defaultValue="2021-08-13"
                                         className={styles.signUp__textField__content}
@@ -192,9 +178,9 @@ export default function signUp() {
                                         type={values.showPassword ? 'text' : 'password'}
                                         value={values.password}
                                         label='Senha'
-                                        onChange={ (target) => setPasswordHash(target.value) }
-                                        fullwidth='true'
-                                        onChange={handleChange('password')}
+                                        value={modifiedData.passwordHash}
+                                        fullWidth
+                                        onChange={handleChange('password') && changeHandler}
                                         InputProps={{
                                             disableUnderline: (true),
                                             endAdornment:
@@ -207,8 +193,7 @@ export default function signUp() {
                                                 >
                                                     {values.showPassword ? <Visibility /> : <VisibilityOff />}
                                                 </IconButton>
-                                            }}
-                                                
+                                            }}   
                                         />
                                 </Grid>
                                 
@@ -217,7 +202,6 @@ export default function signUp() {
                                     <Button
                                         className={styles.signUp__button}
                                         variant="primary"
-                                        onClick={submitHandler}
                                         href="/"
                                         type='submit'>
                                         Aventurar-se
