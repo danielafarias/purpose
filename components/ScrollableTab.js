@@ -60,6 +60,7 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        
         flexGrow: 1,
         width: '100%',
         backgroundColor: theme.palette.background.paper,
@@ -67,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
             fontFamily: 'Yatra One',
         },
     },
+  
 }));
 
 
@@ -87,6 +89,7 @@ export default function ScrollableTab() {
 
             <AppBar position="static" color="default">
                 <Tabs
+                    
                     value={value}
                     onChange={handleChange}
                     indicatorColor="primary"

@@ -3,6 +3,10 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/signup.module.scss';
+import { Form } from 'react-bootstrap';
+import { Api } from '../api/Api';
+import axios from 'axios';
+
 import { Container, Button, } from 'react-bootstrap';
 import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -50,7 +54,6 @@ export default function signUp({ allCategories, errorCategories }) {
         passwordHash: ''
       });
     const [errorUsers, setErrorUsers] = React.useState(null);
-
 
     const handleSubmit = async e => {
         e.preventDefault();
