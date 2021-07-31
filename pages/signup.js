@@ -8,7 +8,7 @@ import { Api } from '../api/Api';
 import axios from 'axios';
 
 import { Container, Button, } from 'react-bootstrap';
-import { Grid, TextField, Typography, FormControl, InputLabel, Input, IconButton, OutlinedInput, InputAdornment } from '@material-ui/core';
+import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import deepPurple from '@material-ui/core/colors/deepPurple';
@@ -54,13 +54,6 @@ export default function signUp({ allCategories, errorCategories }) {
         passwordHash: ''
       });
     const [errorUsers, setErrorUsers] = React.useState(null);
-
-    const changeHandler = ( target: userName, value ) => {
-        setModifiedData(prev => ({
-          ...prev,
-          [userName]: value,
-        }));
-    };
 
     const handleSubmit = async e => {
         e.preventDefault();
