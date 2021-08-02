@@ -1,9 +1,13 @@
-export const Api = {
-    baseUrl: 'https://purposeapi.azurewebsites.net',
+export const API = {
 
-    registerUrl: () => Api.baseUrl + '/api/v1/Auth/Register',
+    baseUrl: 'http://purposeapi.azurewebsites.net',  //URL base do banco de dados
 
-    buildApiPostRequest: url => {
+    registerUrl: () => API.baseUrl + '/api/v1/Auth/Register',   //URL para registro dados
+    getUrl: () => API.baseUrl + '/api/Client',                  //URL para visualizar dados
+    updateUrl: () => API.baseUrl + '/api/Client/UpdateUsuario', //URL para atualizar dados
+
+    //Função utilizada para registrar os dados
+    buildApiPostRequest: (url, body) => {
         return fetch(url, {
             method: 'POST',
             headers: new Headers({ 
@@ -12,4 +16,23 @@ export const Api = {
             body: JSON.stringify(body)
         })
     },
+
+    //Função utilizada para visualizar os dados
+    buildAPIGetRequest: url => {
+        return fetch(url, {
+            method: "GET",
+        })
+    },
+
+    //Função utilizada para atualizar os dados
+    buildAPIPutRequest: (url, body) => {
+        return fetch(url, {
+            method: "PUT",
+            headers: new Headers({
+                'Content-type': 'application/json'
+            }),
+            body: JSON.stringify(body)
+        })
+    },
+    
 }
