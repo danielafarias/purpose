@@ -55,12 +55,12 @@ export default function signUp({ allCategories, errorCategories }) {
       });
     const [errorUsers, setErrorUsers] = React.useState(null);
 
-    const changeHandler = ( target: userName, value ) => {
-        setModifiedData(prev => ({
-          ...prev,
-          [userName]: value,
-        }));
-    };
+    // const changeHandler = ( target: userName, value ) => {
+    //     setModifiedData(prev => ({
+    //       ...prev,
+    //       [userName]: value,
+    //     }));
+    // };
 
     const handleSubmit = async e => {
         e.preventDefault();
