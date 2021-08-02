@@ -18,7 +18,7 @@ export default function EditChar() {
                         <img src='../new_images/persoicones-23.svg' className={styles.editChar__charImage} />
                         <Typography className={styles.editChar__texts}>Selecionado</Typography>
                     </Grid>
-
+{/* Colocar ID */}
                     <Grid item className={styles.editChar__chars}>
                         <img src='../new_images/persoicones-23.svg' className={styles.editChar__charImage}  />
                         <img src='../new_images/persoicones-24.svg' className={styles.editChar__charImage}  />
