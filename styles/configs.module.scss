@@ -18,18 +18,34 @@
         height: 18vmax;
         border-radius: 50%;
         object-fit: cover;
+        margin-bottom: 30px;
     }
-}
+    &__gridConfig {
+        display: flex;
+        margin-top: 50px;
+    }
+    &__inputUrl {
+        width: 25vmax;
+        background: #FFFFFF;
+        border: 1px solid #190241;
+        box-sizing: border-box;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-left: 60px;
+        margin-right: 30px;
+        border-radius: 2px;
 
-.inputs {
-    margin-left: 50px;
-    background: none;
-    border: none;
-    outline: none;
-}
-
-.buttons {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    }
+    &__inputs {
+        width: 20vmax;
+        margin-left: 30px;
+        border: none;
+        background: none;
+        outline: none;
+        font-size: 2vmax;
+    }
+    &__buttons {
+        width: 3.5vmax;
+        height: 3.5vmax;
+        border-radius: 50%;
+    }
 }

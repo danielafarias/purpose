@@ -16,7 +16,7 @@ export default function Welcome() {
                         <Grid item xs={12} sm={6}>
                             <Grid item className={styles.welcome__header}>
                               
-                                <img src='new_images/persoicones-19.svg' className={styles.welcome__header__logo}/>
+                                <img src='images/logosemtexto.svg' className={styles.welcome__header__logo}/>
                                 <Typography variant="span" className={styles.welcome__header__title}>Purple</Typography>
 
                             </Grid>
