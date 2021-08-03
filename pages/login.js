@@ -57,8 +57,10 @@ export default function Login() {
     const errorMessage = error == true ? "E-mail ou senha incorreta, por favor, tente novamente." : " ";
   }
 
+  const [dark, setDark] = React.useState(false);
+
   return (
-    <div className={styles.login__darkMode}>
+    <div className={dark == true ? styles.login__darkMode : styles.login}>
       <ThemeProvider theme={theme}>
         <Head>
           <title>Entrar | Purple</title>
@@ -70,19 +72,20 @@ export default function Login() {
           <Header pageName='Entrar' brightnessIcon={
             <Grid container justifyContent='flex-end'>
               <Grid item>
-                <IconButton id={styles.login__brightness}>
+                <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
                   <Brightness4Icon color='secondary'/>
                 </IconButton>
               </Grid>
            </Grid>
-          }/>
+          }
+          styleBrightness={dark == true ? styles.Header__dark : styles.Header}/>
         </header>
 
         <main>
           <Grid container direction='column' justifyContent='center' alignItems='center'>
 
             <Grid className={styles.login__name} item xs={8} sm={4}>
-              <img src='/images/moon.svg' />
+              <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
               <Typography span="true" color='secondary' variant="h3">Purple</Typography>
             </Grid>
 
@@ -97,7 +100,7 @@ export default function Login() {
                 label="E-mail"
                 InputProps={{
                   disableUnderline: (true),
-                  endAdornment: <EmailIcon style={{ color: deepPurple[500], margin: 12 }} />,
+                  endAdornment: <EmailIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
                 }}
                 variant="standard"
                 fullWidth
@@ -120,7 +123,7 @@ export default function Login() {
                   disableUnderline: (true),
                   endAdornment:
                     <IconButton
-                      style={{ color: deepPurple[500] }}
+                      style={dark == false ? { color: '#673ab7'} : { color: '#7471b6ff'}}
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}>
                       {values.showPassword ? <Visibility /> : <VisibilityOff />}
@@ -134,8 +137,6 @@ export default function Login() {
                 href='/'
                 id={styles.login__button}>
                 Aventurar-se
-
-
               </Button>
 
               <Typography
