@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Container, Grid, TextField, Typography } from '@material-ui/core';
 import { Button } from 'react-bootstrap';
-import { API2 } from '../api/API2';
+import axios from 'axios';
 import { useState } from 'react';
 
 export default function Teste2() {
@@ -21,18 +21,13 @@ export default function Teste2() {
 
     const submitHandler = async event => {
         event.preventDefault();
-        
 
-        const request =  await API2.buildApiPostRequest(state).catch(e =>{
-            console.error("Erro ao tentar adicionar um item ao banco de dados:", e);
-        })
-
-        console.log(request)
-
-        // const result = await request //.json();
-        // // const id = result.userName;
-
-        // this.props.history.push(`http://purposeapi.azurewebsites.net/api/Client/getByUserName/${id}`)
+        try {
+            const response = await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', state);
+            console.log(response);
+          } catch (error) {
+            console.error("Erro ao tentar adicionar um item ao banco de dados:", error);
+          }
     }
 
     return (
