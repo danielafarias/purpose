@@ -1,11 +1,11 @@
 import Head from 'next/head';
-import { Container, Grid, Typography} from '@material-ui/core';
+import { Container, Grid, Typography } from '@material-ui/core';
 import { Button } from 'react-bootstrap';
 import FloatMenu from '../components/FloatMenu';
+import axios from 'axios';
 import styles from '../styles/profile.module.scss';
 
-export default function Profile() {
-    
+export default function Profile({ profiles }) {
 
     return (
         <div className={styles.profile}>
@@ -17,11 +17,21 @@ export default function Profile() {
                 <Grid container justifyContent="center" alignItems="center" spacing={4}>
                     <Grid item className={styles.profile__infos}>
                         <Grid item >
-                            <img src='images/chrisevans.jpg' className={styles.profile__image} />
+                        <img src={profiles.profileImage} key={profiles.email} className={styles.profile__image} />
+                            {/* {profiles.map(profile => (
+                                <img src={profile.profileImage} key={profile.id} className={styles.profile__image} />
+                            ))} */}
                         </Grid>
 
                         <Grid item>
-                            <Typography className={styles.profile__nameTitle} >Chris Evans</Typography>
+                                <Typography className={styles.profile__nameTitle} key={profiles.email}>
+                                    {profiles.userName}
+                                </Typography>
+                            {/* {profiles.map(profile => (
+                                <Typography className={styles.profile__nameTitle} key={profile.id}>
+                                    {profile.userName}
+                                </Typography>
+                            ))} */}
                         </Grid>
                     </Grid>
 
@@ -69,3 +79,21 @@ export default function Profile() {
     );
 
 };
+
+Profile.getInitialProps = async ctx => {
+    try {
+        const prof = await axios.get('http://purposeapi.azurewebsites.net/api/Client');
+        const profiles = prof.data;
+        return { profiles };
+    } catch (error) {
+        return { error };
+    }
+};
+
+/* 
+
+mudar o "axios.get" para o link 
+http://purposeapi.azurewebsites.net/api/Client/getByUserName/$%7BuserName%7D
+com a "/${id}" do cliente no lugar de "/$%7BuserName%7D"
+
+*/

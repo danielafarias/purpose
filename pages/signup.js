@@ -3,10 +3,8 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '../styles/signup.module.scss';
-import { Form } from 'react-bootstrap';
-import { Api } from '../api/Api';
 import axios from 'axios';
-
+import { useState } from 'react';
 import { Container, Button, } from 'react-bootstrap';
 import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -14,7 +12,30 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
 
-export default function signUp({ allCategories, errorCategories }) {
+export default function signUp() {
+    const [state, setState] = useState({
+        userName: '',
+        email: '',
+        passwordHash: ''
+    })
+
+    const handleChange = ({ target: { name, value } }) => {
+        setState(prev => ({
+          ...prev,
+          [name]: value,
+        }));
+      };
+
+    const submitHandler = async event => {
+        event.preventDefault();
+
+        try {
+            const response = await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', state);
+            console.log(response);
+          } catch (error) {
+            console.error("Erro ao tentar adicionar um item ao banco de dados:", error);
+          }
+    }
 
     const theme = createTheme({
         palette: {
@@ -35,35 +56,12 @@ export default function signUp({ allCategories, errorCategories }) {
         showPassword: false,
     });
 
-
-    const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-    };
-
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
     };
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
-    };
-
-    const [modifiedData, setModifiedData] = React.useState({
-        userName: '',
-        email: '',
-        passwordHash: ''
-      });
-    const [errorUsers, setErrorUsers] = React.useState(null);
-
-    const handleSubmit = async e => {
-        e.preventDefault();
-    
-        try {
-          const response = await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', modifiedData);
-          console.log(response);
-        } catch (error) {
-          setErrorUsers(error);
-        }
     };
 
     return (
@@ -79,7 +77,7 @@ export default function signUp({ allCategories, errorCategories }) {
                 </header>
 
                 <main>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={submitHandler}>
                         <Container className={styles.container} maxwidth={"xs"} spacing={5}>
                             <Grid container direction="column" justifyContent='center' alignItems='center' fullWidth>
                                 <Grid xs={8} sm={4} item className={styles.signUp__introduction}>
@@ -113,14 +111,15 @@ export default function signUp({ allCategories, errorCategories }) {
                                    
                                     <TextField
                                         required
-                                        value={modifiedData.userName}
                                         id={styles.signUp__textField__content}
                                         label="Nome de Usuário"
                                         InputProps={{ disableUnderline: (true) }}
                                         variant="standard"
+                                        name='userName'
+                                        value={state.userName}
                                         fullWidth
                                         type="text"
-                                        onChange={changeHandler()}
+                                        onChange={handleChange}
                                     />
                                    
                                 </Grid>
@@ -132,13 +131,12 @@ export default function signUp({ allCategories, errorCategories }) {
                                         <TextField
                                             required
                                             id={styles.signUp__textField__content}
-                                            value={modifiedData.email}
                                             label="E-mail"
                                             InputProps={{ disableUnderline: (true) }}
                                             variant="standard"
                                             fullWidth
                                             type="email"
-                                            onChange={changeHandler}
+                                            onChange={handleChange}
                                         />
                                     
                                 </Grid>
@@ -181,9 +179,8 @@ export default function signUp({ allCategories, errorCategories }) {
                                         type={values.showPassword ? 'text' : 'password'}
                                         value={values.password}
                                         label='Senha'
-                                        value={modifiedData.passwordHash}
                                         fullWidth
-                                        onChange={handleChange('password') && changeHandler}
+                                        onChange={handleChange('password') && handleChange}
                                         InputProps={{
                                             disableUnderline: (true),
                                             endAdornment:
