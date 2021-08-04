@@ -12,11 +12,11 @@
             width: 6rem;   
 
         }
+    }
 
-        &__title {
-            font-size: 70px;
-            color: #673ab7;  
-        }
+    .header__title {
+        font-size: 70px;
+        color: #673ab7;  
     }
 
     h1 {
@@ -26,7 +26,7 @@
     }
 
     
-    &__buttons {
+    .buttons {
         text-align: center;
         padding-top: 1rem;
         
@@ -38,7 +38,7 @@
             margin: 0.5rem auto;
             
             &:hover {
-                border-color: #673ab7;
+                border-color: #5013bb;
                 background-color: #5013bb;
             }
     
@@ -56,13 +56,124 @@
         &__login {
             background-color: #e0e0e0;
             color: #673ab7;
-            border-color: #673ab7;
+            border-color: #e0e0e0;
             border-radius: 0.5rem;
             width: 12rem;
             margin: 0.5rem auto;
 
             &:hover {
                 border-color: #673ab7;
+                background-color: #5013bb;
+                color: #e0e0e0;
+            }
+    
+            &:focus {
+                box-shadow: 0px 0px 0px 4px #9473cb;
+                border-color: #673ab7;
+                background-color: #673ab7;
+                color: #e0e0e0;
+            }
+    
+            &:active {
+                border-color: #673ab7;
+            }
+        }
+    }
+    
+    &__intro {
+        padding: 0 0 2rem 0;
+        
+        img {
+            width: 100%;
+            height: auto;
+        }
+        
+        h2 {
+            color: #e0e0e0;
+            font-size: 35px;
+            font-family: "Yatra One", cursive;
+
+        }
+
+        &__text {
+            color: #e0e0e0;
+        }
+        
+    }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+.welcome__dark {
+    background-color: #222222;
+    font-family: "Yatra One", cursive;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        font-family: "Berkshire Swash", cursive;
+
+        &__logo {
+
+            width: 6rem;   
+
+        }
+
+        
+    }
+
+    .header__title {
+        font-size: 70px;
+        color: #7471b6ff;  
+    }
+
+    h1 {
+        font-size: 35px;
+        font-family: "Yatra One", cursive;
+        color: #E0E0E0;
+    }
+
+    
+    .buttons {
+        text-align: center;
+        padding-top: 1rem;
+        
+        &__register {
+            background-color: #7471b6ff;
+            border-color: #7471b6ff;
+            border-radius: 0.5rem;
+            width: 12rem;
+            margin: 0.5rem auto;
+            
+            &:hover {
+                border-color: #5013bb;
+                background-color: #5013bb;
+            }
+    
+            &:focus {
+                box-shadow: 0px 0px 0px 4px #9473cb;
+                border-color: #673ab7;
+                background-color: #673ab7;
+            }
+    
+            &:active {
+                border-color: #673ab7;
+            }
+        }
+        
+        &__login {
+            background-color: #e0e0e0;
+            color: #7471b6ff;
+            border-color: #e0e0e0;
+            border-radius: 0.5rem;
+            width: 12rem;
+            margin: 0.5rem auto;
+
+            &:hover {
+                color: #e0e0e0;
+                border-color: #5013bb;
                 background-color: #5013bb;
             }
     
@@ -99,3 +210,7 @@
         
     }
 }
+
+#brightness {
+    margin-top: 1rem;
+ }

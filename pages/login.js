@@ -75,7 +75,7 @@ export default function Login() {
             <Header pageName='Entrar' brightnessIcon={
               <Grid container justifyContent='flex-end'>
                 <Grid item>
-                  <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                  <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
                     <Brightness4Icon color='secondary'/>
                   </IconButton>
                 </Grid>
@@ -163,7 +163,7 @@ export default function Login() {
           </Grid>
         </main>
 
-        <footer className={styles.login__footer}>
+        <footer className={dark == false ? styles.login__footer : styles.login__footer__dark}>
           <Footer />
         </footer>
       </ThemeProvider>
