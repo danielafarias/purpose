@@ -91,9 +91,13 @@
     
 }
 
-#login__brightness {
+#brightness {
     margin: 1rem;
  }
+
+
+/////////////////////////////////////////////////////////////////////////////
+
 
  .login__darkMode {
     width: 100%;
@@ -176,9 +180,13 @@
         }
     }
 
-    &__footer {
-        background-image: linear-gradient(to bottom, #673ab7, #9473cb);
-    }
-
     
  }
+
+ .login__footer {
+    background-image: linear-gradient(to bottom, #673ab7, #9473cb);
+}
+
+.login__footer__dark {
+    background-image: linear-gradient(to bottom, #49416D, #673ab7);
+}

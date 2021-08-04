@@ -86,7 +86,7 @@
         }
     }
 
-    .login__link {
+    .signUp__link {
         color: #673ab7;
         text-align: center;
         text-decoration: none;
@@ -103,3 +103,115 @@
         background-image: linear-gradient(to bottom, #673ab7, #9473cb);
     }
 }
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+.signUp__dark {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    font-family: "Berkshire Swash", cursive;
+    background: #222222;
+
+    .container {
+        margin-bottom: -5rem;
+        width: 100%;
+    }
+
+    .signUp__introduction {
+        margin: 0.5rem auto;
+        text-align: center;
+        color: #e0e0e0;
+        font-family: "Yatra One", cursive;
+        margin-top: 2rem;
+    }
+
+    &__image {
+        align-items: center;
+        justify-content: center;
+
+        img {
+            height: 14rem;
+            width: auto;
+            margin-bottom: -2rem;
+            margin-top: -2rem;
+        }
+    }
+
+    #signUp__textField {
+        width: 60vmax;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        background-color: #424242;
+        border-radius: 0.5rem;
+        color: #7471b6ff;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        &__content {
+            width: 60vmax;
+            color: #7471b6ff;
+            border-radius: 0.4rem;
+            margin-right: 0.7rem;
+            font-family: "Yatra One", cursive;
+        }
+
+        #signUp__TextFieldContent2 {
+            color: #7471b6ff;
+            font-family: "Yatra One", cursive;
+
+            label {
+                color: #7471b6ff;
+            }
+        }
+    }
+
+    .signUp__button {
+        background-color: #7471b6ff;
+        border-color: #7471b6ff;
+        border-radius: 0.5rem;
+        width: 12rem;
+        margin-top: 1.5rem;
+
+        &:hover {
+            border-color: #5013bb;
+            background-color: #5013bb;
+        }
+
+        &:focus {
+            box-shadow: 0px 0px 0px 4px #9473cb;
+            border-color: #673ab7;
+            background-color: #673ab7;
+        }
+
+        &:active {
+            border-color: #673ab7;
+        }
+    }
+
+    .signUp__link {
+        color: #7471b6ff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 0.75rem;
+        margin-top: 0.7rem;
+
+        &__decoration {
+            text-decoration: none;
+            color: #7471b6ff;
+        }
+    }
+}
+
+.signUp__footer {
+    background-image: linear-gradient(to bottom, #673ab7, #9473cb);
+}
+
+.signUp__footer__dark {
+    background-image: linear-gradient(to bottom, #49416D, #673ab7);
+}
+
+#brightness {
+    margin: 1rem;
+ }

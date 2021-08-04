@@ -1,16 +1,18 @@
 import React from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
+import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/signup.module.scss';
 import { Form } from 'react-bootstrap';
-import { Api } from '../api/Api';
+// import { Api } from '../api/Api';
 import axios from 'axios';
 
 import { Container, Button, } from 'react-bootstrap';
 import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
 
@@ -66,16 +68,41 @@ export default function signUp({ allCategories, errorCategories }) {
         }
     };
 
+    const [dark, setDark] = React.useState(false);
+
     return (
-        <div className={styles.signUp}>
+        <div className={dark == false ? styles.signUp : styles.signUp__dark}>
             <ThemeProvider theme={theme}>
                 <Head>
                     <title>Cadastrar-se | Purple</title>
                     <meta name="description" content="Página de Cadastro da Purple" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
+
                 <header>
-                    <Header pageName='Saudações, viajante! ' />
+                    {
+                        dark == false ? 
+                        <Header pageName='Saudações, viajante! ' brightnessIcon={
+                        <Grid container justifyContent='flex-end'>
+                            <Grid item>
+                            <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                                <Brightness4Icon color='secondary'/>
+                            </IconButton>
+                            </Grid>
+                        </Grid>
+                        }
+                        styleBrightness={dark == true ? styles.Header__dark : styles.Header}/> :
+                        <HeaderDark pageName='Saudações, viajante! ' brightnessIcon={
+                        <Grid container justifyContent='flex-end'>
+                            <Grid item>
+                            <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                                <Brightness4Icon color='secondary'/>
+                            </IconButton>
+                            </Grid>
+                        </Grid>
+                        }
+                        styleBrightness={dark == true ? styles.Header__dark : styles.Header}/>
+                    }
                 </header>
 
                 <main>
@@ -120,7 +147,6 @@ export default function signUp({ allCategories, errorCategories }) {
                                         variant="standard"
                                         fullWidth
                                         type="text"
-                                        onChange={changeHandler()}
                                     />
                                    
                                 </Grid>
@@ -138,7 +164,6 @@ export default function signUp({ allCategories, errorCategories }) {
                                             variant="standard"
                                             fullWidth
                                             type="email"
-                                            onChange={changeHandler}
                                         />
                                     
                                 </Grid>
@@ -183,13 +208,13 @@ export default function signUp({ allCategories, errorCategories }) {
                                         label='Senha'
                                         value={modifiedData.passwordHash}
                                         fullWidth
-                                        onChange={handleChange('password') && changeHandler}
+                                        onChange={handleChange('password')}
                                         InputProps={{
                                             disableUnderline: (true),
                                             endAdornment:
                                                 <IconButton
                                                     color='primary'
-                                                    style={{ color: deepPurple[500] }}
+                                                    style={dark == false ? { color: '#673ab7'} : { color: '#7471b6ff'}}
                                                     aria-label="toggle password visibility"
                                                     onClick={handleClickShowPassword}
                                                     onMouseDown={handleMouseDownPassword}
@@ -211,16 +236,16 @@ export default function signUp({ allCategories, errorCategories }) {
                                     </Button>
 
                                     <Typography
-                                        className={styles.login__link}
+                                        className={styles.signUp__link}
                                         variant="body2">
-                                        <a className={styles.login__link__decoration} href='/'>Voltar</a>
+                                        <a className={styles.signUp__link__decoration} href='/'>Voltar</a>
                                     </Typography>
                                 </Grid>
                             </Grid>
 
                         </Container>
 
-                        <footer className={styles.signUp__footer}>
+                        <footer className={dark == false ? styles.signUp__footer : styles.signUp__footer__dark}>
                             <Footer />
                         </footer>
                     </form>
