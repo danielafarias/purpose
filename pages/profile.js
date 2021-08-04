@@ -17,16 +17,16 @@ export default function Profile({ profiles }) {
                 <Grid container justifyContent="center" alignItems="center" spacing={4}>
                     <Grid item className={styles.profile__infos}>
                         <Grid item >
-                        <img src={profiles.profileImage} key={profiles.email} className={styles.profile__image} />
+                            <img src={profiles.profileImage} key={profiles.email} className={styles.profile__image} />
                             {/* {profiles.map(profile => (
                                 <img src={profile.profileImage} key={profile.id} className={styles.profile__image} />
                             ))} */}
                         </Grid>
 
                         <Grid item>
-                                <Typography className={styles.profile__nameTitle} key={profiles.email}>
-                                    {profiles.userName}
-                                </Typography>
+                            <Typography className={styles.profile__nameTitle} key={profiles.email}>
+                                {profiles.userName}
+                            </Typography>
                             {/* {profiles.map(profile => (
                                 <Typography className={styles.profile__nameTitle} key={profile.id}>
                                     {profile.userName}
