@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Header from '../components/Header';
+import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/login.module.scss';
 import { Button } from 'react-bootstrap';
@@ -69,16 +70,29 @@ export default function Login() {
         </Head>
 
         <header>
-          <Header pageName='Entrar' brightnessIcon={
-            <Grid container justifyContent='flex-end'>
-              <Grid item>
-                <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                  <Brightness4Icon color='secondary'/>
-                </IconButton>
-              </Grid>
-           </Grid>
+          {
+            dark == false ? 
+            <Header pageName='Entrar' brightnessIcon={
+              <Grid container justifyContent='flex-end'>
+                <Grid item>
+                  <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                    <Brightness4Icon color='secondary'/>
+                  </IconButton>
+                </Grid>
+            </Grid>
+            }
+            styleBrightness={dark == true ? styles.Header__dark : styles.Header}/> :
+            <HeaderDark pageName='Entrar' brightnessIcon={
+              <Grid container justifyContent='flex-end'>
+                <Grid item>
+                  <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                    <Brightness4Icon color='secondary'/>
+                  </IconButton>
+                </Grid>
+             </Grid>
+            }
+            styleBrightness={dark == true ? styles.Header__dark : styles.Header}/>
           }
-          styleBrightness={dark == true ? styles.Header__dark : styles.Header}/>
         </header>
 
         <main>
@@ -149,7 +163,7 @@ export default function Login() {
           </Grid>
         </main>
 
-        <footer className={styles.login__footer}>
+        <footer className={dark == false ? styles.login__footer : styles.login__footer__dark}>
           <Footer />
         </footer>
       </ThemeProvider>
