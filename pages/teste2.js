@@ -49,7 +49,7 @@ export default function Teste2() {
                         <Container maxwidth={"xs"} spacing={5}>
                             <Grid container direction="column" justifyContent='center' alignItems='center'>
                                 <Grid xs={8} sm={4} item>
-                                    <Typography span='true' variant="h5">
+                                    <Typography span variant="h5">
                                         Este é o universo Purple.
                                         <br />
                                         E quem é você?

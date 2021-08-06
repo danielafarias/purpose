@@ -51,7 +51,7 @@ export default function Login() {
   const [email, setEmail] = React.useState('')
   const [passwordHash, setPasswordHash]  = React.useState('');
   
-  const verification = async (event) => {
+  const verification = async () => {
     await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Token', {email, passwordHash}, {
     auth: {
         email: email,
@@ -104,7 +104,7 @@ export default function Login() {
 
             <Grid className={styles.login__name} item xs={8} sm={4}>
               <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
-              <Typography span="true" color='secondary' variant="h3">Purple</Typography>
+              <Typography span color='secondary' variant="h3">Purple</Typography>
             </Grid>
 
             <Grid className={styles.login__img} item xs={8} sm={4}>

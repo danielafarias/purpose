@@ -109,7 +109,7 @@ export default function signUp() {
                         <Container className={styles.container} maxwidth={"xs"} spacing={5}>
                             <Grid container direction="column" justifyContent='center' alignItems='center' fullWidth>
                                 <Grid xs={8} sm={4} item className={styles.signUp__introduction}>
-                                    <Typography span='true' className={styles.signUp__introduction} variant="h5">
+                                    <Typography span className={styles.signUp__introduction} variant="h5">
                                         Este é o universo Purple.
                                         <br />
                                         E quem é você?
