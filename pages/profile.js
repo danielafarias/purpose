@@ -6,7 +6,7 @@ import axios from 'axios';
 import styles from '../styles/profile.module.scss';
 
 export default function Profile({ profiles }) {
-
+    
     return (
         <div className={styles.profile}>
             <Head>
@@ -78,7 +78,7 @@ export default function Profile({ profiles }) {
 
 Profile.getInitialProps = async ctx => {
     try {
-        const prof = await axios.get('http://purposeapi.azurewebsites.net/api/Client');
+        const prof = await axios.get('http://purposeapi.azurewebsites.net​/api​/Client​');
         const profiles = prof.data;
         return { profiles };
     } catch (error) {
