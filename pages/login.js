@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
@@ -11,7 +10,8 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import EmailIcon from '@material-ui/icons/Email';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import deepPurple from '@material-ui/core/colors/deepPurple';
+import axios from 'axios';
+import { useRouter } from 'next/router'
 
 
 export default function Login() {
@@ -33,7 +33,6 @@ export default function Login() {
   const [values, setValues] = React.useState({
     password: '',
     showPassword: false,
-    email: '',
     error: false,
   });
 
@@ -49,14 +48,19 @@ export default function Login() {
     event.preventDefault();
   };
 
-  const accessVerification = (props) => (event) => {
-    const [insertEmail, insertPassword] = React.useState(event.target.value);
-    const [email, password] = React.useState(...values);
-
-    insertEmail !== email && insertPassword !== password ? setValues({ [values.error]: true }) : setValues({ [values.error]: false });
-
-    const errorMessage = error == true ? "E-mail ou senha incorreta, por favor, tente novamente." : " ";
+  const [email, setEmail] = React.useState('')
+  const [passwordHash, setPasswordHash]  = React.useState('');
+  
+  const verification = async (event) => {
+    await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Token', {email, passwordHash}, {
+    auth: {
+        email: email,
+        password: passwordHash
+      }
+    });
   }
+
+  const router = useRouter();
 
   const [dark, setDark] = React.useState(false);
 
@@ -119,37 +123,38 @@ export default function Login() {
                 variant="standard"
                 fullWidth
                 type="text"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
 
             <Grid item xs={8} sm={4} id={styles.login__textField}>
-              <TextField
-                error={false}
-                id={styles.login__textField__content}
-                label="Senha"
-                variant="standard"
-                fullWidth
-                type="text"
-                value={values.password}
+            <TextField
+                id={styles.signUp__textField__content}
                 type={values.showPassword ? 'text' : 'password'}
-                onChange={handleChange('password')}
+                label='Senha'
+                fullWidth
+                name='passwordHash'
+                value={values.passwordHash}
+                onChange={(e) => setPasswordHash(e.target.value) && handleChange}
                 InputProps={{
-                  disableUnderline: (true),
-                  endAdornment:
-                    <IconButton
-                      style={dark == false ? { color: '#673ab7'} : { color: '#7471b6ff'}}
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}>
-                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
+                    disableUnderline: (true),
+                    endAdornment:
+                        <IconButton
+                             color='primary'
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                        >
+                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
                 }}
-              />
+            />
             </Grid>
 
             <Grid item xs={8} sm={4}>
               <Button
-                href='/'
-                id={styles.login__button}>
+                id={styles.login__button}
+                onClick={() => router.push('/dashboard') && verification}>
                 Aventurar-se
               </Button>
 
