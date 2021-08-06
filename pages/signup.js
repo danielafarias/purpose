@@ -1,32 +1,37 @@
 import React from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/router'
+
 import Head from 'next/head';
 import Header from '../components/Header';
-import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/signup.module.scss';
 import axios from 'axios';
-import { useState } from 'react';
+
 import { Container, Button, } from 'react-bootstrap';
 import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-import deepPurple from '@material-ui/core/colors/deepPurple';
 
 
 export default function signUp() {
+
     const [state, setState] = useState({
+        name: '',
+        lastName: '',
         userName: '',
         email: '',
-        passwordHash: ''
+        passwordHash: '',
+
     })
 
     const handleChange = ({ target: { name, value } }) => {
         setState(prev => ({
-          ...prev,
-          [name]: value,
+            ...prev,
+            [name]: value,
         }));
-      };
+    };
 
     const submitHandler = async event => {
         event.preventDefault();
@@ -34,10 +39,15 @@ export default function signUp() {
         try {
             const response = await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', state);
             console.log(response);
-          } catch (error) {
-            console.error("Erro ao tentar adicionar um item ao banco de dados:", error);
-          }
+        } catch (error) {
+            console.error("Erro ao realizar o cadastro deste nobre viajante:", error);
+        }
     }
+
+
+    const router = useRouter()
+
+
 
     const theme = createTheme({
         palette: {
@@ -50,13 +60,13 @@ export default function signUp() {
         },
         typography: {
             fontFamily: 'Yatra One',
-          },
+        },
     });
-
 
     const [values, setValues] = React.useState({
         showPassword: false,
     });
+
 
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
@@ -80,27 +90,27 @@ export default function signUp() {
 
                 <header>
                     {
-                        dark == false ? 
-                        <Header pageName='Saudações, viajante! ' brightnessIcon={
-                        <Grid container justifyContent='flex-end'>
-                            <Grid item>
-                            <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                                <Brightness4Icon color='secondary'/>
-                            </IconButton>
-                            </Grid>
-                        </Grid>
-                        }
-                        styleBrightness={dark == true ? styles.Header__dark : styles.Header}/> :
-                        <HeaderDark pageName='Saudações, viajante! ' brightnessIcon={
-                        <Grid container justifyContent='flex-end'>
-                            <Grid item>
-                            <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                                <Brightness4Icon color='secondary'/>
-                            </IconButton>
-                            </Grid>
-                        </Grid>
-                        }
-                        styleBrightness={dark == true ? styles.Header__dark : styles.Header}/>
+                        dark == false ?
+                            <Header pageName='Saudações, viajante! ' brightnessIcon={
+                                <Grid container justifyContent='flex-end'>
+                                    <Grid item>
+                                        <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                                            <Brightness4Icon color='secondary' />
+                                        </IconButton>
+                                    </Grid>
+                                </Grid>
+                            }
+                                styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
+                            <HeaderDark pageName='Saudações, viajante! ' brightnessIcon={
+                                <Grid container justifyContent='flex-end'>
+                                    <Grid item>
+                                        <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                                            <Brightness4Icon color='secondary' />
+                                        </IconButton>
+                                    </Grid>
+                                </Grid>
+                            }
+                                styleBrightness={dark == true ? styles.Header__dark : styles.Header} />
                     }
                 </header>
 
@@ -124,52 +134,73 @@ export default function signUp() {
                                     <TextField
                                         required
                                         id={styles.signUp__textField__content}
-                                        label="Nome Completo"
+                                        label="Nome"
                                         InputProps={{
                                             disableUnderline: (true)
                                         }}
                                         variant="standard"
                                         fullWidth
                                         type="text"
+                                        name='name'
+                                        value={state.name}
+                                        onChange={handleChange}
+                                    />
+
+                                </Grid>
+
+                                <Grid xs={8} sm={4} item id={styles.signUp__textField} >
+                                    <TextField
+                                        required
+                                        id={styles.signUp__textField__content}
+                                        label="Sobrenome"
+                                        InputProps={{
+                                            disableUnderline: (true)
+                                        }}
+                                        variant="standard"
+                                        fullWidth
+                                        type="text"
+                                        name='lastName'
+                                        value={state.lastName}
+                                        onChange={handleChange}
                                     />
                                 </Grid>
 
-                                
                                 <Grid xs={8} sm={4} item id={styles.signUp__textField} >
-                                   
+
                                     <TextField
                                         required
                                         id={styles.signUp__textField__content}
                                         label="Nome de Usuário"
                                         InputProps={{ disableUnderline: (true) }}
                                         variant="standard"
-                                        name='userName'
-                                        value={state.userName}
                                         fullWidth
                                         type="text"
+                                        name='userName'
+                                        value={state.userName}
                                         onChange={handleChange}
                                     />
-                                   
-                                </Grid>
-                                
 
-                               
+                                </Grid>
+
+
+
                                 <Grid xs={8} sm={4} item id={styles.signUp__textField}>
-                                    
-                                        <TextField
-                                            required
-                                            id={styles.signUp__textField__content}
-                                            label="E-mail"
-                                            InputProps={{ disableUnderline: (true) }}
-                                            variant="standard"
-                                            fullWidth
-                                            type="email"
 
-                                            onChange={handleChange}
-                                        />
-                                    
+                                    <TextField
+                                        required
+                                        id={styles.signUp__textField__content}
+                                        label="E-mail"
+                                        InputProps={{ disableUnderline: (true) }}
+                                        variant="standard"
+                                        fullWidth
+                                        type="email"
+                                        name='email'
+                                        value={state.email}
+                                        onChange={handleChange}
+                                    />
+
                                 </Grid>
-                                
+
 
                                 <Grid xs={8} sm={4} item id={styles.signUp__textField}>
                                     <TextField
@@ -201,45 +232,49 @@ export default function signUp() {
                                     />
                                 </Grid>
 
-                                
-                                <Grid xs={8} sm={4} item id={styles.signUp__textField}> 
+
+                                <Grid xs={8} sm={4} item id={styles.signUp__textField}>
                                     <TextField
                                         id={styles.signUp__textField__content}
                                         type={values.showPassword ? 'text' : 'password'}
-                                        value={values.password}
                                         label='Senha'
                                         fullWidth
-                                        onChange={handleChange('password') && handleChange}
+                                        name='passwordHash'
+                                        value={state.passwordHash}
+                                        onChange={handleChange}
                                         InputProps={{
                                             disableUnderline: (true),
                                             endAdornment:
                                                 <IconButton
                                                     color='primary'
-                                                    style={dark == false ? { color: '#673ab7'} : { color: '#7471b6ff'}}
+                                                    style={dark == false ? { color: '#673ab7' } : { color: '#7471b6ff' }}
                                                     aria-label="toggle password visibility"
                                                     onClick={handleClickShowPassword}
                                                     onMouseDown={handleMouseDownPassword}
                                                 >
                                                     {values.showPassword ? <Visibility /> : <VisibilityOff />}
                                                 </IconButton>
-                                            }}   
-                                        />
+                                        }}
+                                    />
                                 </Grid>
-                                
+
 
                                 <Grid xs={8} sm={4} item>
+
                                     <Button
                                         className={styles.signUp__button}
                                         variant="primary"
-                                        href="/"
-                                        type='submit'>
+                                        type='submit'
+                                        onClick={() => router.push('/')}>
                                         Aventurar-se
+
                                     </Button>
 
+
                                     <Typography
-                                        className={styles.signUp__link}
+                                        className={styles.login__link}
                                         variant="body2">
-                                        <a className={styles.signUp__link__decoration} href='/'>Voltar</a>
+                                        <a className={styles.login__link__decoration} href='/'>Voltar</a>
                                     </Typography>
                                 </Grid>
                             </Grid>
