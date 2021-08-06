@@ -6,7 +6,7 @@ import axios from 'axios';
 import styles from '../styles/profile.module.scss';
 
 export default function Profile({ profiles }) {
-
+    
     return (
         <div className={styles.profile}>
             <Head>
@@ -17,21 +17,17 @@ export default function Profile({ profiles }) {
                 <Grid container justifyContent="center" alignItems="center" spacing={4}>
                     <Grid item className={styles.profile__infos}>
                         <Grid item >
-                        <img src={profiles.profileImage} key={profiles.email} className={styles.profile__image} />
-                            {/* {profiles.map(profile => (
+                            {profiles.map(profile => (
                                 <img src={profile.profileImage} key={profile.id} className={styles.profile__image} />
-                            ))} */}
+                            ))}
                         </Grid>
 
                         <Grid item>
-                                <Typography className={styles.profile__nameTitle} key={profiles.email}>
-                                    {profiles.userName}
-                                </Typography>
-                            {/* {profiles.map(profile => (
+                            {profiles.map(profile => (
                                 <Typography className={styles.profile__nameTitle} key={profile.id}>
                                     {profile.userName}
                                 </Typography>
-                            ))} */}
+                            ))}
                         </Grid>
                     </Grid>
 
@@ -82,7 +78,7 @@ export default function Profile({ profiles }) {
 
 Profile.getInitialProps = async ctx => {
     try {
-        const prof = await axios.get('http://purposeapi.azurewebsites.net/api/Client');
+        const prof = await axios.get('http://purposeapi.azurewebsites.net​/api​/Client​');
         const profiles = prof.data;
         return { profiles };
     } catch (error) {
@@ -93,7 +89,7 @@ Profile.getInitialProps = async ctx => {
 /* 
 
 mudar o "axios.get" para o link 
-http://purposeapi.azurewebsites.net/api/Client/getByUserName/$%7BuserName%7D
-com a "/${id}" do cliente no lugar de "/$%7BuserName%7D"
+http://purposeapi.azurewebsites.net​/api​/Client​/GetUsuarioByUserName​/{userName}
+com a "/${id}" do cliente no lugar de "/{userName}"
 
 */
