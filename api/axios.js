@@ -10,7 +10,7 @@ axios
         console.log(response);
     })
 
-    .get('http://purposeapi.azurewebsites.net/api/Client')
+    .get('http://purposeapi.azurewebsites.net/api/Client/GetByUserName/${userName}')
     .then(response => {
         console.log(response);
     })

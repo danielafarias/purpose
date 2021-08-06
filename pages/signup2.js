@@ -64,14 +64,6 @@ export default function signUp() {
         },
     });
 
-
-
-
-
-
-
-
-
     const [values, setValues] = React.useState({
         showPassword: false,
     });

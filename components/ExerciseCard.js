@@ -21,8 +21,8 @@ export default function ExerciseCardTest() {
 
     return (
         <div className={styles.organizer}>
-            <Grid >
-                <Grid className={styles.emailConfirmation} item xs={8} sm={4}>
+            <Grid Container>
+                <Grid item className={styles.emailConfirmation} xs={8} sm={4}>
                     <div className={styles.challengeBox}>
                         <div className={styles.container}></div>
                         <img className={styles.progIcon} src='/new_images/redes-03.svg' />
@@ -31,7 +31,7 @@ export default function ExerciseCardTest() {
                         </div>
                     </div>
                 </Grid>
-                <Grid id={styles.oi} xs={8} sm={4} style={{ maxWidth:'100%'}}>
+                <Grid item id={styles.oi} xs={8} sm={4} style={{ maxWidth:'100%'}}>
                     <Button
                         style={{ maxWidth: '40%', textTransform: 'capitalize' }}
 
