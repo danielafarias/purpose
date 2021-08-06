@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'next/link';
 import { useRouter } from 'next/router'
 
 import Head from 'next/head';
@@ -13,14 +12,14 @@ import { Container, Button, } from 'react-bootstrap';
 import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import deepPurple from '@material-ui/core/colors/deepPurple';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 
 export default function signUp() {
 
     const [state, setState] = useState({
         name: '',
-        lastName:'',
+        lastName: '',
         userName: '',
         email: '',
         passwordHash: '',
@@ -77,18 +76,42 @@ export default function signUp() {
         event.preventDefault();
     };
 
+    const [dark, setDark] = React.useState(false);
 
 
     return (
-        <div className={styles.signUp}>
+        <div className={dark == false ? styles.signUp : styles.signUp__dark}>
             <ThemeProvider theme={theme}>
                 <Head>
                     <title>Cadastrar-se | Purple</title>
                     <meta name="description" content="Página de Cadastro da Purple" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
+
                 <header>
-                    <Header pageName='Saudações, viajante! ' />
+                    {
+                        dark == false ?
+                            <Header pageName='Saudações, viajante! ' brightnessIcon={
+                                <Grid container justifyContent='flex-end'>
+                                    <Grid item>
+                                        <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                                            <Brightness4Icon color='secondary' />
+                                        </IconButton>
+                                    </Grid>
+                                </Grid>
+                            }
+                                styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
+                            <HeaderDark pageName='Saudações, viajante! ' brightnessIcon={
+                                <Grid container justifyContent='flex-end'>
+                                    <Grid item>
+                                        <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                                            <Brightness4Icon color='secondary' />
+                                        </IconButton>
+                                    </Grid>
+                                </Grid>
+                            }
+                                styleBrightness={dark == true ? styles.Header__dark : styles.Header} />
+                    }
                 </header>
 
                 <main>
@@ -224,7 +247,7 @@ export default function signUp() {
                                             endAdornment:
                                                 <IconButton
                                                     color='primary'
-                                                    style={{ color: deepPurple[500] }}
+                                                    style={dark == false ? { color: '#673ab7' } : { color: '#7471b6ff' }}
                                                     aria-label="toggle password visibility"
                                                     onClick={handleClickShowPassword}
                                                     onMouseDown={handleMouseDownPassword}
@@ -258,7 +281,7 @@ export default function signUp() {
 
                         </Container>
 
-                        <footer className={styles.signUp__footer}>
+                        <footer className={dark == false ? styles.signUp__footer : styles.signUp__footer__dark}>
                             <Footer />
                         </footer>
                     </form>
