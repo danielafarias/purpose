@@ -4,12 +4,13 @@ import { useRouter } from 'next/router'
 
 import Head from 'next/head';
 import Header from '../components/Header';
+import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/signup.module.scss';
 import axios from 'axios';
 
 import { Container, Button, } from 'react-bootstrap';
-import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
+import { Grid, TextField, Typography, IconButton, SimpleDialog } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
@@ -23,6 +24,7 @@ export default function signUp() {
         userName: '',
         email: '',
         passwordHash: '',
+        birthDate: '',
 
     })
 
@@ -37,8 +39,17 @@ export default function signUp() {
         event.preventDefault();
 
         try {
+
+            if (state.name != '' && state.lastName != '' && state.userName!= '' && state.email != '' && state.passwordHash !='' && state.birthDate != '' ) {
+
+            
             const response = await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', state);
-            console.log(response);
+            console.log(response);}
+
+            else {
+
+            }
+
         } catch (error) {
             console.error("Erro ao realizar o cadastro deste nobre viajante:", error);
         }
@@ -77,6 +88,13 @@ export default function signUp() {
     };
 
     const [dark, setDark] = React.useState(false);
+
+
+
+
+
+
+
 
 
     return (
@@ -224,6 +242,9 @@ export default function signUp() {
                                         }}
                                         fullWidth
                                         type="date"
+                                        name='birthDate'
+                                        value={state.birthDate}
+                                        onChange={handleChange}
                                         defaultValue="2021-08-13"
                                         className={styles.signUp__textField__content}
                                         InputLabelProps={{
