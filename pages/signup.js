@@ -18,15 +18,12 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 export default function signUp() {
 
-    const [state, setState] = useState({
-        name: '',
-        lastName: '',
-        userName: '',
-        email: '',
-        passwordHash: '',
-        birthDate: '',
-
-    })
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [birthDate, setBirthDate] = useState('');
+    const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [passwordHash, setPasswordHash] = useState('');
 
     const handleChange = ({ target: { name, value } }) => {
         setState(prev => ({
@@ -160,8 +157,8 @@ export default function signUp() {
                                         fullWidth
                                         type="text"
                                         name='name'
-                                        value={state.name}
-                                        onChange={handleChange}
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
                                     />
 
                                 </Grid>
@@ -178,8 +175,8 @@ export default function signUp() {
                                         fullWidth
                                         type="text"
                                         name='lastName'
-                                        value={state.lastName}
-                                        onChange={handleChange}
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
                                     />
                                 </Grid>
 
@@ -194,8 +191,8 @@ export default function signUp() {
                                         fullWidth
                                         type="text"
                                         name='userName'
-                                        value={state.userName}
-                                        onChange={handleChange}
+                                        value={values.userName}
+                                        onChange={(e) => setUserName(e.target.value)}
                                     />
 
                                 </Grid>
@@ -213,23 +210,10 @@ export default function signUp() {
                                         fullWidth
                                         type="email"
                                         name='email'
-                                        value={state.email}
-                                        onChange={handleChange}
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
 
-                                </Grid>
-
-
-                                <Grid xs={8} sm={4} item id={styles.signUp__textField}>
-                                    <TextField
-                                        required
-                                        id={styles.signUp__textField__content}
-                                        label="Confirme seu E-mail"
-                                        InputProps={{ disableUnderline: (true) }}
-                                        variant="standard"
-                                        fullWidth
-                                        type="email"
-                                    />
                                 </Grid>
 
                                 <Grid xs={8} sm={4} item id={styles.signUp__textField}>
@@ -243,8 +227,8 @@ export default function signUp() {
                                         fullWidth
                                         type="date"
                                         name='birthDate'
-                                        value={state.birthDate}
-                                        onChange={handleChange}
+                                        value={birthDate}
+                                        onChange={(e) => setBirthDate(e.target.value)}
                                         defaultValue="2021-08-13"
                                         className={styles.signUp__textField__content}
                                         InputLabelProps={{
@@ -261,8 +245,8 @@ export default function signUp() {
                                         label='Senha'
                                         fullWidth
                                         name='passwordHash'
-                                        value={state.passwordHash}
-                                        onChange={handleChange}
+                                        value={values.passwordHash && passwordHash}
+                                        onChange={(e) => setPasswordHash(e.target.value) && handleChange}
                                         InputProps={{
                                             disableUnderline: (true),
                                             endAdornment:
@@ -285,6 +269,7 @@ export default function signUp() {
                                     <Button
                                         className={styles.signUp__button}
                                         variant="primary"
+                                        disabled={name == '' || lastName == '' || birthDate == '' || userName == '' || email == '' || passwordHash == '' ? true : false}
                                         type='submit'
                                         onClick={() => router.push('/')}>
                                         Aventurar-se
