@@ -56,9 +56,9 @@ export default function Login() {
     auth: {
         email: email,
         password: passwordHash
-<<<<<<< HEAD
-      }
-=======
+// <<<<<<< HEAD
+//       }
+// =======
 //       } 
 //     })
 //     .then((response) => {
