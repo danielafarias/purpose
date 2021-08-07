@@ -56,7 +56,17 @@ export default function Login() {
     auth: {
         email: email,
         password: passwordHash
+<<<<<<< HEAD
       }
+=======
+//       } 
+//     })
+//     .then((response) => {
+//       if (response.data.accessToken) {
+//         localStorage.setItem('user', JSON.stringify(response.data));
+//       }
+//       return response.data;
+// >>>>>>> 981f38fccb3303c27f372743ca1f73f6e63ddb13
     });
   }
 
