@@ -56,19 +56,13 @@ export default function Login() {
     auth: {
         email: email,
         password: passwordHash
-      } (function (){
-        'use strict';
-      
-        var btnSetItem = document.querySelector('.btnSetItem')
-      
-        function setLocalStorage(){
-           btnSetItem.addEventListener('click', () => {
-            localStorage.setItem('userName', verification.userName)
-          })
-        }
-        setLocalStorage()
-      
-      }())
+      } 
+    })
+    .then((response) => {
+      if (response.data.accessToken) {
+        localStorage.setItem('user', JSON.stringify(response.data));
+      }
+      return response.data;
     });
   }
 
