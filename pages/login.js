@@ -41,15 +41,14 @@ export default function Login() {
 
   const [error, setError] = React.useState(false);
   
-  const verification = async event => {
+  const submitHandler = async event => {
     event.preventDefault();
 
         try {
 
           await login(email, passwordHash)
-          if (response.data.accessToken) {
-            localStorage.setItem('user', JSON.stringify(response.data));
-          } 
+          
+          // localStorage.setItem('user', JSON.stringify(response.data));
 
           router.push('/dashboard');
 
@@ -59,7 +58,9 @@ export default function Login() {
 
           }
 
-    console.log(error)
+    console.log(error);
+    console.log(email);
+    console.log(passwordHash);
   }
 
 
@@ -101,75 +102,77 @@ export default function Login() {
       </header>
 
       <main>
-        <Grid container direction='column' justifyContent='center' alignItems='center' >
+        <form onSubmit={submitHandler}>
+          <Grid container direction='column' justifyContent='center' alignItems='center' >
 
-          <Grid className={styles.login__name} item xs={8} sm={4}>
-            <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
-            <Typography variant="h3">Purple</Typography>
+            <Grid className={styles.login__name} item xs={8} sm={4}>
+              <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
+              <Typography variant="h3">Purple</Typography>
+            </Grid>
+
+            <Grid className={styles.login__img} item xs={8} sm={4}>
+              <img src='/images/castle3.svg' />
+            </Grid>
+
+            <Grid item xs={8} sm={4} id={styles.login__textField}>
+              <TextField
+                error={false}
+                id={styles.login__textField__content}
+                label="E-mail"
+                InputProps={{
+                  disableUnderline: (true),
+                  endAdornment: <EmailIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
+                }}
+                variant="standard"
+                fullWidth
+                type="text"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+            </Grid>
+
+            <Grid item xs={8} sm={4} id={styles.login__textField}>
+              <TextField
+                id={styles.signUp__textField__content}
+                type={values.showPassword ? 'text' : 'password'}
+                label='Senha'
+                fullWidth
+                name='passwordHash'
+                value={values.passwordHash}
+                onChange={(e) => setPasswordHash(e.target.value) && handleChange}
+                InputProps={{
+                  disableUnderline: (true),
+                  endAdornment:
+                    <IconButton
+                      color='primary'
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                }}
+              />
+            </Grid>
+
+            <Grid item xs={8} sm={4}>
+              <Button 
+              variant="contained" 
+              color="primary"
+              type="submit">
+                Aventurar-se
+              </Button>
+            </Grid>
+
+            <Grid item xs={8} sm={4}>
+              <Typography
+                id={styles.login__link}
+                variant="body2">
+                <a href='/'>Esqueci a senha</a> | <a href='/signup'>Cadastre-se</a>
+              </Typography>
+            </Grid>
           </Grid>
-
-          <Grid className={styles.login__img} item xs={8} sm={4}>
-            <img src='/images/castle3.svg' />
-          </Grid>
-
-          <Grid item xs={8} sm={4} id={styles.login__textField}>
-            <TextField
-              error={false}
-              id={styles.login__textField__content}
-              label="E-mail"
-              InputProps={{
-                disableUnderline: (true),
-                endAdornment: <EmailIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
-              }}
-              variant="standard"
-              fullWidth
-              type="text"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-
-          </Grid>
-
-          <Grid item xs={8} sm={4} id={styles.login__textField}>
-            <TextField
-              id={styles.signUp__textField__content}
-              type={values.showPassword ? 'text' : 'password'}
-              label='Senha'
-              fullWidth
-              name='passwordHash'
-              value={values.passwordHash}
-              onChange={(e) => setPasswordHash(e.target.value) && handleChange}
-              InputProps={{
-                disableUnderline: (true),
-                endAdornment:
-                  <IconButton
-                    color='primary'
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-              }}
-            />
-          </Grid>
-
-          <Grid item xs={8} sm={4}>
-            <Button 
-            variant="contained" 
-            color="primary"
-            onClick={verification}>
-              Aventurar-se
-            </Button>
-          </Grid>
-
-          <Grid item xs={8} sm={4}>
-            <Typography
-              id={styles.login__link}
-              variant="body2">
-              <a href='/'>Esqueci a senha</a> | <a href='/signup'>Cadastre-se</a>
-            </Typography>
-          </Grid>
-        </Grid>
+        </form>
       </main>
 
       <footer className={dark == false ? styles.login__footer : styles.login__footer__dark}>
