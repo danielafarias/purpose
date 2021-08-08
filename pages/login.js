@@ -10,7 +10,7 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import EmailIcon from '@material-ui/icons/Email';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import axios from 'axios';
+import { login } from '../api/axios';
 import { useRouter } from 'next/router'
 
 
@@ -50,20 +50,28 @@ export default function Login() {
 
   const [email, setEmail] = React.useState('')
   const [passwordHash, setPasswordHash]  = React.useState('');
+
+  const [error, setError] = React.useState(false);
   
-  const verification = async () => {
-    await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Token', {email, passwordHash}, {
-    auth: {
-        email: email,
-        password: passwordHash
-      } 
-    })
-    .then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem('user', JSON.stringify(response.data));
-      }
-      return response.data;
-    });
+  const verification = async event => {
+    event.preventDefault();
+
+        try {
+
+          await login(email, passwordHash)
+          if (response.data.accessToken) {
+            localStorage.setItem('user', JSON.stringify(response.data));
+          } 
+
+          router.push('/dashboard');
+
+        } catch (err) {
+
+            setError(true);
+
+          }
+
+    console.log(error)
   }
 
   const router = useRouter();
@@ -160,7 +168,7 @@ export default function Login() {
             <Grid item xs={8} sm={4}>
               <Button
                 id={styles.login__button}
-                onClick={() => router.push('/dashboard') && verification}>
+                onClick={verification}>
                 Aventurar-se
               </Button>
 
