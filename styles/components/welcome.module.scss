@@ -30,54 +30,6 @@
         text-align: center;
         padding-top: 1rem;
         
-        &__register {
-            background-color: #673ab7;
-            border-color: #673ab7;
-            border-radius: 0.5rem;
-            width: 12rem;
-            margin: 0.5rem auto;
-            
-            &:hover {
-                border-color: #5013bb;
-                background-color: #5013bb;
-            }
-    
-            &:focus {
-                box-shadow: 0px 0px 0px 4px #9473cb;
-                border-color: #673ab7;
-                background-color: #673ab7;
-            }
-    
-            &:active {
-                border-color: #673ab7;
-            }
-        }
-        
-        &__login {
-            background-color: #e0e0e0;
-            color: #673ab7;
-            border-color: #e0e0e0;
-            border-radius: 0.5rem;
-            width: 12rem;
-            margin: 0.5rem auto;
-
-            &:hover {
-                border-color: #673ab7;
-                background-color: #5013bb;
-                color: #e0e0e0;
-            }
-    
-            &:focus {
-                box-shadow: 0px 0px 0px 4px #9473cb;
-                border-color: #673ab7;
-                background-color: #673ab7;
-                color: #e0e0e0;
-            }
-    
-            &:active {
-                border-color: #673ab7;
-            }
-        }
     }
     
     &__intro {

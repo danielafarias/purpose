@@ -1,0 +1,34 @@
+.editChar {
+
+    &__selectChar {
+        background-color: rgba(179, 179, 179, 0.5);
+        border-radius: 1rem;
+    }
+
+    &__texts {
+        color: #FEFEFE;
+        text-shadow: 0px 0px 2px #000000;
+        text-align: center;
+
+        &:first-child {
+            margin-bottom: 1.5rem;
+            font-size: 25px;
+        }
+    }
+
+    &__chars {
+        background-color: rgba(179, 179, 179, 0.5);
+        border-radius: 1rem;
+    }
+
+    &__charImage {
+        width: 9.5rem;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+    
+}

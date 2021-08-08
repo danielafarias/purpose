@@ -1,11 +1,13 @@
 import Head from 'next/head';
-import { Container, Grid, Typography } from '@material-ui/core';
-import { Button } from 'react-bootstrap';
-import FloatMenu from '../components/FloatMenu';
+import { useRouter } from 'next/router'
+import { Container, Grid, Typography, Button } from '@material-ui/core';
 import axios from 'axios';
-import styles from '../styles/profile.module.scss';
+import FloatMenu from '../components/FloatMenu';
+import styles from '../styles/pages/profile.module.scss';
 
 export default function Profile({ profiles }) {
+
+    const router = useRouter()
     
     return (
         <div className={styles.profile}>
@@ -50,7 +52,12 @@ export default function Profile({ profiles }) {
 
                             <Typography className={styles.profile__charTexts}>Ouro:</Typography>
 
-                            <Button className={styles.profile__buttons} variant="primary" href='profile/edit-char'>Editar Personagem</Button>
+                            <Button 
+                                variant="contained" 
+                                color="primary" 
+                                onClick={() => router.push('/profile/edit-char')}>
+                                    Editar Personagem
+                                </Button>
                         </Grid>
                     </Grid>
 
@@ -66,7 +73,12 @@ export default function Profile({ profiles }) {
                             <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
                             <img src='badges/xing-svgrepo-com.svg' className={styles.profile__bagdesImage} />
                         </Grid>
-                        <Button className={styles.profile__buttons} variant="primary" href='profile/badges'>Ver mais</Button>
+                        <Button 
+                            variant="contained" 
+                            color="primary"
+                            onClick={() => router.push('/profile/badges')}>
+                                Ver mais
+                            </Button>
                     </Grid>
                 </Grid>
             </Container>
@@ -78,7 +90,7 @@ export default function Profile({ profiles }) {
 
 Profile.getInitialProps = async ctx => {
     try {
-        const prof = await axios.get('http://purposeapi.azurewebsites.net​/api​/Client​');
+        const prof = await axios.get('http://purposeapi.azurewebsites.net/api/Client');
         const profiles = prof.data;
         return { profiles };
     } catch (error) {

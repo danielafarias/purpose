@@ -1,19 +1,22 @@
-import Head from 'next/head';
-import Footer from '../components/Footer';
-import styles from '../styles/welcome.module.scss';
-import { Button } from 'react-bootstrap';
-import { Container, Grid, Typography, IconButton } from '@material-ui/core';
 import React from 'react';
+import Head from 'next/head';
+import { useRouter } from 'next/router'
+import { Container, Grid, Typography, IconButton, Button } from '@material-ui/core';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
+import Footer from '../components/Footer';
+import styles from '../styles/components/welcome.module.scss';
 
 export default function Welcome() {
 
     const [dark, setDark] = React.useState(false);
+    const router = useRouter()
 
     return (
         <div className={dark == false ? styles.welcome : styles.welcome__dark}>
             <Head>
                 <title>Purple</title>
+                <meta name="description" content="Página de Login da Purple" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
                 <Container fixed> 
@@ -43,13 +46,21 @@ export default function Welcome() {
 
                             <Grid item className={styles.buttons}>
                                 <Grid item xs={12} sm={6}>
-
-                                    <Button href='/signup' className={styles.buttons__register} varian="primary">Inscrever-se</Button>
-
+                                    <Button 
+                                        variant="contained" 
+                                        color="primary"
+                                        onClick={() => router.push('/signup')}>
+                                            Inscrever-se
+                                        </Button>
                                 </Grid>
 
                                 <Grid item xs={12} sm={6}>
-                                    <Button href='/login' className={styles.buttons__login} variant="primary">Entrar</Button>
+                                    <Button 
+                                        variant="contained" 
+                                        color="secondary" 
+                                        onClick={() => router.push('/login')}>
+                                            Entrar
+                                    </Button>
                                 </Grid>
                             </Grid>
 

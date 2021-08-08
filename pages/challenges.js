@@ -1,8 +1,8 @@
 import React from 'react';
-import LoginHeader from '../components/Header';
-import styles from '../styles/challenges.module.scss'
 import { Grid } from '@material-ui/core'
+import LoginHeader from '../components/Header';
 import FloatMenu from '../components/FloatMenu';
+import styles from '../styles/pages/challenges.module.scss'
 
 export default function challenges() {
 

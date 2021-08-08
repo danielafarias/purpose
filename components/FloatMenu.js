@@ -6,7 +6,7 @@ import ListIcon from '@material-ui/icons/List';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import styles from '../styles/floatmenu.module.scss';
+import styles from '../styles/components/floatmenu.module.scss';
 
 export default function FloatMenu() {
     const theme = createTheme({
