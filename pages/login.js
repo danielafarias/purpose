@@ -5,10 +5,14 @@ import { Grid, Typography, IconButton, Button, TextField } from '@material-ui/co
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import EmailIcon from '@material-ui/icons/Email';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
+
 import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/pages/login.module.scss';
+import { login } from '../api/axios';
+
+
 
 
 export default function Login() {
@@ -32,7 +36,33 @@ export default function Login() {
   };
 
   const [email, setEmail] = React.useState('')
-  const [passwordHash, setPasswordHash] = React.useState('');
+
+  const [passwordHash, setPasswordHash]  = React.useState('');
+
+  const [error, setError] = React.useState(false);
+  
+  const verification = async event => {
+    event.preventDefault();
+
+        try {
+
+          await login(email, passwordHash)
+          if (response.data.accessToken) {
+            localStorage.setItem('user', JSON.stringify(response.data));
+          } 
+
+          router.push('/dashboard');
+
+        } catch (err) {
+
+            setError(true);
+
+          }
+
+    console.log(error)
+  }
+
+
   const router = useRouter();
   const [dark, setDark] = React.useState(false);
 
@@ -96,6 +126,7 @@ export default function Login() {
               type="text"
               onChange={(e) => setEmail(e.target.value)}
             />
+
           </Grid>
 
           <Grid item xs={8} sm={4} id={styles.login__textField}>
@@ -126,7 +157,7 @@ export default function Login() {
             <Button 
             variant="contained" 
             color="primary"
-            onClick={() => router.push('/dashboard') && verification}>
+            onClick={verification}>
               Aventurar-se
             </Button>
           </Grid>

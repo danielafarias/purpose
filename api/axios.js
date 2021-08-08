@@ -1,16 +1,34 @@
 import axios from 'axios';
 
-axios
-    .post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', {
-        userName: '',
-        email: '',
-        passwordHash: '',
-    })
-    .then(response => {
-        console.log(response);
-    })
+const baseUrl = 'http://purposeapi.azurewebsites.net/';
 
-    .get('http://purposeapi.azurewebsites.net/api/Client​')
-    .then(response => {
-        console.log(response);
+export const login = async () => {
+    await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Token', {email, passwordHash}, {
+    auth: {
+        email,
+        passwordHash
+      } 
     })
+    .then((response) => {
+      if (response.data.accessToken) {
+        localStorage.setItem('user', JSON.stringify(response.data));
+      }
+      return response.data;
+    });
+  }
+
+export const logout = async () => {
+    localStorage.removeItem('user');
+}
+
+export const register = async(name, lastName, userName, birthDate, email, passwordHash) => {
+    return axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', {
+      name,
+      lastName,
+      userName,
+      birthDate,
+      email,
+      passwordHash
+    });
+}
+

@@ -9,50 +9,46 @@ import axios from 'axios';
 import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
+
 import styles from '../styles/pages/signup.module.scss';
+import { register } from '../api/axios';
+
+import { Container, Button, } from 'react-bootstrap';
+import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
+import { Alert, AlertTitle } from '@material-ui/lab';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 
 export default function signUp() {
 
-    const [state, setState] = useState({
-        name: '',
-        lastName: '',
-        userName: '',
-        email: '',
-        passwordHash: '',
-        birthDate: '',
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [birthDate, setBirthDate] = useState('');
+    const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [passwordHash, setPasswordHash] = useState('');
 
-    })
+    const router = useRouter();
 
-    const handleChange = ({ target: { name, value } }) => {
-        setState(prev => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
+    const [error, setError] = useState(false);
 
     const submitHandler = async event => {
         event.preventDefault();
 
         try {
 
-            if (state.name != '' && state.lastName != '' && state.userName != '' && state.email != '' && state.passwordHash != '' && state.birthDate != '') {
+            await register(name, lastName, userName, birthDate, email, passwordHash)
+            router.push('/login');
 
-
-                const response = await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', state);
-                console.log(response);
-            }
-
-            else {
-
-            }
-
-        } catch (error) {
-            console.error("Erro ao realizar o cadastro deste nobre viajante:", error);
+        } catch(err) { 
+          
+            setError(true);
+          
         }
     }
 
-    const router = useRouter()
 
     const [values, setValues] = React.useState({
         showPassword: false,
@@ -86,6 +82,7 @@ export default function signUp() {
                                         <Brightness4Icon color='primary' />
                                     </IconButton>
                                 </Grid>
+
                             </Grid>
                         }
                             styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
@@ -95,6 +92,7 @@ export default function signUp() {
                                     <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
                                         <Brightness4Icon color='primary' />
                                     </IconButton>
+
                                 </Grid>
                             </Grid>
                         }
@@ -114,6 +112,7 @@ export default function signUp() {
                                 </Typography>
                             </Grid>
 
+
                             <Grid xs={8} sm={4} item className={styles.signUp__image} >
                                 <img src="/new_images/persoicones-10.svg" alt="A letter image." />
                             </Grid>
@@ -130,11 +129,12 @@ export default function signUp() {
                                     fullWidth
                                     type="text"
                                     name='name'
-                                    value={state.name}
-                                    onChange={handleChange}
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                 />
 
                             </Grid>
+
 
                             <Grid xs={8} sm={4} item id={styles.signUp__textField} >
                                 <TextField
@@ -148,8 +148,8 @@ export default function signUp() {
                                     fullWidth
                                     type="text"
                                     name='lastName'
-                                    value={state.lastName}
-                                    onChange={handleChange}
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
                                 />
                             </Grid>
 
@@ -164,13 +164,11 @@ export default function signUp() {
                                     fullWidth
                                     type="text"
                                     name='userName'
-                                    value={state.userName}
-                                    onChange={handleChange}
+                                    value={values.userName}
+                                    onChange={(e) => setUserName(e.target.value)}
                                 />
 
                             </Grid>
-
-
 
                             <Grid xs={8} sm={4} item id={styles.signUp__textField}>
 
@@ -183,24 +181,12 @@ export default function signUp() {
                                     fullWidth
                                     type="email"
                                     name='email'
-                                    value={state.email}
-                                    onChange={handleChange}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
 
                             </Grid>
 
-
-                            <Grid xs={8} sm={4} item id={styles.signUp__textField}>
-                                <TextField
-                                    required
-                                    id={styles.signUp__textField__content}
-                                    label="Confirme seu E-mail"
-                                    InputProps={{ disableUnderline: (true) }}
-                                    variant="standard"
-                                    fullWidth
-                                    type="email"
-                                />
-                            </Grid>
 
                             <Grid xs={8} sm={4} item id={styles.signUp__textField}>
                                 <TextField
@@ -213,8 +199,8 @@ export default function signUp() {
                                     fullWidth
                                     type="date"
                                     name='birthDate'
-                                    value={state.birthDate}
-                                    onChange={handleChange}
+                                    value={birthDate}
+                                    onChange={(e) => setBirthDate(e.target.value)}
                                     defaultValue="2021-08-13"
                                     className={styles.signUp__textField__content}
                                     InputLabelProps={{
@@ -223,43 +209,50 @@ export default function signUp() {
                                 />
                             </Grid>
 
-
-                            <Grid xs={8} sm={4} item id={styles.signUp__textField}>
-                                <TextField
-                                    id={styles.signUp__textField__content}
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    label='Senha'
-                                    fullWidth
-                                    name='passwordHash'
-                                    value={state.passwordHash}
-                                    onChange={handleChange}
-                                    InputProps={{
-                                        disableUnderline: (true),
-                                        endAdornment:
-                                            <IconButton
-                                                color='primary'
-                                                style={dark == false ? { color: '#673ab7' } : { color: '#7471b6ff' }}
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                            >
-                                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                    }}
-                                />
-                            </Grid>
-
+                                <Grid xs={8} sm={4} item id={styles.signUp__textField}>
+                                    <TextField
+                                        id={styles.signUp__textField__content}
+                                        type={values.showPassword ? 'text' : 'password'}
+                                        label='Senha'
+                                        fullWidth
+                                        name='passwordHash'
+                                        value={values.passwordHash && passwordHash}
+                                        onChange={(e) => setPasswordHash(e.target.value) && handleChange}
+                                        InputProps={{
+                                            disableUnderline: (true),
+                                            endAdornment:
+                                                <IconButton
+                                                    color='primary'
+                                                    style={dark == false ? { color: '#673ab7' } : { color: '#7471b6ff' }}
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                >
+                                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                        }}
+                                    />
+                                </Grid>
 
                             <Grid xs={8} sm={4} item>
+
 
                                 <Button
                                     className={styles.signUp__button}
                                     variant="primary"
-                                    type='submit'
-                                    onClick={() => router.push('/')}>
+                                    type='submit'>
                                     Aventurar-se
                                 </Button>
                             </Grid>
+
+                                    { 
+                                        error == false ? null : 
+                                        <Alert severity="error">
+                                            <AlertTitle>Erro</AlertTitle>
+                                            Houve um erro ao realizar o cadastro deste nobre viajante — <strong>Tente novamente!</strong>
+                                        </Alert> 
+                                    }
+
 
                             <Grid xs={8} sm={4} item>
                                 <a href='/login'>Voltar</a>
