@@ -1,10 +1,13 @@
 import Head from 'next/head';
-import { Container, Grid, Typography } from '@material-ui/core';
-import { Button } from 'react-bootstrap';
+import { useRouter } from 'next/router'
+import { Container, Grid, Typography, Button } from '@material-ui/core';
 import FloatMenu from '../../components/FloatMenu';
-import styles from '../../styles/badges.module.scss';
+import styles from '../../styles/pages/badges.module.scss';
 
 export default function Badges() {
+
+    const router = useRouter()
+
     return(
         <div className={styles.badges}>
             <Head>
@@ -71,7 +74,12 @@ export default function Badges() {
                 </Grid>
 
                 <Grid className={styles.badges__buttons}>
-                    <Button className={styles.badges__button} variant="primary" href='/profile'>Voltar</Button>
+                    <Button 
+                        variant="contained" 
+                        color="primary"
+                        onClick={() => router.push('/profile')}>
+                            Voltar
+                    </Button>
                 </Grid>
             </Container>
             <FloatMenu />

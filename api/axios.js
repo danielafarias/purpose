@@ -31,3 +31,4 @@ export const register = async(name, lastName, userName, birthDate, email, passwo
       passwordHash
     });
 }
+

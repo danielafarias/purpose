@@ -1,5 +1,5 @@
 import Header from '../components/Header';
-import styles from '../styles/emailconfirmed.module.scss'
+import styles from '../styles/pages/emailconfirmed.module.scss'
 import { Grid } from '@material-ui/core'
 
 export default function EmailConfirmed() {

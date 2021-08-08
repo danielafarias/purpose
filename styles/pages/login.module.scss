@@ -2,13 +2,6 @@
     width: 100%;
     height: 100%;
     min-height: 100%;
-    background: linear-gradient(
-        180deg,
-        #7471b6 10%,
-        rgba(7, 150, 206, 0.5) 45.33%,
-        rgba(144, 0, 121, 0.1) 60%,
-        rgba(224, 224, 224, 0.64) 100%
-    );
 
     &__name {
         text-align: center;
@@ -41,33 +34,6 @@
             border-radius: 0.4rem;
             color: #673ab7;
             margin: 0.5rem auto;
-        }
-    }
-
-    #login__button {
-        background-color: #673ab7;
-        border-color: #673ab7;
-        color: #e0e0e0;
-        padding: 0.5rem 0rem 0.5rem 0rem;
-        border-radius: 0.75rem;
-        margin: 0.5rem auto;
-        width: 12rem;
-        font-family: "Yatra One", cursive;
-        font-size: 16px;
-
-        &:hover {
-            border-color: #5013bb;
-            background-color: #5013bb;
-        }
-
-        &:focus {
-            box-shadow: 0px 0px 0px 4px #9473cb;
-            border-color: #673ab7;
-            background-color: #673ab7;
-        }
-
-        &:active {
-            border-color: #673ab7;
         }
     }
 

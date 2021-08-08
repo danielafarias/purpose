@@ -1,5 +1,5 @@
 import {Container, Grid} from '@material-ui/core';
-import styles from '../styles/footer.module.scss';
+import styles from '../styles/components/footer.module.scss';
 
 export default function Footer() {
     return(

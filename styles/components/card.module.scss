@@ -7,13 +7,7 @@ card.module.scss
     align-items: center;
     min-height: 100%;
     width: 100%;
-    background: linear-gradient(
-        180deg,
-        #7471b6 10%,
-        rgba(7, 150, 206, 0.5) 45.33%,
-        rgba(144, 0, 121, 0.1) 60%,
-        rgba(224, 224, 224, 0.64) 100%
-    );
+
 }
 
 .header {
@@ -30,16 +24,9 @@ card.module.scss
     padding-bottom: 15vmax;
 }
 
-#oi{
-    align-items: center;
-    text-align: center;
-    margin-top: 0.5rem;
-}
 .challengeBox {
     position: absolute;
     background: oldlace;
-    border-color: #5013bb;
-    border-style: double;
     left: 50%;
     margin-left: -20vmax;
     width: 40vmax;
@@ -82,36 +69,4 @@ card.module.scss
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-}
-
-#typo {
-    font-size: 100%;
-}
-
-
-#login__button {
-    background-color: #673ab7;
-    border-color: #673ab7;
-    color: #e0e0e0;
-    padding: 0.5rem 0rem 0.5rem 0rem;
-    border-radius: 0.75rem;
-    margin: 0.1rem auto;
-    width: 12rem;
-    font-family: "Yatra One", cursive;
-    font-size: 16px;
-    
-    &:hover {
-        border-color: #673ab7;
-        background-color: #5013bb;
-    }
-
-    &:focus {
-        box-shadow: 0px 0px 0px 4px #9473cb;
-        border-color: #673ab7;
-        background-color: #673ab7;
-    }
-
-    &:active {
-        border-color: #673ab7;
-    }
 }

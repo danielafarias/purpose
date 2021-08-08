@@ -1,10 +1,12 @@
 import Head from 'next/head';
-import { Container, Grid, Typography} from '@material-ui/core';
-import { Button } from 'react-bootstrap';
+import { useRouter } from 'next/router'
+import { Container, Grid, Typography, Button} from '@material-ui/core';
 import FloatMenu from '../../components/FloatMenu';
-import styles from '../../styles/edit-char.module.scss';
+import styles from '../../styles/pages/edit-char.module.scss';
 
 export default function EditChar() {
+
+    const router = useRouter()
 
     return(
         <div className={styles.editChar}>
@@ -13,7 +15,7 @@ export default function EditChar() {
             </Head>
             <Container fixed>
                 <Typography className={styles.editChar__texts}>Personagens</Typography>
-                <Grid container justifyContent="center" alignItems="center" spacing={4}>
+                <Grid container direction='column' justifyContent="center" alignItems="center" spacing={4}>
                     <Grid item className={styles.editChar__selectChar}>
                         <img src='../new_images/persoicones-23.svg' className={styles.editChar__charImage} />
                         <Typography className={styles.editChar__texts}>Selecionado</Typography>
@@ -30,8 +32,18 @@ export default function EditChar() {
                 </Grid>
 
                 <Grid className={styles.editChar__buttons}>
-                    <Button className={styles.editChar__button} variant="primary" href='/profile'>Salvar</Button>
-                    <Button className={styles.editChar__button} variant="primary" href='/profile'>Voltar</Button>
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        onClick={() => router.push('/profile')}>
+                            Salvar
+                        </Button>
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        onClick={() => router.push('/profile')}>
+                            Voltar
+                        </Button>
                 </Grid>
             </Container>
             <FloatMenu />

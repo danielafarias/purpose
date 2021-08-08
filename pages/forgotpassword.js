@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import styles from '../styles/forgotpassword.module.scss';
+import styles from '../styles/pages/forgotpassword.module.scss';
 import { Grid, TextField } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';

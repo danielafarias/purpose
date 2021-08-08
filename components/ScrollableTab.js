@@ -1,32 +1,15 @@
-import { useState } from 'react';
-
-import { createTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/core/styles';
-
-import styles from '../styles/scrolltab.module.scss';
-import ExerciseCard from './ExerciseCard';
-import ExerciseCardTest from '../components/ExerciseCardTest';
-import { Grid } from '@material-ui/core';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Head from 'next/head';
-import { Container, Button, } from 'react-bootstrap';
-
-
-
 import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import ExerciseCardTest from '../components/ExerciseCardTest';
+import { Grid, Typography, Box } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import Tabs from '@material-ui/core/Tabs';
+import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-
 
     return (
         <div

@@ -1,20 +1,15 @@
-import { useState } from 'react';
 import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
-import styles from '../styles/dashboard.module.scss';
-import { Grid } from '@material-ui/core';
+import styles from '../styles/pages/dashboard.module.scss';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Head from 'next/head';
-import { Container } from 'react-bootstrap';
 import FloatMenu from '../components/FloatMenu';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import ScrollableTab from '../components/ScrollableTab';
 
 export default function dashboard() {
-
-
 
   const theme = createTheme({
     palette: {
