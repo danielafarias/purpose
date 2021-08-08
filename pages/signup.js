@@ -7,10 +7,11 @@ import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/signup.module.scss';
-import axios from 'axios';
+import { register } from '../api/axios';
 
 import { Container, Button, } from 'react-bootstrap';
-import { Grid, TextField, Typography, IconButton, SimpleDialog } from '@material-ui/core';
+import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
@@ -18,47 +19,29 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 export default function signUp() {
 
-    const [state, setState] = useState({
-        name: '',
-        lastName: '',
-        userName: '',
-        email: '',
-        passwordHash: '',
-        birthDate: '',
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [birthDate, setBirthDate] = useState('');
+    const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [passwordHash, setPasswordHash] = useState('');
 
-    })
+    const router = useRouter();
 
-    const handleChange = ({ target: { name, value } }) => {
-        setState(prev => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
+    const [error, setError] = useState(false);
 
     const submitHandler = async event => {
         event.preventDefault();
 
         try {
 
-            if (state.name != '' && state.lastName != '' && state.userName!= '' && state.email != '' && state.passwordHash !='' && state.birthDate != '' ) {
+            await register(name, lastName, userName, birthDate, email, passwordHash)
+            router.push('/login');
 
-            
-            const response = await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Register', state);
-            console.log(response);}
-
-            else {
-
-            }
-
-        } catch (error) {
-            console.error("Erro ao realizar o cadastro deste nobre viajante:", error);
+        } catch(err) { 
+            setError(true);
         }
     }
-
-
-    const router = useRouter()
-
-
 
     const theme = createTheme({
         palette: {
@@ -88,13 +71,6 @@ export default function signUp() {
     };
 
     const [dark, setDark] = React.useState(false);
-
-
-
-
-
-
-
 
 
     return (
@@ -137,7 +113,7 @@ export default function signUp() {
                         <Container className={styles.container} maxwidth={"xs"} spacing={5}>
                             <Grid container direction="column" justifyContent='center' alignItems='center' fullWidth>
                                 <Grid xs={8} sm={4} item className={styles.signUp__introduction}>
-                                    <Typography span className={styles.signUp__introduction} variant="h5">
+                                    <Typography className={styles.signUp__introduction} variant="h5">
                                         Este é o universo Purple.
                                         <br />
                                         E quem é você?
@@ -160,8 +136,8 @@ export default function signUp() {
                                         fullWidth
                                         type="text"
                                         name='name'
-                                        value={state.name}
-                                        onChange={handleChange}
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
                                     />
 
                                 </Grid>
@@ -178,8 +154,8 @@ export default function signUp() {
                                         fullWidth
                                         type="text"
                                         name='lastName'
-                                        value={state.lastName}
-                                        onChange={handleChange}
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
                                     />
                                 </Grid>
 
@@ -194,8 +170,8 @@ export default function signUp() {
                                         fullWidth
                                         type="text"
                                         name='userName'
-                                        value={state.userName}
-                                        onChange={handleChange}
+                                        value={values.userName}
+                                        onChange={(e) => setUserName(e.target.value)}
                                     />
 
                                 </Grid>
@@ -213,23 +189,10 @@ export default function signUp() {
                                         fullWidth
                                         type="email"
                                         name='email'
-                                        value={state.email}
-                                        onChange={handleChange}
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
 
-                                </Grid>
-
-
-                                <Grid xs={8} sm={4} item id={styles.signUp__textField}>
-                                    <TextField
-                                        required
-                                        id={styles.signUp__textField__content}
-                                        label="Confirme seu E-mail"
-                                        InputProps={{ disableUnderline: (true) }}
-                                        variant="standard"
-                                        fullWidth
-                                        type="email"
-                                    />
                                 </Grid>
 
                                 <Grid xs={8} sm={4} item id={styles.signUp__textField}>
@@ -243,9 +206,8 @@ export default function signUp() {
                                         fullWidth
                                         type="date"
                                         name='birthDate'
-                                        value={state.birthDate}
-                                        onChange={handleChange}
-                                        defaultValue="2021-08-13"
+                                        value={birthDate}
+                                        onChange={(e) => setBirthDate(e.target.value)}
                                         className={styles.signUp__textField__content}
                                         InputLabelProps={{
                                             shrink: true,
@@ -261,8 +223,8 @@ export default function signUp() {
                                         label='Senha'
                                         fullWidth
                                         name='passwordHash'
-                                        value={state.passwordHash}
-                                        onChange={handleChange}
+                                        value={values.passwordHash && passwordHash}
+                                        onChange={(e) => setPasswordHash(e.target.value) && handleChange}
                                         InputProps={{
                                             disableUnderline: (true),
                                             endAdornment:
@@ -286,11 +248,18 @@ export default function signUp() {
                                         className={styles.signUp__button}
                                         variant="primary"
                                         type='submit'
-                                        onClick={() => router.push('/')}>
+                                        >
                                         Aventurar-se
 
                                     </Button>
 
+                                    { 
+                                        error == false ? null : 
+                                        <Alert severity="error">
+                                            <AlertTitle>Erro</AlertTitle>
+                                            Houve um erro ao realizar o cadastro deste nobre viajante — <strong>Tente novamente!</strong>
+                                        </Alert> 
+                                    }
 
                                     <Typography
                                         className={styles.login__link}
