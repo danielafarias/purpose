@@ -2,10 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/router'
 import Head from 'next/head';
-import { Container, Grid, TextField, Typography, IconButton, Button, SimpleDialog } from '@material-ui/core';
+import { Container, Grid, TextField, Typography, IconButton, Button } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-import axios from 'axios';
 import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
@@ -13,12 +12,8 @@ import Footer from '../components/Footer';
 import styles from '../styles/pages/signup.module.scss';
 import { register } from '../api/axios';
 
-import { Container, Button, } from 'react-bootstrap';
-import { Grid, TextField, Typography, IconButton } from '@material-ui/core';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 
 export default function signUp() {

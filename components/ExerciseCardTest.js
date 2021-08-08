@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginHeader from './Header';
-import styles from '../styles/exercisecard.module.scss'
+import styles from '../styles/components/exercisecard.module.scss'
 import { Grid, Box, Typography, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
 import { sizing } from '@material-ui/system';
 import { green } from '@material-ui/core/colors';
