@@ -25,11 +25,11 @@ export default function Profile({ profiles }) {
                         </Grid>
 
                         <Grid item>
-                            {profiles.map(profile => (
+                            {/* {profiles.map(profile => (
                                 <Typography className={styles.profile__nameTitle} key={profile.id}>
                                     {profile.userName}
                                 </Typography>
-                            ))}
+                            ))} */}
                         </Grid>
                     </Grid>
 

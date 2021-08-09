@@ -1,10 +1,10 @@
 import React from 'react';
-import ExerciseCardTest from '../components/ExerciseCardTest';
 import { Grid, Typography, Box } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { makeStyles } from '@material-ui/core/styles';
+import ExerciseCardTest from '../components/ExerciseCardTest';
 import PropTypes from 'prop-types';
 
 
@@ -43,7 +43,6 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        
         flexGrow: 1,
         width: '100%',
         backgroundColor: theme.palette.background.paper,
@@ -54,10 +53,7 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-
-
 export default function ScrollableTab() {
-
 
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -66,13 +62,10 @@ export default function ScrollableTab() {
         setValue(newValue);
     };
 
-
     return (
         <div className={classes.root}>
-
             <AppBar position="static" color="default">
                 <Tabs
-                    
                     value={value}
                     onChange={handleChange}
                     indicatorColor="primary"
