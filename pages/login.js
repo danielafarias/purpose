@@ -3,13 +3,13 @@ import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { Grid, Typography, IconButton, Button, TextField } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import EmailIcon from '@material-ui/icons/Email';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/pages/login.module.scss';
-import { login } from '../api/axios';
+import { login, verification } from '../api/axios';
 
 
 export default function Login() {
@@ -32,32 +32,30 @@ export default function Login() {
     event.preventDefault();
   };
 
-  const [email, setEmail] = React.useState('')
+  const [userName, setUserName] = React.useState('')
 
   const [passwordHash, setPasswordHash]  = React.useState('');
+
+  const [email, setEmail]  = React.useState('');
 
   const [error, setError] = React.useState(false);
   
   const submitHandler = async event => {
     event.preventDefault();
 
-        try {
+    try {
 
-          await login(email, passwordHash)
-          
-          // localStorage.setItem('user', JSON.stringify(response.data));
+      await login(email, passwordHash);
+      router.push('/dashboard');
 
-          router.push('/dashboard');
+      verification(userName)
+     
 
-        } catch (err) {
+    } catch (err) {
 
-            setError(true);
+        setError(true);
 
-          }
-
-    console.log(error);
-    console.log(email);
-    console.log(passwordHash);
+      }
   }
 
   const router = useRouter();
@@ -102,6 +100,7 @@ export default function Login() {
           <Grid container direction='column' justifyContent='center' alignItems='center' >
 
             <Grid item xs={8} sm={4} className={styles.login__name}>
+
               <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
               <Typography>
                 <h1 className={styles.login__name__title}>
@@ -112,19 +111,21 @@ export default function Login() {
 
             <Grid item xs={8} sm={4}>
               <img src='/images/castle3.svg' className={styles.login__img}/>
+
             </Grid>
 
             <Grid item xs={8} sm={4} id={styles.login__textField}>
               <TextField
                 error={false}
                 id={styles.login__textField__content}
-                label="E-mail"
+                label="Email"
                 InputProps={{
                   disableUnderline: (true),
-                  endAdornment: <EmailIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
+                  endAdornment: <AccountCircleIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
                 }}
                 variant="standard"
                 fullWidth
+                value={email}
                 type="text"
                 onChange={(e) => setEmail(e.target.value)}
               />
