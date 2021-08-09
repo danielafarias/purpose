@@ -1,10 +1,14 @@
 import React from 'react';
-import LoginHeader from './Header';
-import styles from '../styles/components/exercisecard.module.scss'
-import { Grid, Box, Typography, TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
-import { sizing } from '@material-ui/system';
-import { green } from '@material-ui/core/colors';
+import { Grid, 
+    Typography, 
+    TextField, 
+    Button, Dialog, 
+    DialogActions,
+    DialogContent, 
+    DialogContentText, 
+    DialogTitle } from '@material-ui/core'
 import { withStyles, createTheme } from '@material-ui/core/styles';
+import styles from '../styles/components/exercisecard.module.scss'
 
 
 export default function ExerciseCardTest() {
@@ -25,16 +29,6 @@ export default function ExerciseCardTest() {
             },
         },
     })(TextField);
-
-    const theme = createTheme({
-        palette: {
-            primary: green,
-        },
-    });
-
-
-
-
 
     const [open, setOpen] = React.useState(false);
 
@@ -60,18 +54,12 @@ export default function ExerciseCardTest() {
                 </Grid>
                 <Grid id={styles.oi} xs={8} sm={4} style={{ maxWidth: '100%' }}>
                     <Button
+                        variant="contained"
+                        color="primary"
                         style={{ maxWidth: '40%', textTransform: 'capitalize' }}
-
-                        onClick={handleClickOpen}
-                        id={styles.login__button}>
-                        <Typography id={styles.typo}>Iniciar exercício</Typography>
+                        onClick={handleClickOpen}>
+                        <Typography className={styles.typo}>Iniciar exercício</Typography>
                     </Button>
-
-
-
-
-
-
 
                     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                         <DialogTitle id="form-dialog-title">Exercício x</DialogTitle>
@@ -89,23 +77,18 @@ export default function ExerciseCardTest() {
                                 id="name"
                                 label="Respostinha marota"
                                 type="text"
-                                fullWidth
-                            />
+                                fullWidth />
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleClose} color="primary">
+                            <Button onClick={handleClose} variant="contained" color="primary">
                                 Desisto, vou chorar.
                             </Button>
-                            <Button onClick={handleClose} color="primary">
+                            <Button onClick={handleClose} variant="contained" color="primary">
                                 Soy fueda, acabei!
                             </Button>
                         </DialogActions>
                     </Dialog>
                 </Grid>
-
-
-
-
             </Grid>
         </div>
     )

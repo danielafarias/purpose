@@ -23,7 +23,7 @@ export default function Welcome() {
                     <Grid container>
                         <Grid item>
                             <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                                <Brightness4Icon style={dark == false ? { color: '#673ab7'} : {color:'#7471b6ff'}}/>
+                                <Brightness4Icon style={dark == false ? { color: '#5013bb'} : {color:'#7471b6ff'}}/>
                             </IconButton>
                         </Grid> 
                     </Grid>        
@@ -33,15 +33,25 @@ export default function Welcome() {
 
                         
                             <Grid item className={styles.welcome__header}>
-                              
                                 <img src='images/logosemtexto.svg' className={styles.welcome__header__logo}/>
-                                <Typography variant="span" className={styles.header__title}>Purple</Typography>
-
+                                <Typography>
+                                    <h1 className={styles.header__title}>
+                                        Purple
+                                    </h1>
+                                </Typography>
                             </Grid>
 
                             <Grid item xs={12}>
-                                <Typography variant="h1">Início da Aventura</Typography>
-                                <Typography style={dark == true ? {color: '#E0E0E0'} : {color: '#222222'}} variant="p"><strong>Suba de nível em seu conhecimento de programação</strong></Typography>
+                                <Typography>
+                                    <h2 style={dark == true ? {color: '#E0E0E0'} : {color: '#222222'}}>
+                                        Início da Aventura
+                                    </h2>
+                                </Typography>
+                                <Typography>
+                                    <p style={dark == true ? {color: '#E0E0E0'} : {color: '#222222'}}>
+                                        <strong>Suba de nível em seu conhecimento de programação</strong>
+                                    </p>
+                                </Typography>
                             </Grid>
 
                             <Grid item className={styles.buttons}>
@@ -68,20 +78,26 @@ export default function Welcome() {
 
                         <Grid item xs={12} sm={6} className={styles.welcome__intro}>
                             <img src='new_images/persoicones-24.svg' />
-                            <Typography variant="h2">Quem somos?</Typography>
-                            <Typography variant="p" className={styles.welcome__intro__text}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec dolor 
-                                ac nisi vehicula porttitor. Duis pharetra quam quis sapien fermentum 
-                                sodales. In commodo ex vel egestas euismod. Morbi scelerisque fringilla 
-                                metus non molestie. Pellentesque habitant morbi tristique senectus et 
-                                netus et malesuada fames ac turpis egestas. 
-                                <br></br>
-                                <br></br>
-                                Cras non enim sed tortor bibendum congue ac lobortis erat. 
-                                Curabitur vehicula tristique finibus. Cras tincidunt, sem eu porta 
-                                vestibulum, lectus enim convallis ligula, maximus iaculis lacus nulla 
-                                accumsan quam. Phasellus pharetra malesuada elit, id commodo diam 
-                                aliquam sit amet. 
+                            <Typography>
+                                <h2>
+                                    Quem somos?
+                                </h2>
+                            </Typography>
+                            <Typography>
+                                <p className={styles.welcome__text}>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec dolor 
+                                    ac nisi vehicula porttitor. Duis pharetra quam quis sapien fermentum 
+                                    sodales. In commodo ex vel egestas euismod. Morbi scelerisque fringilla 
+                                    metus non molestie. Pellentesque habitant morbi tristique senectus et 
+                                    netus et malesuada fames ac turpis egestas. 
+                                    <br></br>
+                                    <br></br>
+                                    Cras non enim sed tortor bibendum congue ac lobortis erat. 
+                                    Curabitur vehicula tristique finibus. Cras tincidunt, sem eu porta 
+                                    vestibulum, lectus enim convallis ligula, maximus iaculis lacus nulla 
+                                    accumsan quam. Phasellus pharetra malesuada elit, id commodo diam 
+                                    aliquam sit amet. 
+                                </p>
                             </Typography>
                         </Grid>
                     </Grid>

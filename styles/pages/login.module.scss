@@ -8,18 +8,23 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        font-family: "Yatra One", cursive;
+
+        &__title {
+            font-size: 2.5rem;
+            color: #E0E0E0;
+        }
 
         img {
-            width: 40%;
+            width: 35%;
         }
     }
 
+
     &__img {
-        img {
-            width: 100%;
-            height: auto;
-        }
+
+        width: 100%;
+        height: auto;
+
     }
 
     #login__textField {
@@ -76,7 +81,6 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        font-family: "Yatra One", cursive;
 
         img {
             width: 40%;
@@ -114,7 +118,6 @@
         border-radius: 0.75rem;
         margin: 0.5rem auto;
         width: 12rem;
-        font-family: "Yatra One", cursive;
         font-size: 16px;
 
         &:hover {
@@ -147,9 +150,12 @@
     }
 
     
+}
+#login__brightness {
+    margin: 1rem;
  }
 
- .login__footer {
+.login__footer {
     background-image: linear-gradient(to bottom, #673ab7, #9473cb);
 }
 

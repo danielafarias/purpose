@@ -3,6 +3,7 @@ import { Fab, Menu, IconButton } from '@material-ui/core'
 import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
 import ListIcon from '@material-ui/icons/List';
+import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -47,7 +48,6 @@ export default function FloatMenu() {
     };
 
     return (
-
         <ThemeProvider theme={theme}>
             <Fab color="primary" onClick={handleClick} className={styles.floatMenu} style={floatMenu} >
                 <ListIcon />
@@ -60,13 +60,12 @@ export default function FloatMenu() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-
-                <IconButton onClick={handleClose} href='/profile'> <AccountCircleIcon /> </IconButton>
+                <IconButton onClick={handleClose} href="/dashboard"> <HomeIcon /> </IconButton>
+                <IconButton onClick={handleClose} href="/profile"> <AccountCircleIcon /> </IconButton>
                 <IconButton onClick={handleClose}> <SettingsIcon /> </IconButton>
                 <IconButton onClick={handleClose}> <ExitToAppIcon /> </IconButton>
             </Menu>
         </ThemeProvider>
-
     );
 
 };
