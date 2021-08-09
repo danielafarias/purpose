@@ -1,0 +1,20 @@
+.botao {
+    position: absolute;
+    left: 100%;
+    width: 12rem;
+    height: 3rem;
+    background-image: linear-gradient(to bottom, #673AB7 , #9473CB);
+    border: none;
+    border-radius: 50px;
+    margin-left: -12rem;
+    text-align: center;
+}
+
+.full {
+    background: rgb(82, 119, 228)
+}
+
+.inv {
+    height: 10vmax;
+    background: #9473CB;
+}
