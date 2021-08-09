@@ -78,34 +78,6 @@ card.module.scss
     border-radius: 50%;
 }
 
-#typo {
+.typo {
     font-size: 100%;
-}
-
-
-#login__button {
-    background-color: #673ab7;
-    border-color: #673ab7;
-    color: #e0e0e0;
-    padding: 0.5rem 0rem 0.5rem 0rem;
-    border-radius: 0.75rem;
-    margin: 0.1rem auto;
-    width: 12rem;
-    font-family: "Yatra One", cursive;
-    font-size: 16px;
-    
-    &:hover {
-        border-color: #673ab7;
-        background-color: #5013bb;
-    }
-
-    &:focus {
-        box-shadow: 0px 0px 0px 4px #9473cb;
-        border-color: #673ab7;
-        background-color: #673ab7;
-    }
-
-    &:active {
-        border-color: #673ab7;
-    }
 }

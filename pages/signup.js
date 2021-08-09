@@ -1,19 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
-import { useRouter } from 'next/router'
 import Head from 'next/head';
+import { useRouter } from 'next/router'
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { Container, Grid, TextField, Typography, IconButton, Button } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
+import { register } from '../api/axios';
 import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
-
 import styles from '../styles/pages/signup.module.scss';
-import { register } from '../api/axios';
-
-import { Alert, AlertTitle } from '@material-ui/lab';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 
 export default function signUp() {
@@ -44,7 +41,6 @@ export default function signUp() {
         }
     }
 
-
     const [values, setValues] = React.useState({
         showPassword: false,
     });
@@ -70,24 +66,23 @@ export default function signUp() {
             <header>
                 {
                     dark == false ?
-                        <Header pageName='Saudações, viajante! ' brightnessIcon={
+                        <Header pageName='Saudações, viajante!' brightnessIcon={
                             <Grid container justifyContent='flex-end'>
                                 <Grid item>
                                     <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                                        <Brightness4Icon color='primary' />
+                                        <Brightness4Icon style={{color: '#5013bb'}}/>
                                     </IconButton>
                                 </Grid>
 
                             </Grid>
                         }
                             styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
-                        <HeaderDark pageName='Saudações, viajante! ' brightnessIcon={
+                        <HeaderDark pageName='Saudações, viajante!' brightnessIcon={
                             <Grid container justifyContent='flex-end'>
                                 <Grid item>
                                     <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                                        <Brightness4Icon color='primary' />
+                                        <Brightness4Icon style={{color:'#7471b6ff'}}/>
                                     </IconButton>
-
                                 </Grid>
                             </Grid>
                         }
@@ -100,19 +95,20 @@ export default function signUp() {
                     <Container className={styles.container} maxwidth={"xs"} spacing={5}>
                         <Grid container direction="column" justifyContent='center' alignItems='center' fullWidth>
                             <Grid xs={8} sm={4} item className={styles.signUp__introduction}>
-                                <Typography span className={styles.signUp__introduction} variant="h5">
-                                    Este é o universo Purple.
-                                    <br />
-                                    E quem é você?
+                                <Typography>
+                                    <h1 className={styles.signUp__introduction}>
+                                        Este é o universo Purple.
+                                        <br />
+                                        E quem é você?
+                                    </h1>
                                 </Typography>
                             </Grid>
-
 
                             <Grid xs={8} sm={4} item className={styles.signUp__image} >
                                 <img src="/new_images/persoicones-10.svg" alt="A letter image." />
                             </Grid>
 
-                            <Grid xs={8} sm={4} item id={styles.signUp__textField} >
+                            <Grid xs={10} sm={8} md={6} item id={styles.signUp__textField} >
                                 <TextField
                                     required
                                     id={styles.signUp__textField__content}
@@ -130,8 +126,7 @@ export default function signUp() {
 
                             </Grid>
 
-
-                            <Grid xs={8} sm={4} item id={styles.signUp__textField} >
+                            <Grid xs={10} sm={8} md={6} item id={styles.signUp__textField} >
                                 <TextField
                                     required
                                     id={styles.signUp__textField__content}
@@ -148,7 +143,7 @@ export default function signUp() {
                                 />
                             </Grid>
 
-                            <Grid xs={8} sm={4} item id={styles.signUp__textField} >
+                            <Grid xs={10} sm={8} md={6} item id={styles.signUp__textField} >
 
                                 <TextField
                                     required
@@ -165,7 +160,7 @@ export default function signUp() {
 
                             </Grid>
 
-                            <Grid xs={8} sm={4} item id={styles.signUp__textField}>
+                            <Grid xs={10} sm={8} md={6} item id={styles.signUp__textField}>
 
                                 <TextField
                                     required
@@ -182,29 +177,27 @@ export default function signUp() {
 
                             </Grid>
 
-
-                            <Grid xs={8} sm={4} item id={styles.signUp__textField}>
+                            <Grid xs={10} sm={8} md={6} item id={styles.signUp__textField}>
                                 <TextField
                                     required
                                     id={styles.signUp__textField__content}
                                     label="Data de Nascimento"
-                                    InputProps={{
-                                        disableUnderline: true,
-                                    }}
                                     fullWidth
                                     type="date"
                                     name='birthDate'
                                     value={birthDate}
                                     onChange={(e) => setBirthDate(e.target.value)}
                                     defaultValue="2021-08-13"
-                                    className={styles.signUp__textField__content}
+                                    InputProps={{
+                                        disableUnderline: true,
+                                    }}
                                     InputLabelProps={{
-                                        shrink: true,
+                                        shrink: true
                                     }}
                                 />
                             </Grid>
 
-                                <Grid xs={8} sm={4} item id={styles.signUp__textField}>
+                                <Grid xs={10} sm={8} md={6} item id={styles.signUp__textField}>
                                     <TextField
                                         id={styles.signUp__textField__content}
                                         type={values.showPassword ? 'text' : 'password'}
@@ -218,7 +211,7 @@ export default function signUp() {
                                             endAdornment:
                                                 <IconButton
                                                     color='primary'
-                                                    style={dark == false ? { color: '#673ab7' } : { color: '#7471b6ff' }}
+                                                    style={{ color: '#000000' }}
                                                     aria-label="toggle password visibility"
                                                     onClick={handleClickShowPassword}
                                                     onMouseDown={handleMouseDownPassword}
@@ -229,8 +222,7 @@ export default function signUp() {
                                     />
                                 </Grid>
 
-                            <Grid xs={8} sm={4} item>
-
+                            <Grid xs={8} sm={6} md={4} item>
 
                                 <Button
                                     className={styles.signUp__button}
@@ -248,12 +240,10 @@ export default function signUp() {
                                         </Alert> 
                                     }
 
-
                             <Grid xs={8} sm={4} item>
                                 <a href='/login'>Voltar</a>
                             </Grid>
                         </Grid>
-
                     </Container>
 
                     <footer className={dark == false ? styles.signUp__footer : styles.signUp__footer__dark}>
@@ -262,5 +252,6 @@ export default function signUp() {
                 </form>
             </main>
         </div >
-    )
-}
+    );
+    
+};

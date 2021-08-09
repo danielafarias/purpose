@@ -5,14 +5,11 @@ import { Grid, Typography, IconButton, Button, TextField } from '@material-ui/co
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import EmailIcon from '@material-ui/icons/Email';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-
 import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/pages/login.module.scss';
 import { login } from '../api/axios';
-
-
 
 
 export default function Login() {
@@ -63,7 +60,6 @@ export default function Login() {
     console.log(passwordHash);
   }
 
-
   const router = useRouter();
   const [dark, setDark] = React.useState(false);
 
@@ -82,7 +78,7 @@ export default function Login() {
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                    <Brightness4Icon />
+                    <Brightness4Icon style={{color: '#5013bb'}}/>
                   </IconButton>
                 </Grid>
               </Grid>
@@ -92,7 +88,7 @@ export default function Login() {
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                    <Brightness4Icon />
+                    <Brightness4Icon style={{color:'#7471b6ff'}}/>
                   </IconButton>
                 </Grid>
               </Grid>
@@ -105,13 +101,17 @@ export default function Login() {
         <form onSubmit={submitHandler}>
           <Grid container direction='column' justifyContent='center' alignItems='center' >
 
-            <Grid className={styles.login__name} item xs={8} sm={4}>
+            <Grid item xs={8} sm={4} className={styles.login__name}>
               <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
-              <Typography variant="h3">Purple</Typography>
+              <Typography>
+                <h1 className={styles.login__name__title}>
+                  Purple 
+                </h1>
+              </Typography>
             </Grid>
 
-            <Grid className={styles.login__img} item xs={8} sm={4}>
-              <img src='/images/castle3.svg' />
+            <Grid item xs={8} sm={4}>
+              <img src='/images/castle3.svg' className={styles.login__img}/>
             </Grid>
 
             <Grid item xs={8} sm={4} id={styles.login__textField}>
@@ -144,7 +144,7 @@ export default function Login() {
                   disableUnderline: (true),
                   endAdornment:
                     <IconButton
-                      color='primary'
+                      style={dark == false ? { color: '#673ab7'} : { color: '#7471b6ff'}}
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
