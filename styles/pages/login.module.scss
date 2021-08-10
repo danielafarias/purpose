@@ -19,7 +19,6 @@
         }
     }
 
-
     &__img {
 
         width: 100%;
@@ -27,7 +26,7 @@
 
     }
 
-    #login__textField {
+    .login__textField {
         width: 40vmax;
         padding: 0.5rem;
         margin: 0.5rem auto;
@@ -42,17 +41,12 @@
         }
     }
 
-    #login__link {
+    .login__link {
         color: #673ab7;
         text-align: center;
         text-decoration: none;
         font-size: 0.75rem;
         margin: 0.24rem;
-
-        &__decoration {
-            text-decoration: none;
-            color: #673ab7;
-        }
     }
 
     &__footer {
@@ -66,9 +60,7 @@
     margin: 1rem;
  }
 
-
 /////////////////////////////////////////////////////////////////////////////
-
 
  .login__darkMode {
     width: 100%;
@@ -94,7 +86,7 @@
         }
     }
 
-    #login__textField {
+    .login__textField {
         width: 40vmax;
         padding: 0.5rem;
         margin: 0.5rem auto;
@@ -110,46 +102,14 @@
         }
     }
 
-    #login__button {
-        background-color: #7471b6ff;
-        border-color: #7471b6ff;
-        color: #e0e0e0;
-        padding: 0.5rem 0rem 0.5rem 0rem;
-        border-radius: 0.75rem;
-        margin: 0.5rem auto;
-        width: 12rem;
-        font-size: 16px;
-
-        &:hover {
-            border-color: #5013bb;
-            background-color: #5013bb;
-        }
-
-        &:focus {
-            box-shadow: 0px 0px 0px 4px #9473cb;
-            border-color: #673ab7;
-            background-color: #673ab7;
-        }
-
-        &:active {
-            border-color: #673ab7;
-        }
-    }
-
-    #login__link {
+    .login__link {
         color: #7471b6ff;
         text-align: center;
         text-decoration: none;
         font-size: 0.75rem;
         margin: 0.24rem;
-
-        &__decoration {
-            text-decoration: none;
-            color: #7471b6ff;
-        }
     }
 
-    
 }
 #login__brightness {
     margin: 1rem;

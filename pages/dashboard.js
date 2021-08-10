@@ -11,9 +11,9 @@ import styles from '../styles/pages/dashboard.module.scss';
 export default function Dashboard() {
 
   return (
-    <div >
+    <div>
       <Head>
-        <title>Dashboard | Purple</title>
+        <title>Purple | Dashboard</title>
         <meta name="description" content="Página de Dashboard de viajante da Purple" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -24,7 +24,6 @@ export default function Dashboard() {
 
       <main className={styles.dash}>
         <ScrollableTab />
-
       </main>
 
       <footer className={styles.footer}>
