@@ -2,20 +2,19 @@ import axios from 'axios';
 
 const baseUrl = 'http://purposeapi.azurewebsites.net/';
 
-export const verification = async (userName) => {
-  return axios.get('http://purposeapi.azurewebsites.net/api/Client/GetUsuarioByUserName/' + userName) 
+export const getUserByEmail = async (email) => {
+  return axios.get(`http://purposeapi.azurewebsites.net/api/Client/GetUsuarioByEmail/?email=${email}`) 
 }
 
 export const login = async (email, passwordHash) => {
-  return axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Token', {
-    email,
-    passwordHash
-  }) 
-  // (response => {
-      
-  //     localStorage.setItem('userToken', JSON.stringify(response.data));
-
-  //   })
+  return await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Token', {email, passwordHash}, {
+    auth: {
+        email,
+        passwordHash
+      } 
+    })(response => {
+      localStorage.setItem('token', response.data);
+  })
 }
 
 export const logout = async () => {
