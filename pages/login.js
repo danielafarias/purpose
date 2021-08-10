@@ -9,7 +9,7 @@ import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/pages/login.module.scss';
-import { login, verification } from '../api/axios';
+import { login, getUserByEmail } from '../api/axios';
 
 
 export default function Login() {
@@ -32,13 +32,17 @@ export default function Login() {
     event.preventDefault();
   };
 
-  const [userName, setUserName] = React.useState('')
-
+  const [email, setEmail]  = React.useState('');
   const [passwordHash, setPasswordHash]  = React.useState('');
 
-  const [email, setEmail]  = React.useState('');
-
   const [error, setError] = React.useState(false);
+
+  const passwordVerification = async event => {
+    event.preventDefault();
+
+    await getUserByEmail(email);
+
+  }
   
   const submitHandler = async event => {
     event.preventDefault();
@@ -48,14 +52,15 @@ export default function Login() {
       await login(email, passwordHash);
       router.push('/dashboard');
 
-      verification(userName)
-     
-
     } catch (err) {
 
         setError(true);
 
       }
+
+      console.log(email, passwordHash);
+      console.log(getUserByEmail);
+      console.log(passwordVerification);
   }
 
   const router = useRouter();
@@ -160,7 +165,8 @@ export default function Login() {
               <Button 
               variant="contained" 
               color="primary"
-              type="submit">
+              type="submit"
+              onClick={() => passwordVerification}>
                 Aventurar-se
               </Button>
             </Grid>
