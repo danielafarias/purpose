@@ -3,13 +3,14 @@ import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { Grid, Typography, IconButton, Button, TextField } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import EmailIcon from '@material-ui/icons/Email';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Header from '../components/Header';
 import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/pages/login.module.scss';
 import { login, getUserByEmail } from '../api/axios';
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 
 export default function Login() {
@@ -35,14 +36,7 @@ export default function Login() {
   const [email, setEmail]  = React.useState('');
   const [passwordHash, setPasswordHash]  = React.useState('');
 
-  const [error, setError] = React.useState(false);
-
-  const passwordVerification = async event => {
-    event.preventDefault();
-
-    await getUserByEmail(email);
-
-  }
+  const [passwordError, setPasswordError] = React.useState(false);
   
   const submitHandler = async event => {
     event.preventDefault();
@@ -50,18 +44,19 @@ export default function Login() {
     try {
 
       await login(email, passwordHash);
-    
+
       router.push('/dashboard');
 
     } catch (err) {
+      setPasswordError(true);
+    }
+      
 
-        setError(true);
-
-      }
+   
 
       console.log(email, passwordHash);
       console.log(getUserByEmail);
-      console.log(passwordVerification);
+      console.log(localStorage.getItem('user'));
   }
 
   const router = useRouter();
@@ -108,11 +103,11 @@ export default function Login() {
             <Grid item xs={8} sm={4} className={styles.login__name}>
 
               <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
-              <Typography>
+
                 <h1 className={styles.login__name__title}>
                   Purple 
                 </h1>
-              </Typography>
+      
             </Grid>
 
             <Grid item xs={8} sm={4}>
@@ -126,9 +121,9 @@ export default function Login() {
                 label="Email"
                 InputProps={{
                   disableUnderline: (true),
-                  endAdornment: 
-                    <AccountCircleIcon 
-                    style={dark == false ? { color: '#673ab7', margin: 12} : { color: '#7471b6ff', margin: 12}} />
+
+                  endAdornment: <EmailIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
+
                 }}
                 fullWidth
                 value={email}
@@ -165,8 +160,7 @@ export default function Login() {
               <Button 
               variant="contained" 
               color="primary"
-              type="submit"
-              onClick={() => passwordVerification}>
+              type="submit">
                 Aventurar-se
               </Button>
             </Grid>
@@ -177,6 +171,15 @@ export default function Login() {
               </Typography>
             </Grid>
           </Grid>
+
+          { 
+            passwordError == false ? null : 
+            <Alert severity="error">
+                <AlertTitle>Erro</AlertTitle>
+                Houve um erro ao realizar o login deste nobre viajante, verifique se seu email e/ou senha estão corretos — <strong>Tente novamente!</strong>
+            </Alert> 
+          }
+
         </form>
       </main>
 

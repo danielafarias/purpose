@@ -12,9 +12,12 @@ export const login = async (email, passwordHash) => {
         email,
         passwordHash
       } 
-    })(response => {
-      localStorage.setItem('token', response.data);
-  })
+    })
+    .then((response) => {
+     
+      localStorage.setItem('user', JSON.stringify(response.data));
+     
+    });
 }
 
 export const logout = async () => {
