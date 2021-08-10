@@ -50,6 +50,7 @@ export default function Login() {
     try {
 
       await login(email, passwordHash);
+    
       router.push('/dashboard');
 
     } catch (err) {

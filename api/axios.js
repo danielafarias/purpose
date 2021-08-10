@@ -7,25 +7,14 @@ export const getUserByEmail = async (email) => {
 }
 
 export const login = async (email, passwordHash) => {
-  // return axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Token', {
-  //   email,
-  //   passwordHash
-  // }) (response => {
-  //   localStorage.setItem('userToken', JSON.stringify(response.data));
-  // })
-      axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Token', {email, passwordHash}, {
+  return await axios.post('http://purposeapi.azurewebsites.net/api/v1/Auth/Token', {email, passwordHash}, {
     auth: {
         email,
         passwordHash
       } 
-    })
-    // .then((response) => {
-    //   if (response.data.accessToken) {
-    //     localStorage.setItem('user', JSON.stringify(response.data));
-    //   }
-    //   return response.data;
-    // });
-  
+    })(response => {
+      localStorage.setItem('token', response.data);
+  })
 }
 
 export const logout = async () => {
