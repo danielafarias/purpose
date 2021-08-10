@@ -121,9 +121,7 @@ export default function Login() {
                 label="Email"
                 InputProps={{
                   disableUnderline: (true),
-
                   endAdornment: <EmailIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
-
                 }}
                 fullWidth
                 value={email}
@@ -134,6 +132,7 @@ export default function Login() {
             </Grid>
 
             <Grid item xs={8} sm={4} className={styles.login__textField}>
+              
               <TextField
                 className={styles.signUp__textField__content}
                 type={values.showPassword ? 'text' : 'password'}
