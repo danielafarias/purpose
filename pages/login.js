@@ -112,19 +112,19 @@ export default function Login() {
 
             <Grid item xs={8} sm={4}>
               <img src='/images/castle3.svg' className={styles.login__img}/>
-
             </Grid>
 
-            <Grid item xs={8} sm={4} id={styles.login__textField}>
+            <Grid item xs={8} sm={4} className={styles.login__textField}>
               <TextField
+                className={styles.login__textField__content}
                 error={false}
-                id={styles.login__textField__content}
                 label="Email"
                 InputProps={{
                   disableUnderline: (true),
+
                   endAdornment: <EmailIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
+
                 }}
-                variant="standard"
                 fullWidth
                 value={email}
                 type="text"
@@ -133,9 +133,9 @@ export default function Login() {
 
             </Grid>
 
-            <Grid item xs={8} sm={4} id={styles.login__textField}>
+            <Grid item xs={8} sm={4} className={styles.login__textField}>
               <TextField
-                id={styles.signUp__textField__content}
+                className={styles.signUp__textField__content}
                 type={values.showPassword ? 'text' : 'password'}
                 label='Senha'
                 fullWidth
@@ -149,9 +149,8 @@ export default function Login() {
                       style={dark == false ? { color: '#673ab7'} : { color: '#7471b6ff'}}
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                      onMouseDown={handleMouseDownPassword}>
+                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                 }}
               />
@@ -167,9 +166,7 @@ export default function Login() {
             </Grid>
 
             <Grid item xs={8} sm={4}>
-              <Typography
-                id={styles.login__link}
-                variant="body2">
+              <Typography className={styles.login__link}>
                 <a href='/'>Esqueci a senha</a> | <a href='/signup'>Cadastre-se</a>
               </Typography>
             </Grid>
