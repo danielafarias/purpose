@@ -14,6 +14,8 @@ import { Alert, AlertTitle } from '@material-ui/lab';
 
 export default function Login() {
 
+
+
   const [values, setValues] = React.useState({
     password: '',
     showPassword: false,
@@ -32,30 +34,38 @@ export default function Login() {
     event.preventDefault();
   };
 
-  const [email, setEmail]  = React.useState('');
-  const [passwordHash, setPasswordHash]  = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [passwordHash, setPasswordHash] = React.useState('');
 
   const [passwordError, setPasswordError] = React.useState(false);
-  
+
   const submitHandler = async event => {
     event.preventDefault();
 
     try {
 
+      const token = localStorage.getItem('user');
+
+      {
+        token == null ? (
+          router.push('/tutorial')
+        ) : (
+          router.push('/dashboard'));
+      };
+
       await login(email, passwordHash);
 
-      router.push('/dashboard');
 
     } catch (err) {
       setPasswordError(true);
     }
-      
 
-   
 
-      console.log(email, passwordHash);
-      console.log(getUserByEmail);
-      console.log(localStorage.getItem('user'));
+
+
+    console.log(email, passwordHash);
+    console.log(getUserByEmail);
+    console.log(localStorage.getItem('user'));
   }
 
   const router = useRouter();
@@ -76,7 +86,7 @@ export default function Login() {
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                    <Brightness4Icon style={{color: '#5013bb'}}/>
+                    <Brightness4Icon style={{ color: '#5013bb' }} />
                   </IconButton>
                 </Grid>
               </Grid>
@@ -86,7 +96,7 @@ export default function Login() {
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                    <Brightness4Icon style={{color:'#7471b6ff'}}/>
+                    <Brightness4Icon style={{ color: '#7471b6ff' }} />
                   </IconButton>
                 </Grid>
               </Grid>
@@ -103,14 +113,14 @@ export default function Login() {
 
               <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
 
-                <h1 className={styles.login__name__title}>
-                  Purple 
-                </h1>
-      
+              <h1 className={styles.login__name__title}>
+                Purple
+              </h1>
+
             </Grid>
 
             <Grid item xs={8} sm={4}>
-              <img src='/images/castle3.svg' className={styles.login__img}/>
+              <img src='/images/castle3.svg' className={styles.login__img} />
             </Grid>
 
             <Grid item xs={8} sm={4} className={styles.login__textField}>
@@ -131,7 +141,7 @@ export default function Login() {
             </Grid>
 
             <Grid item xs={8} sm={4} className={styles.login__textField}>
-              
+
               <TextField
                 className={styles.signUp__textField__content}
                 type={values.showPassword ? 'text' : 'password'}
@@ -144,21 +154,21 @@ export default function Login() {
                   disableUnderline: (true),
                   endAdornment:
                     <IconButton
-                      style={dark == false ? { color: '#673ab7'} : { color: '#7471b6ff'}}
+                      style={dark == false ? { color: '#673ab7' } : { color: '#7471b6ff' }}
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}>
-                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                 }}
               />
             </Grid>
 
             <Grid item xs={8} sm={4}>
-              <Button 
-              variant="contained" 
-              color="primary"
-              type="submit">
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit">
                 Aventurar-se
               </Button>
             </Grid>
@@ -170,12 +180,12 @@ export default function Login() {
             </Grid>
           </Grid>
 
-          { 
-            passwordError == false ? null : 
-            <Alert severity="error">
+          {
+            passwordError == false ? null :
+              <Alert severity="error">
                 <AlertTitle>Erro</AlertTitle>
                 Houve um erro ao realizar o login deste nobre viajante, verifique se seu email e/ou senha estão corretos — <strong>Tente novamente!</strong>
-            </Alert> 
+              </Alert>
           }
 
         </form>
