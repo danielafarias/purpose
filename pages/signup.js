@@ -8,7 +8,6 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { register } from '../api/axios';
 import Header from '../components/Header';
-import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/pages/signup.module.scss';
 
@@ -66,7 +65,7 @@ export default function signUp() {
             <header>
                 {
                     dark == false ?
-                        <Header pageName='Saudações, viajante!' brightnessIcon={
+                        <Header pageName='Saudações, viajante!' darkMode={false} brightnessIcon={
                             <Grid container justifyContent='flex-end'>
                                 <Grid item>
                                     <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
@@ -77,7 +76,7 @@ export default function signUp() {
                             </Grid>
                         }
                             styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
-                        <HeaderDark pageName='Saudações, viajante!' brightnessIcon={
+                        <Header pageName='Saudações, viajante!' darkMode={true} brightnessIcon={
                             <Grid container justifyContent='flex-end'>
                                 <Grid item>
                                     <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>

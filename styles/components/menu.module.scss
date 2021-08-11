@@ -1,0 +1,27 @@
+.Header {
+    background-image: linear-gradient(to bottom, #673AB7 , #9473CB);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-family: "Berkshire Swash", cursive;
+    
+    &__logo {
+        width: 3.5rem;
+        margin: 0.3rem;
+    }
+
+    &__pageName {
+        text-align: left;
+        color: #E0E0E0;
+        font-size: 1.5rem;
+        font-weight: lighter;
+        min-width: 25%;
+    }
+
+}
+
+@media only screen and (max-width: 699px) {
+    #menu {
+        display: none;
+    }
+}

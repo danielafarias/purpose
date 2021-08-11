@@ -6,7 +6,6 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Header from '../components/Header';
-import HeaderDark from '../components/HeaderDark';
 import Footer from '../components/Footer';
 import styles from '../styles/pages/login.module.scss';
 import { login, getUserByEmail } from '../api/axios';
@@ -78,7 +77,7 @@ export default function Login() {
       <header>
         {
           dark == false ?
-            <Header pageName='Entrar' brightnessIcon={
+            <Header pageName='Entrar' darkMode={false} brightnessIcon={
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
@@ -88,7 +87,7 @@ export default function Login() {
               </Grid>
             }
               styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
-            <HeaderDark pageName='Entrar' brightnessIcon={
+            <Header pageName='Entrar' darkMode={true} brightnessIcon={
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>

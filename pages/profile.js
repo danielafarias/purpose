@@ -2,8 +2,11 @@ import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { Container, Grid, Typography, Button } from '@material-ui/core';
 import axios from 'axios';
+import Menu from '../components/Menu';
+import Header from '../components/Header';
 import FloatMenu from '../components/FloatMenu';
 import styles from '../styles/pages/profile.module.scss';
+
 
 export default function Profile({ profiles }) {
 
@@ -14,6 +17,11 @@ export default function Profile({ profiles }) {
             <Head>
                 <title>Perfil</title>
             </Head>
+
+            <header className={styles.profile__header}>
+                <Header className={styles.header} pageName="Perfil" darkMode={false} />
+                <Menu className={styles.menu} pageName="Perfil" />
+            </header>
 
             <Container fixed>
                 <Grid container justifyContent="center" alignItems="center" spacing={4}>
@@ -82,7 +90,7 @@ export default function Profile({ profiles }) {
                     </Grid>
                 </Grid>
             </Container>
-            <FloatMenu />
+            <FloatMenu className={styles.floatMenu}/>
         </div>
     );
 

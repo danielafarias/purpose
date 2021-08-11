@@ -49,22 +49,24 @@ export default function FloatMenu() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Fab color="primary" onClick={handleClick} className={styles.floatMenu} style={floatMenu} >
-                <ListIcon />
-            </Fab>
-            <Menu
-                className={styles.floatMenu__list}
-                style={menu}
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            >
-                <IconButton onClick={handleClose} href="/dashboard"> <HomeIcon /> </IconButton>
-                <IconButton onClick={handleClose} href="/profile"> <AccountCircleIcon /> </IconButton>
-                <IconButton onClick={handleClose}> <SettingsIcon /> </IconButton>
-                <IconButton onClick={handleClose}> <ExitToAppIcon /> </IconButton>
-            </Menu>
+            <div id={styles.floatMenu} >
+                <Fab color="primary" onClick={handleClick} className={styles.floatMenu} style={floatMenu} >
+                    <ListIcon />
+                </Fab>
+                <Menu
+                    className={styles.floatMenu__list}
+                    style={menu}
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+                    <IconButton onClick={handleClose} href="/dashboard"> <HomeIcon /> </IconButton>
+                    <IconButton onClick={handleClose} href="/profile"> <AccountCircleIcon /> </IconButton>
+                    <IconButton onClick={handleClose}> <SettingsIcon /> </IconButton>
+                    <IconButton onClick={handleClose}> <ExitToAppIcon /> </IconButton>
+                </Menu>
+            </div>
         </ThemeProvider>
     );
 
