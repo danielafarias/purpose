@@ -19,7 +19,7 @@ export default function Profile({ profiles }) {
             </Head>
 
             <header className={styles.profile__header}>
-                <Header className={styles.header} pageName="Perfil" darkMode={false} />
+                <Header className={styles.header} pageName="Perfil" darkmode={false} />
                 <Menu className={styles.menu} pageName="Perfil" />
             </header>
 
