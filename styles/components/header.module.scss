@@ -38,3 +38,9 @@
         margin-top: 1rem;
     }
 }
+
+@media only screen and (min-width: 700px) {
+    #header {
+        display: none;
+    }
+}

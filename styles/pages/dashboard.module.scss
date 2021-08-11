@@ -1,5 +1,4 @@
 .dash {
-    margin-right: 0rem;
     margin-bottom: 4rem;
     font-family: "Berkshire Swash", cursive;
     width: 100%;
@@ -14,4 +13,10 @@
     margin-bottom: 0;
     background-image: linear-gradient(to bottom, #673ab7, #9473cb);
     font-family: "Berkshire Swash", cursive;
+}
+
+@media only screen and (min-width: 700px) {
+    .dash {
+        margin-top: 1rem;
+    }
 }

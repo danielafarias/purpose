@@ -1,5 +1,9 @@
 .profile {
 
+    &__header{
+        margin-bottom: 1rem;
+    }
+
     &__infos {
         background-color: #B73A8C;
         width: 100%;
@@ -74,4 +78,13 @@
         margin: 1rem;
     }
 
+}
+
+@media only screen and (min-width: 700px) {
+    .profile {
+
+        &__header {
+            margin-top: 5rem;
+        }
+    }
 }

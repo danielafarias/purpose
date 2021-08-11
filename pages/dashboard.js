@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import Typography from '@material-ui/core/Typography';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Menu from '../components/Menu';
 import FloatMenu from '../components/FloatMenu';
+import Footer from '../components/Footer';
 import ScrollableTab from '../components/ScrollableTab';
 import styles from '../styles/pages/dashboard.module.scss';
 
@@ -18,8 +18,9 @@ export default function Dashboard() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <Header pageName='Dashboard' />
+      <header className={styles.profile__header}>
+        <Header className={styles.header} pageName="Dashboard" darkMode={false} />
+        <Menu className={styles.menu} pageName="Dashboard"/>
       </header>
 
       <main className={styles.dash}>
@@ -29,7 +30,7 @@ export default function Dashboard() {
       <footer className={styles.footer}>
         <Footer />
       </footer>
-      <FloatMenu />
+      <FloatMenu className={styles.floatMenu}/>
     </div>
   );
 
