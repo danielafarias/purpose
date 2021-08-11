@@ -28,7 +28,7 @@ export default function signUp() {
 
     const submitHandler = async event => {
         event.preventDefault();
-
+        
         try {
 
             await register(name, lastName, userName, birthDate, email, passwordHash)

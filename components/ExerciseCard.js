@@ -1,21 +1,40 @@
 import React from 'react';
-import { 
-    Grid, 
+import { Grid, 
     Typography, 
     TextField, 
-    Button, 
-    Dialog, 
-    DialogActions, 
+    Button, Dialog, 
+    DialogActions,
     DialogContent, 
     DialogContentText, 
     DialogTitle } from '@material-ui/core'
+import { withStyles, createTheme } from '@material-ui/core/styles';
+import { getExercise } from '../api/axios';
 import styles from '../styles/components/exercisecard.module.scss'
+
 
 export default function ExerciseCardTest() {
 
+    const exercise = getExercise(1)
+    console.log(exercise)
+ 
+    const ValidationTextField = withStyles({
+        root: {
+            '& input:valid + fieldset': {
+                borderColor: 'green',
+                borderWidth: 50,
+            },
+            '& input:invalid + fieldset': {
+                borderColor: 'red',
+                borderWidth: 50,
+            },
+            '& input:valid:focus + fieldset': {
+                borderLeftWidth: 6,
+                padding: '4px !important', // override inline-style
+            },
+        },
+    })(TextField);
+
     const [open, setOpen] = React.useState(false);
-
-
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -27,8 +46,8 @@ export default function ExerciseCardTest() {
 
     return (
         <div className={styles.organizer}>
-            <Grid Container>
-                <Grid item className={styles.emailConfirmation} xs={8} sm={4}>
+            <Grid >
+                <Grid className={styles.emailConfirmation} item xs={8} sm={4}>
                     <div className={styles.challengeBox}>
                         <div className={styles.container}></div>
                         <img className={styles.progIcon} src='/new_images/redes-03.svg' />
@@ -37,21 +56,24 @@ export default function ExerciseCardTest() {
                         </div>
                     </div>
                 </Grid>
-                <Grid item id={styles.oi} xs={8} sm={4} style={{ maxWidth:'100%'}}>
+                <Grid id={styles.oi} xs={8} sm={4} style={{ maxWidth: '100%' }}>
                     <Button
-                        variant="contained" 
+                        variant="contained"
                         color="primary"
                         style={{ maxWidth: '40%', textTransform: 'capitalize' }}
                         onClick={handleClickOpen}>
-                            <Typography id={styles.typo}>Iniciar exercício</Typography>
+                        <Typography className={styles.typo}>Iniciar exercício</Typography>
                     </Button>
+
                     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                        <DialogTitle id="form-dialog-title">Exercício x</DialogTitle>
+                        <DialogTitle id="form-dialog-title">{exercise.id}</DialogTitle>
                         <DialogContent>
                             <DialogContentText>
-                                Aqui está seu primeiro desafio: resiliência. Qual o segredo para não surtar durante o Bluetcamp?
+                                {exercise.title}
                             </DialogContentText>
-                            <TextField
+                            <ValidationTextField
+                                required
+                                variant="outlined"
                                 autoFocus
                                 multiline
                                 maxRows={20}
@@ -59,21 +81,14 @@ export default function ExerciseCardTest() {
                                 id="name"
                                 label="Respostinha marota"
                                 type="text"
-                                fullWidth
-                            />
+                                fullWidth />
                         </DialogContent>
                         <DialogActions>
-                            <Button 
-                                variant="contained" 
-                                color="primary"
-                                onClick={handleClose}>
-                                    Desisto, vou chorar.
+                            <Button onClick={handleClose} variant="contained" color="primary">
+                                Desisto, vou chorar.
                             </Button>
-                            <Button  
-                                variant="contained" 
-                                color="primary"
-                                onClick={handleClose}>
-                                    Soy fueda, acabei!
+                            <Button onClick={handleClose} variant="contained" color="primary">
+                                Soy fueda, acabei!
                             </Button>
                         </DialogActions>
                     </Dialog>
