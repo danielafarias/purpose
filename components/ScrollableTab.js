@@ -85,9 +85,9 @@ export default function ScrollableTab() {
                     <Tab label="Item Seven" {...a11yProps(6)} />
                 </Tabs>
             </AppBar>
-            <Grid>
+            <Grid container>
                 <TabPanel value={value} index={0}>
-                    <Grid>
+                    <Grid item>
                         <ExerciseCard />
                     </Grid>
                 </TabPanel>
@@ -96,13 +96,13 @@ export default function ScrollableTab() {
                 </TabPanel>
 
                 <TabPanel value={value} index={2}>
-                    <Grid>
+                    <Grid item>
                         <ExerciseCard />
                     </Grid>
-                    <Grid>
+                    <Grid item>
                         <ExerciseCard />
                     </Grid>
-                    <Grid>
+                    <Grid item>
                         <ExerciseCard />
                     </Grid>
                 </TabPanel>

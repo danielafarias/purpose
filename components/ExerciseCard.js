@@ -14,8 +14,9 @@ import styles from '../styles/components/exercisecard.module.scss'
 
 export default function ExerciseCardTest() {
 
-    const exercise = getExercise(1)
-    console.log(exercise)
+    const exercises = getExercise()
+
+    console.log(exercises)
  
     const ValidationTextField = withStyles({
         root: {
@@ -46,8 +47,8 @@ export default function ExerciseCardTest() {
 
     return (
         <div className={styles.organizer}>
-            <Grid >
-                <Grid className={styles.emailConfirmation} item xs={8} sm={4}>
+            <Grid container>
+                <Grid item className={styles.emailConfirmation} xs={8} sm={4}>
                     <div className={styles.challengeBox}>
                         <div className={styles.container}></div>
                         <img className={styles.progIcon} src='/new_images/redes-03.svg' />
@@ -56,7 +57,7 @@ export default function ExerciseCardTest() {
                         </div>
                     </div>
                 </Grid>
-                <Grid id={styles.oi} xs={8} sm={4} style={{ maxWidth: '100%' }}>
+                <Grid item id={styles.oi} xs={8} sm={4} style={{ maxWidth: '100%' }}>
                     <Button
                         variant="contained"
                         color="primary"
@@ -66,10 +67,10 @@ export default function ExerciseCardTest() {
                     </Button>
 
                     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                        <DialogTitle id="form-dialog-title">{exercise.id}</DialogTitle>
+                        <DialogTitle id="form-dialog-title">{exercises.id}</DialogTitle>
                         <DialogContent>
                             <DialogContentText>
-                                {exercise.title}
+                                {exercises.title}
                             </DialogContentText>
                             <ValidationTextField
                                 required

@@ -101,7 +101,7 @@ export default function Menu(props) {
                     [classes.appBarShift]: open,
                 })}
             >
-                <header id={styles.header} className={styles.Header} darkMode={false}>
+                <header id={styles.header} className={styles.Header} darkmode={false}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"

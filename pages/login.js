@@ -14,8 +14,6 @@ import { Alert, AlertTitle } from '@material-ui/lab';
 
 export default function Login() {
 
-
-
   const [values, setValues] = React.useState({
     password: '',
     showPassword: false,
@@ -44,18 +42,9 @@ export default function Login() {
 
     try {
 
-      const token = localStorage.getItem('user');
-
-      {
-        token == null ? (
-          router.push('/tutorial')
-        ) : (
-          router.push('/dashboard'));
-      };
-
       await login(email, passwordHash);
-
-
+      router.push('/dashboard');
+  
     } catch (err) {
       setPasswordError(true);
     }
@@ -72,7 +61,7 @@ export default function Login() {
   const [dark, setDark] = React.useState(false);
 
   return (
-    <div className={dark == true ? styles.login__darkMode : styles.login}>
+    <div className={dark == true ? styles.login__darkmode : styles.login}>
       <Head>
         <title>Entrar | Purple</title>
         <meta name="description" content="Página de Login da Purple" />
@@ -82,7 +71,7 @@ export default function Login() {
       <header>
         {
           dark == false ?
-            <Header pageName='Entrar' darkMode={false} brightnessIcon={
+            <Header pageName='Entrar' darkmode={false} brightnessIcon={
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
@@ -92,7 +81,7 @@ export default function Login() {
               </Grid>
             }
               styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
-            <Header pageName='Entrar' darkMode={true} brightnessIcon={
+            <Header pageName='Entrar' darkmode={true} brightnessIcon={
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
