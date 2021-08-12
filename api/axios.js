@@ -2,20 +2,23 @@ import axios from 'axios';
 
 const baseUrl = 'http://purposeapi.azurewebsites.net';
 
-export const getExercise = async (id) => {
-  let exercises = [];
-  await axios.get(baseUrl + `/api/Exercises/`)
-   
+export const getExerciseById = async (id) => {
+  const response = await axios.get(baseUrl + `/api/Exercises/${id}`)
+  
     
-      .then(response => {
-        exercises.push(response);
-      })
+  return response.data;
+}
+
+export const getExercises = async () => {
+  const response = await axios.get(baseUrl + `/api/Exercises`)
+  
     
-  return exercises;
+  return response.data;
 }
 
 export const getUserByEmail = async (email) => {
-  return await axios.get(baseUrl + `/api/Client/GetUsuarioByEmail/?email=${email}`) 
+  const Client = await axios.get(baseUrl + `/api/Client/GetUsuarioByEmail/?email=${email}`)
+  return Client.data
 }
 
 export const login = async (email, passwordHash) => {

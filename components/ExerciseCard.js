@@ -8,15 +8,33 @@ import { Grid,
     DialogContentText, 
     DialogTitle } from '@material-ui/core'
 import { withStyles, createTheme } from '@material-ui/core/styles';
-import { getExercise } from '../api/axios';
+import { getExerciseById, getUserByEmail } from '../api/axios';
 import styles from '../styles/components/exercisecard.module.scss'
+import { getDomainLocale } from 'next/dist/next-server/lib/router/router';
 
 
 export default function ExerciseCardTest() {
 
-    const exercises = getExercise()
+    
+    // const [exercises, setExercises] = React.useState(undefined);
 
-    console.log(exercises)
+    // if (!exercises) { 
+    //     getExercises().then((res) => setExercises(res))
+    // }
+
+    const [exercise, setExercise] = React.useState(undefined);
+
+    if (!exercise) { 
+        getExerciseById(1).then((res) => setExercise(res))
+    }
+
+    // const [user, setUser] = React.useState(undefined);
+
+    // if (!user) {
+    //     getUserByEmail('crossfiteira@gmail.com').then((res) => setUser(res))
+    // } 
+
+    // console.log(user)
  
     const ValidationTextField = withStyles({
         root: {
@@ -45,6 +63,9 @@ export default function ExerciseCardTest() {
         setOpen(false);
     };
 
+    if(!exercise) {
+        return <div> carregando... </div>
+    }
     return (
         <div className={styles.organizer}>
             <Grid container>
@@ -67,10 +88,10 @@ export default function ExerciseCardTest() {
                     </Button>
 
                     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                        <DialogTitle id="form-dialog-title">{exercises.id}</DialogTitle>
+                        <DialogTitle id="form-dialog-title">{exercise.title}</DialogTitle>
                         <DialogContent>
                             <DialogContentText>
-                                {exercises.title}
+                                {exercise.title}
                             </DialogContentText>
                             <ValidationTextField
                                 required
