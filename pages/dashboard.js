@@ -19,7 +19,7 @@ export default function Dashboard() {
       </Head>
 
       <header className={styles.profile__header}>
-        <Header className={styles.header} pageName="Dashboard" darkmode={false} />
+        <Header className={styles.header} pageName="Dashboard" darkMode={false} />
         <Menu className={styles.menu} pageName="Dashboard"/>
       </header>
 

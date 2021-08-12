@@ -65,7 +65,7 @@ export default function signUp() {
             <header>
                 {
                     dark == false ?
-                        <Header pageName='Saudações, viajante!' darkmode={false} brightnessIcon={
+                        <Header pageName='Saudações, viajante!' darkMode={false} brightnessIcon={
                             <Grid container justifyContent='flex-end'>
                                 <Grid item>
                                     <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
@@ -76,7 +76,7 @@ export default function signUp() {
                             </Grid>
                         }
                             styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
-                        <Header pageName='Saudações, viajante!' darkmode={true} brightnessIcon={
+                        <Header pageName='Saudações, viajante!' darkMode={true} brightnessIcon={
                             <Grid container justifyContent='flex-end'>
                                 <Grid item>
                                     <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
