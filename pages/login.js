@@ -71,7 +71,7 @@ export default function Login() {
       <header>
         {
           dark == false ?
-            <Header pageName='Entrar' darkmode={false} brightnessIcon={
+            <Header pageName='Entrar' darkMode={false} brightnessIcon={
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
@@ -81,7 +81,7 @@ export default function Login() {
               </Grid>
             }
               styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
-            <Header pageName='Entrar' darkmode={true} brightnessIcon={
+            <Header pageName='Entrar' darkMode={true} brightnessIcon={
               <Grid container justifyContent='flex-end'>
                 <Grid item>
                   <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
