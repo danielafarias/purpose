@@ -52,16 +52,16 @@ Projeto feito pela equipe Purpose. :vulcan_salute:
 - [x] *Azure;*
 
 
-##Equipe :fist_right: :fist_left:
+## Equipe :fist_right: :fist_left:
 
-###Front-end: 
+### Front-end: 
 
 - Daniela C. de Farias
 - Marcos Domingues Jr
 - Guilherme Carvalho Souza
 - Jonathan Sulliman
 
-###Back-end:
+### Back-end:
 
 - Johmself Santos
 - Daniel Nascimento
