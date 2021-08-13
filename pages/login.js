@@ -35,27 +35,24 @@ export default function Login() {
   const [passwordHash, setPasswordHash] = React.useState('');
 
   const [passwordError, setPasswordError] = React.useState(false);
-
+    
   const submitHandler = async event => {
     event.preventDefault();
-
     try {
 
-      await login(email, passwordHash);
+      await login(email, passwordHash)
+     
       router.push('/dashboard');
 
     } catch (err) {
       setPasswordError(true);
     }
-
-
-
-
+    await getUserByEmail(email);
     console.log(email, passwordHash);
     console.log(getUserByEmail);
     console.log(localStorage.getItem('user'));
   }
-
+  
   const router = useRouter();
   const [dark, setDark] = React.useState(false);
 
@@ -109,7 +106,7 @@ export default function Login() {
             </Grid>
 
             <Grid item xs={8} sm={4}>
-              <img src='/images/castle3.svg' className={styles.login__img} />
+              <img src='/images/castle.svg' className={styles.login__img} />
             </Grid>
 
             <Grid item xs={8} sm={4} className={styles.login__textField}>
