@@ -19,15 +19,13 @@ import {
 import { withStyles } from '@material-ui/core/styles';
 // import { getExercises } from '../api/axios';
 import styles from '../styles/components/exercisecard.module.scss'
+import { JsEditor, XmlEditor, CssEditor, PythonEditor, CSharpEditor, Compiler } from './Editor';
+
 
 
 export default function ExerciseCard(props) {
 
-    // const [exercises, setExercises] = React.useState(undefined);
-
-    // if (!exercises) {
-    //     getExercises().then((res) => setExercises(res))
-    // }
+    
 
     const ValidationTextField = withStyles({
         root: {
@@ -55,10 +53,6 @@ export default function ExerciseCard(props) {
     const handleClose = () => {
         setOpen(false);
     };
-
-    // if (!exercises) {
-    //     return <div> carregando... </div>
-    // }
     
         return (
             <div className={styles.challenge}>
@@ -109,7 +103,7 @@ export default function ExerciseCard(props) {
                         <DialogContentText>
                             {props.title}
                         </DialogContentText>
-                        <ValidationTextField
+                        {/* <ValidationTextField
                             required
                             variant="outlined"
                             autoFocus
@@ -120,7 +114,8 @@ export default function ExerciseCard(props) {
                             label="Respostinha marota"
                             type="text"
                             fullWidth
-                        />
+                        /> */}
+                        <JsEditor />
                     </DialogContent>
 
                     <DialogActions>
@@ -128,7 +123,7 @@ export default function ExerciseCard(props) {
                             variant="contained" 
                             color="primary"
                             size="small"
-                            onClick={handleClose}
+                            onClick={Compiler}
                         >
                             Voltar
                         </Button>
