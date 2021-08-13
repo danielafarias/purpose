@@ -13,14 +13,14 @@ if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
   modeLoaded = true
 }
 
-const [answer, setAnswer] = React.useState(undefined);
+// const [answer, setAnswer] = React.useState(undefined);
 
-export function Compiler() {
-        const [code, setCode] = React.useState(new String(value));
-        setCode(eval(code));
-        setAnswer(code)
-        return console.log(answer)
-}
+// export function Compiler() {
+//         const [code, setCode] = React.useState(new String(value));
+//         setCode(eval(code));
+//         setAnswer(code)
+//         return console.log(answer)
+// }
 
 
 //////////////////////////////////////////////////////////////

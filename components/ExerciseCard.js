@@ -19,7 +19,7 @@ import {
 import { withStyles } from '@material-ui/core/styles';
 // import { getExercises } from '../api/axios';
 import styles from '../styles/components/exercisecard.module.scss'
-import { JsEditor, XmlEditor, CssEditor, PythonEditor, CSharpEditor, Compiler } from './Editor';
+import { JsEditor, XmlEditor, CssEditor, PythonEditor, CSharpEditor } from './Editor';
 
 
 
@@ -123,7 +123,6 @@ export default function ExerciseCard(props) {
                             variant="contained" 
                             color="primary"
                             size="small"
-                            onClick={Compiler}
                         >
                             Voltar
                         </Button>
