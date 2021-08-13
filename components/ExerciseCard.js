@@ -81,9 +81,9 @@ export default function ExerciseCardTest() {
                     <Card className={styles.challenge__card}>
                         <CardHeader avatar={
                             <Avatar>
-                                <img className={styles.challenge__logo} src='/new_images/redes-03.svg' />
+                                <img className={styles.challenge__logo} src='/images/icons8-c-sharp-logo.svg' />
                             </Avatar>
-                            } title={
+                        } title={
                             <Typography>
                                 <h2>
                                     Título do Desafio
@@ -101,50 +101,62 @@ export default function ExerciseCardTest() {
                         </CardContent>
 
                         <CardActions disableSpacing>
-                            <Button>Iniciar Exercícios</Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={handleClickOpen}
+                            >
+                                Iniciar Exercícios
+                            </Button>
                         </CardActions>
                     </Card>
-                    {/* <Grid className={styles.challenge__card}>
-                        <Grid className={styles.challenge__title}>
-                            <img className={styles.challenge__logo} src='/new_images/redes-03.svg' />
-                            <Typography>
-                                <h2>
-                                    Título
-                                </h2>
-                            </Typography>
-                        </Grid>
-                        <Grid>
-                            <Typography>
-                                <p>
-                                    Descrição do Desafio
-                                </p>
-                            </Typography>
-                        </Grid>
-                    </Grid> */}
                 </Grid>
             </Container>
-        </div>
-        // <div className={styles.organizer}>
-        //     <Container fixed>
-        //         <Grid container>
-        //             <Grid item className={styles.emailConfirmation} xs={8} sm={4}>
-        //                 <div className={styles.challengeBox}>
-        //                     <div className={styles.container}></div>
-        //                     <img className={styles.progIcon} src='/new_images/redes-03.svg' />
-        //                     <div className={styles.challengeTitle}>Título</div>
-        //                     <div className={styles.challengeDescription}>Pequasdkashdujuashduashdasudhs uashduashdsaudhsaudhsu uashdasuhdena descrição do negócio
-        //                     </div>
-        //                 </div>
-        //             </Grid>
-        //             <Grid item >
-        //                 <Button
-        //                     className={styles.button}
-        //                     variant="contained"
-        //                     color="primary"
-        //                     onClick={handleClickOpen}>
-        //                     Iniciar exercício
-        //                 </Button>
 
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>
+                    {exercise.title}
+                </DialogTitle>
+
+                <DialogContent>
+                    <DialogContentText>
+                        {exercise.title}
+                    </DialogContentText>
+                    <ValidationTextField
+                        required
+                        variant="outlined"
+                        autoFocus
+                        multiline
+                        maxRows={20}
+                        margin="dense"
+                        id="name"
+                        label="Respostinha marota"
+                        type="text"
+                        fullWidth
+                    />
+                </DialogContent>
+
+                <DialogActions>
+                    <Button
+                        variant="contained" 
+                        color="primary"
+                        size="small"
+                        onClick={handleClose}
+                    >
+                        Voltar
+                    </Button>
+
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        onClick={handleClose}
+                    >
+                        Responder
+                    </Button>
+                </DialogActions>
+            </Dialog>
+        </div>
         //                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         //                     <DialogTitle id="form-dialog-title">{exercise.title}</DialogTitle>
         //                     <DialogContent>
