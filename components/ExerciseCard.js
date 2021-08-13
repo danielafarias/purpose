@@ -157,36 +157,5 @@ export default function ExerciseCardTest() {
                 </DialogActions>
             </Dialog>
         </div>
-        //                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        //                     <DialogTitle id="form-dialog-title">{exercise.title}</DialogTitle>
-        //                     <DialogContent>
-        //                         <DialogContentText>
-        //                             {exercise.title}
-        //                         </DialogContentText>
-        //                         <ValidationTextField
-        //                             required
-        //                             variant="outlined"
-        //                             autoFocus
-        //                             multiline
-        //                             maxRows={20}
-        //                             margin="dense"
-        //                             id="name"
-        //                             label="Respostinha marota"
-        //                             type="text"
-        //                             fullWidth />
-        //                     </DialogContent>
-        //                     <DialogActions>
-        //                         <Button onClick={handleClose} variant="contained" color="primary">
-        //                             Desisto, vou chorar.
-        //                         </Button>
-        //                         <Button onClick={handleClose} variant="contained" color="primary">
-        //                             Soy fueda, acabei!
-        //                         </Button>
-        //                     </DialogActions>
-        //                 </Dialog>
-        //             </Grid>
-        //         </Grid>
-        //     </Container>
-        // </div>
     )
 }
