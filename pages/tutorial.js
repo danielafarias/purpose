@@ -5,11 +5,19 @@ import styles from '../styles/tutorial.module.scss';
 import { Button } from 'react-bootstrap';
 import { Container, Grid } from '@material-ui/core';
 import { SubtitlesOutlined } from '@material-ui/icons';
+import { tut } from '../api/axios';
 
 export default function tutorial() {
   const [valor, setValor] = React.useState("1")
   const [valor1, setValor1] = React.useState("")
   const [valor2, setValor2] = React.useState("Próxima Página")
+
+
+  const [confirmTutorial, setConfirmTutorial] = React.useState(undefined)
+
+
+
+
 
   function a() {
     if (valor == '1') {
@@ -29,11 +37,32 @@ export default function tutorial() {
       document.getElementById("balao").src = "/images/balaofala5.svg";
       setValor2('Terminar Tutorial')
       setValor1('/dashboard')
+      if (localStorage.getItem('confirmTutorial') != true) {
+        setConfirmTutorial(true);
+        tut(
+          localStorage.getItem('name'),
+          localStorage.getItem('lastName'),
+          localStorage.getItem('userName'),
+          confirmTutorial,
+          localStorage.getItem('birthDate'),
+          localStorage.getItem('email'),
+          localStorage.getItem('passwordHash'))
+
+          
+
+      }
+
     }
   }
 
+
+
+
+
+
+
   return (
-      <div className={styles.full}>
+    <div className={styles.full}>
       <Head>
         <title>Purple</title>
       </Head>
