@@ -29,9 +29,7 @@ export default function Welcome() {
                     </Grid>        
 
                     <Grid container justifyContent="center" alignItems="center" spacing={4}>
-                        <Grid item xs={12} sm={6}>
-
-                        
+                        <Grid item xs={12} sm={8} md={6}>
                             <Grid item className={styles.welcome__header}>
                                 <img src='images/logosemtexto.svg' className={styles.welcome__header__logo}/>
                                 <Typography>
@@ -55,7 +53,7 @@ export default function Welcome() {
                             </Grid>
 
                             <Grid item className={styles.buttons}>
-                                <Grid item xs={12} sm={6}>
+                                <Grid item xs={12} sm={8} md={6}>
                                     <Button 
                                         variant="contained" 
                                         color="primary"
@@ -64,7 +62,7 @@ export default function Welcome() {
                                         </Button>
                                 </Grid>
 
-                                <Grid item xs={12} sm={6}>
+                                <Grid item xs={12} sm={8} md={6}>
                                     <Button 
                                         variant="contained" 
                                         color="secondary" 
@@ -73,10 +71,9 @@ export default function Welcome() {
                                     </Button>
                                 </Grid>
                             </Grid>
-
                         </Grid>
 
-                        <Grid item xs={12} sm={6} className={styles.welcome__intro}>
+                        <Grid item xs={12} sm={8} md={6} className={styles.welcome__intro}>
                             <img src='new_images/persoicones-24.svg' />
                             <Typography>
                                 <h2>

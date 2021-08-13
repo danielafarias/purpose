@@ -74,6 +74,27 @@
     }
 }
 
+.Header {
+    background-image: linear-gradient(to bottom, #673AB7 , #9473CB);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-family: "Berkshire Swash", cursive;
+    
+    &__logo {
+        width: 3.5rem;
+        margin: 0.3rem;
+    } 
+
+    &__pageName {
+        text-align: left;
+        color: #E0E0E0;
+        font-size: 1.5rem;
+        font-weight: lighter;
+        min-width: 25%;
+    }
+}
+
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -181,4 +202,24 @@
 
 #brightness {
     margin: 1rem;
- }
+}
+
+.Header__dark {
+    background-image: linear-gradient(to bottom, #673AB7 , #49416D);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-family: "Berkshire Swash", cursive;
+    
+    &__logo {
+        width: 5rem;
+        margin: 0.3rem;
+    } 
+
+    &__pageName {
+        color: #E0E0E0;
+        font-size: 1.5rem;
+        font-weight: lighter;
+        margin-top: 1rem;
+    }
+}

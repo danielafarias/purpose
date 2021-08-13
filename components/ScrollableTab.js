@@ -5,8 +5,6 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { makeStyles } from '@material-ui/core/styles';
 import ExerciseCard from '../components/ExerciseCard';
-
-
 import PropTypes from 'prop-types';
 
 
@@ -52,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
             fontFamily: 'Yatra One',
         },
     },
-  
+
 }));
 
 export default function ScrollableTab() {
@@ -64,9 +62,14 @@ export default function ScrollableTab() {
         setValue(newValue);
     };
 
+    const appBar = {
+        position: 'fixed',
+        top: 65
+    };
+
     return (
-        <div className={classes.root}>
-            <AppBar position="static" color="default">
+        <div>
+            <AppBar color="default" style={appBar}>
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -80,9 +83,6 @@ export default function ScrollableTab() {
                     <Tab label="Desafios" {...a11yProps(1)} />
                     <Tab label="Ranking" {...a11yProps(2)} />
                     <Tab label="Sobre" {...a11yProps(3)} />
-                    <Tab label="Item Five" {...a11yProps(4)} />
-                    <Tab label="Item Six" {...a11yProps(5)} />
-                    <Tab label="Item Seven" {...a11yProps(6)} />
                 </Tabs>
             </AppBar>
             <Grid container>
@@ -112,19 +112,9 @@ export default function ScrollableTab() {
                     <ExerciseCard />
                     <ExerciseCard />
                 </TabPanel>
-                <TabPanel value={value} index={4}>
-                    Item Five
-                </TabPanel>
-                <TabPanel value={value} index={5}>
-                    Item Six
-                </TabPanel>
-                <TabPanel value={value} index={6}>
-                    Item Seven
-                </TabPanel>
             </Grid>
-
         </div >
-
     );
+
 }
 
