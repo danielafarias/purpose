@@ -47,19 +47,10 @@ export default function tutorial() {
           localStorage.getItem('birthDate'),
           localStorage.getItem('email'),
           localStorage.getItem('passwordHash'))
-
-          
-
       }
 
     }
   }
-
-
-
-
-
-
 
   return (
     <div className={styles.full}>

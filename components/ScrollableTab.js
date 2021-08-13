@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { makeStyles } from '@material-ui/core/styles';
-import ExerciseCard from '../components/ExerciseCard';
+import ExerciseList from '../components/ExerciseList';
 import PropTypes from 'prop-types';
 
 
@@ -88,29 +88,26 @@ export default function ScrollableTab() {
             <Grid container>
                 <TabPanel value={value} index={0}>
                     <Grid item>
-                        <ExerciseCard />
+                        <ExerciseList />
                     </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <ExerciseCard />
+                    <ExerciseList />
                 </TabPanel>
 
                 <TabPanel value={value} index={2}>
                     <Grid item>
-                        <ExerciseCard />
+                        <ExerciseList />
                     </Grid>
                     <Grid item>
-                        <ExerciseCard />
+                        <ExerciseList />
                     </Grid>
                     <Grid item>
-                        <ExerciseCard />
+                        <ExerciseList />
                     </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
-                    <ExerciseCard />
-                    <ExerciseCard />
-                    <ExerciseCard />
-                    <ExerciseCard />
+                    <ExerciseList />
                 </TabPanel>
             </Grid>
         </div >
