@@ -1,23 +1,21 @@
-.dash {
-    margin-bottom: 4rem;
-    font-family: "Berkshire Swash", cursive;
-    width: 100%;
-    min-height: 30rem;
+.header {
+    margin-top: 5rem;
+}
+
+.scrollableTabe {
     display: flex;
     flex-direction: column;
-
+    align-items: center;
+    text-align: center;
 }
 
 .footer {
-    margin-top: -10rem;
-    margin-bottom: 0;
     background-image: linear-gradient(to bottom, #673ab7, #9473cb);
-    font-family: "Berkshire Swash", cursive;
 }
 
-@media only screen and (min-width: 700px) {
-    .dash {
-        margin-top: 1rem;
-    }
-}
+// @media only screen and (min-width: 700px) {
+//     .dash {
+//         margin-top: 5rem;
+//     }
+// }
 

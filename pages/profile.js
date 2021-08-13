@@ -11,7 +11,7 @@ import styles from '../styles/pages/profile.module.scss';
 export default function Profile({ profiles }) {
 
     const router = useRouter()
-    
+
     return (
         <div className={styles.profile}>
             <Head>
@@ -24,9 +24,9 @@ export default function Profile({ profiles }) {
             </header>
 
             <Container fixed>
-                <Grid container justifyContent="center" alignItems="center" spacing={4}>
+                <Grid container justifyContent="center" alignItems="center" spacing={4} >
                     <Grid item className={styles.profile__infos}>
-                        <Grid item >
+                        <Grid>
                             {profiles.map(profile => (
                                 <img src={profile.profileImage} key={profile.id} className={styles.profile__image} />
                             ))}

@@ -5,11 +5,10 @@ import { Grid, Typography, IconButton, Button, TextField } from '@material-ui/co
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import EmailIcon from '@material-ui/icons/Email';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
-import styles from '../styles/pages/login.module.scss';
 import { login, getUserByEmail } from '../api/axios';
 import { Alert, AlertTitle } from '@material-ui/lab';
+import styles from '../styles/pages/login.module.scss';
 
 
 export default function Login() {
@@ -44,7 +43,7 @@ export default function Login() {
 
       await login(email, passwordHash);
       router.push('/dashboard');
-  
+
     } catch (err) {
       setPasswordError(true);
     }
@@ -68,31 +67,32 @@ export default function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        {
-          dark == false ?
-            <Header pageName='Entrar' darkMode={false} brightnessIcon={
-              <Grid container justifyContent='flex-end'>
-                <Grid item>
-                  <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                    <Brightness4Icon style={{ color: '#5013bb' }} />
-                  </IconButton>
-                </Grid>
-              </Grid>
-            }
-              styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
-            <Header pageName='Entrar' darkMode={true} brightnessIcon={
-              <Grid container justifyContent='flex-end'>
-                <Grid item>
-                  <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                    <Brightness4Icon style={{ color: '#7471b6ff' }} />
-                  </IconButton>
-                </Grid>
-              </Grid>
-            }
-              styleBrightness={dark == true ? styles.Header__dark : styles.Header} />
-        }
-      </header>
+      {dark == false ?
+        <header className={styles.Header}>
+          <img src='images/logocomtexto.svg' className={styles.Header__logo} />
+          <p className={styles.Header__pageName}>Entrar</p>
+          <Grid container justifyContent='flex-end'>
+            <Grid item>
+              <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                <Brightness4Icon style={{ color: '#5013bb' }} />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </header>
+
+        :
+
+        <header className={styles.Header__dark}>
+          <img src='images/logocomtexto.svg' className={styles.Header__logo} />
+          <p className={styles.Header__pageName}>Entrar</p>
+          <Grid container justifyContent='flex-end'>
+            <Grid item>
+              <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                <Brightness4Icon style={{ color: '#7471b6ff' }} />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </header>}
 
       <main>
         <form onSubmit={submitHandler}>

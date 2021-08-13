@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,11 +13,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-
-import Header from '../components/Header';
+import HomeIcon from '@material-ui/icons/Home';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import SettingsIcon from '@material-ui/icons/Settings';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import styles from '../styles/components/menu.module.scss';
 
 const drawerWidth = 240;
@@ -56,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
     },
@@ -91,6 +90,8 @@ export default function Menu(props) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const router = useRouter();
 
     return (
         <div className={classes.root} id={styles.menu} >
@@ -131,22 +132,49 @@ export default function Menu(props) {
                 </div>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    <ListItem button onClick={() => router.push('/dashboard')}>
+                        <ListItemIcon>
+                            <HomeIcon />
+                        </ListItemIcon>
+                        Home
+                    </ListItem>
+
+                    <ListItem button onClick={() => router.push('/profile')}>
+                        <ListItemIcon>
+                            <AccountCircleIcon />
+                        </ListItemIcon>
+                        Perfil
+                    </ListItem>
+
+                    <ListItem button onClick={() => router.push('/configs')}>
+                        <ListItemIcon>
+                            <SettingsIcon /> 
+                        </ListItemIcon>
+                        Configurações
+                    </ListItem>
+
+                    <ListItem button>
+                        <ListItemIcon>
+                            <ExitToAppIcon />
+                        </ListItemIcon>
+                        Sair
+                    </ListItem>
+                    {/* {['Home', 'Perfil', 'Configurações', 'Sair'].map((text, index) => (
                         <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemIcon>
+                                {index == 0 ? <HomeIcon /> 
+                                    : 
+                                index == 1 ? <AccountCircleIcon /> 
+                                    : 
+                                index == 2 ? <SettingsIcon /> 
+                                    :
+                                <ExitToAppIcon />}
+                            </ListItemIcon>
                             <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
+                        </ListItem> 
+                    ))}*/}
                 </List>
                 <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
             </Drawer>
             <main
                 className={clsx(classes.content, {
