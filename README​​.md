@@ -2,7 +2,7 @@
 
 Projeto feito pela equipe Purpose. :vulcan_salute:
 
-![castle](C:\Users\jow_t\Desktop\castle.svg)
+![castle](https://uploaddeimagens.com.br/imagens/f759BMI)
 
 ## Missão :bookmark_tabs:
 
