@@ -13,56 +13,65 @@ import styles from '../styles/pages/login.module.scss';
 
 export default function Login() {
 
-  const [values, setValues] = React.useState({
-    password: '',
-    showPassword: false,
-    error: false,
-  });
+    const [values, setValues] = React.useState({
+        password: '',
+        showPassword: false,
+        error: false,
+    });
 
-  const handleChange = (props) => (event) => {
-    setValues({ ...values, [props]: event.target.value });
-  };
+    const handleChange = (props) => (event) => {
+        setValues({ ...values, [props]: event.target.value });
+    };
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+    };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
 
-  const [email, setEmail] = React.useState('');
-  const [passwordHash, setPasswordHash] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    //   getUserByEmail().then((res) => setEmail(res))
 
-  const [passwordError, setPasswordError] = React.useState(false);
+
+    const [passwordHash, setPasswordHash] = React.useState('');
+
+    const [passwordError, setPasswordError] = React.useState(false);
+    const [user, setUser] = React.useState(undefined);
+
+   
+
+            // localStorage.setItem('user', user.userName),
+            // localStorage.setItem('email', user.email),
+            // localStorage.setItem('confirmTutorial', user.confirmTutorial)
     
-  const submitHandler = async event => {
-    event.preventDefault();
-    try {
 
-      await login(email, passwordHash)
-     
-      router.push('/dashboard');
+    const submitHandler = async event => {
+        event.preventDefault();
 
-    } catch (err) {
-      setPasswordError(true);
-    }
-    await getUserByEmail(email);
-    console.log(email, passwordHash);
-    console.log(getUserByEmail);
-    console.log(localStorage.getItem('user'));
-  }
-  
-  const router = useRouter();
-  const [dark, setDark] = React.useState(false);
+        try {
 
-  return (
-    <div className={dark == true ? styles.login__darkmode : styles.login}>
-      <Head>
-        <title>Entrar | Purple</title>
-        <meta name="description" content="Página de Login da Purple" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+            await login(email, passwordHash)
+            if (!user) {
+                getUserByEmail(email).then((res) => setUser(res))
+                          
+            };
+            await localStorage.setItem('name', user.Name);
+            await localStorage.setItem('lastName', user.lastName);
+            await localStorage.setItem('userName', user.userName);
+            await localStorage.setItem('confirmTutorial', user.confirmTutorial);
+            await localStorage.setItem('birthDate', user.birthDate);
+            await localStorage.setItem('email', user.email);
+            await localStorage.setItem('passwordHash', user.passwordHash);
+            
+            if (await user.confirmTutorial != true) {
+                router.push('/tutorial');
+
+            } else {
+
+                router.push('/dashboard');
+
 
       {dark == false ?
         <header className={styles.Header}>
@@ -182,4 +191,5 @@ export default function Login() {
       </footer>
     </div>
   )
+
 }
