@@ -1,83 +1,85 @@
-card.module.scss
+.challenge {
+    position: relative;
+    top: 100px;
 
-.organizer {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100%;
-    width: 100%;
+    &__card {
+        margin-bottom: 2rem;
+    }
+
+    &__title{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
     
+    &__logo {
+        width: 3rem
+    }
 }
 
-.header {
-    width: 100%;
-}
+// .organizer {
+//     position: absolute;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     min-height: 100%;
+//     width: 100%;
+// }
 
-.title {
-    padding-top: 10px;
-    font-size: 40px;
-}
+// .header {
+//     width: 100%;
+// }
 
-.emailConfirmation {
-    padding-top: 5vmax;
-    padding-bottom: 15vmax;
-}
+// .title {
+//     padding-top: 10px;
+//     font-size: 40px;
+// }
 
-#oi{
-    align-items: center;
-    text-align: center;
-    margin-top: 0.5rem;
-}
-.challengeBox {
-    position: absolute;
-    background: oldlace;
-    border-color: #5013bb;
-    border-style: double;
-    left: 50%;
-    margin-left: -20vmax;
-    width: 40vmax;
-    height: 15vmax;
-    border-radius: 2vmax;
-}
+// .emailConfirmation {
+//     padding-top: 5vmax;
+//     padding-bottom: 15vmax;
+// }
 
-.challengeTitle {
-    text-align: center;
-    font-size: 4vmax;
-}
+// .challengeBox {
+//     position: absolute;
+//     background: oldlace;
+//     border-color: #5013bb;
+//     border-style: double;
+//     left: 50%;
+//     margin-left: -20vmax;
+//     width: 40vmax;
+//     height: 15vmax;
+//     border-radius: 2vmax;
+// }
 
-.challengeDescription {
-    position: absolute;
-    width: 100%;
-    top: 30%;
-    text-align: center;
-    font-size: 2vmax;
-}
+// .challengeTitle {
+//     text-align: center;
+//     font-size: 4vmax;
+// }
 
-.progIcon {
-    position: absolute;
-    width: 5vmax;
-}
+// .challengeDescription {
+//     position: absolute;
+//     width: 100%;
+//     top: 30%;
+//     text-align: center;
+//     font-size: 2vmax;
+// }
 
-.container {
-    position: absolute;
-    top: 33%;
-    height: 1px;
-    width: 100%;
-    background: blue;
-}
+// .progIcon {
+//     position: absolute;
+//     width: 5vmax;
+// }
 
-.button {
-    position: fixed;
-    top: 100%;
-    left: 100%;
-    margin-top: -4rem;
-    margin-left: -4rem;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-}
+// .container {
+//     position: absolute;
+//     top: 33%;
+//     height: 1px;
+//     width: 100%;
+//     background: blue;
+// }
 
-.typo {
-    font-size: 100%;
-}
+// .typo {
+//     font-size: 100%;
+// }

@@ -16,7 +16,10 @@ export default function EditChar() {
             <Container fixed>
                 <Typography className={styles.editChar__texts}>Personagens</Typography>
                 <Grid container direction='column' justifyContent="center" alignItems="center" spacing={4}>
-                    <Grid item className={styles.editChar__selectChar}>
+                    <Grid item clas
+                    
+                    
+                    sName={styles.editChar__selectChar}>
                         <img src='../new_images/persoicones-23.svg' className={styles.editChar__charImage} />
                         <Typography className={styles.editChar__texts}>Selecionado</Typography>
                     </Grid>

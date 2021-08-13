@@ -18,14 +18,14 @@ export default function Dashboard() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className={styles.profile__header}>
+      <header>
         <Header className={styles.header} pageName="Dashboard" darkMode={false} />
         <Menu className={styles.menu} pageName="Dashboard"/>
       </header>
 
-      <main className={styles.dash}>
+      <div className={styles.scrollableTabe}>
         <ScrollableTab />
-      </main>
+      </div>
 
       <footer className={styles.footer}>
         <Footer />

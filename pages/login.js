@@ -5,11 +5,10 @@ import { Grid, Typography, IconButton, Button, TextField } from '@material-ui/co
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import EmailIcon from '@material-ui/icons/Email';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
-import styles from '../styles/pages/login.module.scss';
 import { login, getUserByEmail } from '../api/axios';
 import { Alert, AlertTitle } from '@material-ui/lab';
+import styles from '../styles/pages/login.module.scss';
 
 
 export default function Login() {
@@ -73,148 +72,124 @@ export default function Login() {
 
                 router.push('/dashboard');
 
-            }
 
+      {dark == false ?
+        <header className={styles.Header}>
+          <img src='images/logocomtexto.svg' className={styles.Header__logo} />
+          <p className={styles.Header__pageName}>Entrar</p>
+          <Grid container justifyContent='flex-end'>
+            <Grid item>
+              <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                <Brightness4Icon style={{ color: '#5013bb' }} />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </header>
 
-        } catch (err) {
-            setPasswordError(true);
-        }
+        :
 
-       
+        <header className={styles.Header__dark}>
+          <img src='images/logocomtexto.svg' className={styles.Header__logo} />
+          <p className={styles.Header__pageName}>Entrar</p>
+          <Grid container justifyContent='flex-end'>
+            <Grid item>
+              <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
+                <Brightness4Icon style={{ color: '#7471b6ff' }} />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </header>}
 
-     
+      <main>
+        <form onSubmit={submitHandler}>
+          <Grid container direction='column' justifyContent='center' alignItems='center' >
 
-    }
+            <Grid item xs={8} sm={4} className={styles.login__name}>
 
-    const router = useRouter();
-    const [dark, setDark] = React.useState(false);
+              <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
 
-    
+              <h1 className={styles.login__name__title}>
+                Purple
+              </h1>
 
+            </Grid>
 
-    return (
-        <div className={dark == true ? styles.login__darkmode : styles.login}>
-            <Head>
-                <title>Entrar | Purple</title>
-                <meta name="description" content="Página de Login da Purple" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Grid item xs={8} sm={4}>
+              <img src='/images/castle.svg' className={styles.login__img} />
+            </Grid>
 
-            <header>
-                {
-                    dark == false ?
-                        <Header pageName='Entrar' darkMode={false} brightnessIcon={
-                            <Grid container justifyContent='flex-end'>
-                                <Grid item>
-                                    <IconButton id={styles.brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                                        <Brightness4Icon style={{ color: '#5013bb' }} />
-                                    </IconButton>
-                                </Grid>
-                            </Grid>
-                        }
-                            styleBrightness={dark == true ? styles.Header__dark : styles.Header} /> :
-                        <Header pageName='Entrar' darkMode={true} brightnessIcon={
-                            <Grid container justifyContent='flex-end'>
-                                <Grid item>
-                                    <IconButton id={styles.login__brightness} onClick={() => dark == false ? setDark(true) : setDark(false)}>
-                                        <Brightness4Icon style={{ color: '#7471b6ff' }} />
-                                    </IconButton>
-                                </Grid>
-                            </Grid>
-                        }
-                            styleBrightness={dark == true ? styles.Header__dark : styles.Header} />
-                }
-            </header>
+            <Grid item xs={8} sm={4} className={styles.login__textField}>
+              <TextField
+                className={styles.login__textField__content}
+                error={false}
+                label="Email"
+                InputProps={{
+                  disableUnderline: (true),
+                  endAdornment: <EmailIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
+                }}
+                fullWidth
+                value={email}
+                type="text"
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-            <main>
-                <form onSubmit={submitHandler}>
-                    <Grid container direction='column' justifyContent='center' alignItems='center' >
+            </Grid>
 
-                        <Grid item xs={8} sm={4} className={styles.login__name}>
+            <Grid item xs={8} sm={4} className={styles.login__textField}>
 
-                            <img src={dark == false ? '/images/sun.svg' : '/images/moon.svg'} />
+              <TextField
+                className={styles.signUp__textField__content}
+                type={values.showPassword ? 'text' : 'password'}
+                label='Senha'
+                fullWidth
+                name='passwordHash'
+                value={values.passwordHash}
+                onChange={(e) => setPasswordHash(e.target.value) && handleChange}
+                InputProps={{
+                  disableUnderline: (true),
+                  endAdornment:
+                    <IconButton
+                      style={dark == false ? { color: '#673ab7' } : { color: '#7471b6ff' }}
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}>
+                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                }}
+              />
+            </Grid>
 
-                            <h1 className={styles.login__name__title}>
-                                Purple
-                            </h1>
+            <Grid item xs={8} sm={4}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit">
+                Aventurar-se
+              </Button>
+            </Grid>
 
-                        </Grid>
+            <Grid item xs={8} sm={4}>
+              <Typography className={styles.login__link}>
+                <a href='/'>Esqueci a senha</a> | <a href='/signup'>Cadastre-se</a>
+              </Typography>
+            </Grid>
+          </Grid>
 
-                        <Grid item xs={8} sm={4}>
-                            <img src='/images/castle3.svg' className={styles.login__img} />
-                        </Grid>
+          {
+            passwordError == false ? null :
+              <Alert severity="error">
+                <AlertTitle>Erro</AlertTitle>
+                Houve um erro ao realizar o login deste nobre viajante, verifique se seu email e/ou senha estão corretos — <strong>Tente novamente!</strong>
+              </Alert>
+          }
 
-                        <Grid item xs={8} sm={4} className={styles.login__textField}>
-                            <TextField
-                                className={styles.login__textField__content}
-                                error={false}
-                                label="Email"
-                                InputProps={{
-                                    disableUnderline: (true),
-                                    endAdornment: <EmailIcon style={dark == false ? { color: '#673ab7', margin: 12 } : { color: '#7471b6ff', margin: 12 }} />,
-                                }}
-                                fullWidth
-                                value={email}
-                                type="text"
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
+        </form>
+      </main>
 
-                        </Grid>
+      <footer className={dark == false ? styles.login__footer : styles.login__footer__dark}>
+        <Footer />
+      </footer>
+    </div>
+  )
 
-                        <Grid item xs={8} sm={4} className={styles.login__textField}>
-
-                            <TextField
-                                className={styles.signUp__textField__content}
-                                type={values.showPassword ? 'text' : 'password'}
-                                label='Senha'
-                                fullWidth
-                                name='passwordHash'
-                                value={values.passwordHash}
-                                onChange={(e) => setPasswordHash(e.target.value) && handleChange}
-                                InputProps={{
-                                    disableUnderline: (true),
-                                    endAdornment:
-                                        <IconButton
-                                            style={dark == false ? { color: '#673ab7' } : { color: '#7471b6ff' }}
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}>
-                                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                        </IconButton>
-                                }}
-                            />
-                        </Grid>
-
-                        <Grid item xs={8} sm={4}>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                type="submit">
-                                Aventurar-se
-                            </Button>
-                        </Grid>
-
-                        <Grid item xs={8} sm={4}>
-                            <Typography className={styles.login__link}>
-                                <a href='/'>Esqueci a senha</a> | <a href='/signup'>Cadastre-se</a>
-                            </Typography>
-                        </Grid>
-                    </Grid>
-
-                    {
-                        passwordError == false ? null :
-                            <Alert severity="error">
-                                <AlertTitle>Erro</AlertTitle>
-                                Houve um erro ao realizar o login deste nobre viajante, verifique se seu email e/ou senha estão corretos — <strong>Tente novamente!</strong>
-                            </Alert>
-                    }
-
-                </form>
-            </main>
-
-            <footer className={dark == false ? styles.login__footer : styles.login__footer__dark}>
-                <Footer />
-            </footer>
-        </div>
-    )
 }

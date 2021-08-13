@@ -23,6 +23,12 @@ export const getExercises = async () => {
 }
 
 
+export const getUserByEmail = async (email) => {
+  const Client = await axios.get(baseUrl + `/api/Client/GetUsuarioByEmail/?email=${email}`)
+  localStorage.setItem('username', Client.data.userName)
+  return Client.data;
+}
+
 
 export const login = async (email, passwordHash) => {
   return await axios.post(baseUrl + '/api/v1/Auth/Token', {email, passwordHash}, {

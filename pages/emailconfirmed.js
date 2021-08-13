@@ -13,7 +13,7 @@ export default function EmailConfirmed() {
             <div className={styles.confirmation__body}>
             <Grid item xl={3} xs={8} sm={4}>
                 <img src='/new_images/scroll.svg' />
-                <a href='/'><img id={styles.imgCastle} src='/images/castle3.svg' /></a>
+                <a href='/'><img id={styles.imgCastle} src='/images/castle.svg' /></a>
             </Grid>
             </div>
         </div>
