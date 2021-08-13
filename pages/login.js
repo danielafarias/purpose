@@ -34,8 +34,11 @@ export default function Login() {
 
   const [email, setEmail] = React.useState('');
   const [passwordHash, setPasswordHash] = React.useState('');
-
   const [passwordError, setPasswordError] = React.useState(false);
+  const usuario = {
+    em: email,
+    pass: passwordHash,
+  }
 
   const submitHandler = async event => {
     event.preventDefault();
@@ -43,18 +46,17 @@ export default function Login() {
     try {
 
       await login(email, passwordHash);
-      router.push('/dashboard');
+      router.push('/configs');
   
     } catch (err) {
       setPasswordError(true);
     }
 
-
-
-
-    console.log(email, passwordHash);
-    console.log(getUserByEmail);
-    console.log(localStorage.getItem('user'));
+    // console.log(email, passwordHash);
+    // console.log(getUserByEmail);
+    localStorage.setItem('user', JSON.stringify(usuario));
+    window.localStorage.getItem('user');
+    // console.log(localStorage.getItem('user'));
   }
 
   const router = useRouter();

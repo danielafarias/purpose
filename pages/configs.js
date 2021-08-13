@@ -1,20 +1,62 @@
 import React from 'react';
 import { useState } from 'react'
 import Header from '../components/Header';
-import styles from '../styles/configs.module.scss';
+import styles from '../styles/pages/configs.module.scss';
 import FloatMenu from '../components/FloatMenu';
-import { Grid } from '@material-ui/core';
+import { Grid, TextField, Button } from '@material-ui/core';
+import { configuration, getUserByEmail } from '../api/axios';
 
 export default function Configs() {
 
     const [valor, setValor] = React.useState("")
     const [valor1, setToggle1] = React.useState(false)
     const [valor2, setToggle2] = React.useState(false)
+    const [nome, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [userName, setUserName] = useState('');
+    const [error, setError] = useState(false);
+    const [passwordError, setPasswordError] = React.useState(false);
+    const [email, setEmail] = React.useState('');
+    const [passwordHash, setPasswordHash] = React.useState('');
+
+    const submitHandler = async event => {
+    event.preventDefault();
+
+    try {
+
+      await configuration(userName, email, nome, lastName);
+  
+    } catch (err) {
+      setPasswordError(true);
+    }
+
+    const obj = JSON.parse(window.localStorage.getItem('user'));
+    setEmail(obj.em);
+    setPasswordHash(obj.pass)
+    console.log(obj.em)
+    console.log(obj.pass)
+  }
+
+  const submitHandler2 = async event => {
+    event.preventDefault();
+
+    try {
+
+      await configuration(userName, email, nome, lastName);
+  
+    } catch (err) {
+      setPasswordError(true);
+    }
+    const obj = JSON.parse(window.localStorage.getItem('user'));
+    setEmail(obj.em);
+    setPasswordHash(obj.pass)
+    console.log(obj.em)
+    console.log(obj.pass)
+  }
 
     function toogle() {   
         if (valor1 == true) {
             document.getElementById('aaa').setAttribute('readonly', true)
-            document.getElementById('end-editing').classList.add('testou')
             setToggle1(false)
         } else {
             document.getElementById('aaa').removeAttribute('readonly')
@@ -33,6 +75,7 @@ export default function Configs() {
     }
 
      return (
+        <form onLoad={submitHandler}>
          <Grid className={styles.background}>
              <header className={styles.background__header}>
                  <Header pageName='Configurações' />
@@ -45,17 +88,33 @@ export default function Configs() {
                     onClick={() => setValor(document.getElementById("texto").value)}
                 >aaa</button>
             </Grid>
-            <Grid className={styles.background__gridConfig}>
-            <button type="submit" className={styles.background__buttons} id="end-editing" onClick={() => toogle()}></button>
-            <input id='aaa' className={styles.background__inputs} type="text" defaultValue='Usuário' readonly='true'  class="field left"></input>  
-            </Grid>
-            <Grid className={styles.background__gridConfig}>
-            <button type="submit" className={styles.background__buttons} id="end-editing" onClick={() => toogle2()}></button>
-            <input id='bbb' className={styles.background__inputs} type="text" defaultValue='Senha' readonly='true'  class="field left"></input>  
-            </Grid>
+
+                <Grid className={styles.background__gridConfig}>
+                <button type="submit" className={styles.background__buttons} id="end-editing" onClick={() => toogle()}></button>
+                {/* <input id='aaa' className={styles.background__inputs} type="text" defaultValue='Usuário' readonly='true'  class="field left"></input>   */}
+                <TextField
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                /> 
+                </Grid>
+                <Grid className={styles.background__gridConfig}>
+                <button type="submit" className={styles.background__buttons} id="end-editing2" onClick={() => toogle2()}></button>
+                {/* <input id='bbb' className={styles.background__inputs} type="text" defaultValue='Senha' readonly='true'  class="field left"></input> */}
+                <TextField
+                    value={passwordHash}
+                    //onChange={(e) => setName(e.target.value)}
+                /> 
+                </Grid>
+                <Button
+                                    variant="primary"
+                                    type='submit'
+                                    onSubmit={submitHandler2}>                                    
+                                    Aventurar-se
+                                </Button>
              <footer>
                  <FloatMenu/>
              </footer>         
          </Grid>
+         </form>
      )
  }

@@ -50,3 +50,12 @@ export const register = async(name, lastName, userName, birthDate, email, passwo
     });
 }
 
+export const configuration = async(userName, email, nome, lastName) => {
+  return await axios.put(baseUrl + '/api​/Client​/UpdateUsuario', {
+    userName,
+    email,
+    nome,
+    lastName,
+  });
+}
+
