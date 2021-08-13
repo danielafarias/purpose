@@ -24,7 +24,11 @@ Projeto feito pela equipe Purpose. :vulcan_salute:
 
 ## A Purple:purple_heart::purple_heart:
 ```Purpose
-	Plataforma simples e pronta para o uso: um rápido tutorial apresenta todas as funcionalidades do projeto. Ambiente intuitivo: clareza e rápido acesso à todas as ferramentas da página. Retenção através do ambiente gamificado: o viajante escolhe como seu caminho será trilhado nessa jornada. Customização e personalização são pensadas desde os primeiros passos. Aprendizado estimulado através de desafios e rankeamento que não seguem os padrões tradicionais: a inclusão do ranking do dia possibilita a todos a chance de estar entre os primeiros colocados.
+	Plataforma simples e pronta para o uso: um rápido tutorial apresenta todas as funcionalidades do projeto. 
+	Ambiente intuitivo: clareza e rápido acesso à todas as ferramentas da página. 
+	Retenção através do ambiente gamificado: o viajante escolhe como seu caminho será trilhado nessa jornada. 
+	Customização e personalização são pensadas desde os primeiros passos. 
+	Aprendizado estimulado através de desafios e rankeamento que não seguem os padrões tradicionais: a inclusão do ranking do dia possibilita a todos a chance de estar entre os primeiros colocados.
 ```
 
 
