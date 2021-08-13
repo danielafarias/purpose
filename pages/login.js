@@ -55,7 +55,6 @@ export default function Login() {
             await login(email, passwordHash)
             if (!user) {
                 getUserByEmail(email).then((res) => setUser(res))
-                          
             };
             await localStorage.setItem('name', user.Name);
             await localStorage.setItem('lastName', user.lastName);
@@ -71,7 +70,24 @@ export default function Login() {
             } else {
 
                 router.push('/dashboard');
+            }
+      } catch (err) {
+          setPasswordError(true);
+        }
+    } 
+      
 
+    
+  const router = useRouter();
+  const [dark, setDark] = React.useState(false);
+
+  return (
+    <div className={dark == true ? styles.login__darkmode : styles.login}>
+      <Head>
+        <title>Entrar | Purple</title>
+        <meta name="description" content="Página de Login da Purple" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
       {dark == false ?
         <header className={styles.Header}>
@@ -191,5 +207,4 @@ export default function Login() {
       </footer>
     </div>
   )
-
 }

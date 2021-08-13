@@ -9,13 +9,6 @@ export const getExerciseById = async (id) => {
   return response.data;
 }
 
-export const getUserByEmail = async (email) => {
-  const Client = await axios.get(baseUrl + `/api/Client/GetUsuarioByEmail/?email=${email}`)
-  return Client.data
-  
-}
-
-
 export const getExercises = async () => {
   const response = await axios.get(baseUrl + `/api/Exercises`)
       
