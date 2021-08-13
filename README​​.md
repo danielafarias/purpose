@@ -2,7 +2,7 @@
 
 Projeto feito pela equipe Purpose. :vulcan_salute:
 
-![castle](https://postimg.cc/tnVcJ4Pp)
+[castle.png](https://postimg.cc/tnVcJ4Pp)
 
 ## Missão :bookmark_tabs:
 
