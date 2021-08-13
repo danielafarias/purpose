@@ -8,7 +8,7 @@ import { Grid,
     DialogContentText, 
     DialogTitle } from '@material-ui/core'
 import { withStyles, createTheme } from '@material-ui/core/styles';
-import { getExerciseById, getUserByEmail } from '../api/axios';
+import { getExerciseById } from '../api/axios';
 import styles from '../styles/components/exercisecard.module.scss'
 import { getDomainLocale } from 'next/dist/next-server/lib/router/router';
 
